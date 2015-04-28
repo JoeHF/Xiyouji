@@ -15,7 +15,9 @@
     <string name="main_washing_hint_text">洗车指数：</string>
     <string name="main_washing_hint_value_text">适宜</string>
 
+    <!-- action bar text -->
     <string name="main_actionbar_title">洗游记</string>
+    <string name="wantwashing_actionbar_title">我要洗车</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

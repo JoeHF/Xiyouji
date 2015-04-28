@@ -1,5 +1,6 @@
 package com.xiyouji.xiyouji;
 
+import android.content.Intent;
 import android.view.GestureDetector.OnGestureListener;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
@@ -216,6 +217,16 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         return false;
     }
 
+    /*
+     * click listener
+     */
+    public void click_to_wash(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, WantWashingActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
 }
 
 
