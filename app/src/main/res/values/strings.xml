@@ -2,7 +2,20 @@
     <string name="app_name">Xiyouji</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <!-- tab text -->
+    <string name="main_home">首页</string>
+    <string name="main_order">订单</string>
+    <string name="main_mine">我的</string>
 
+    <!-- home page text -->
+    <string name="main_welcome_text">天气不错，给您的爱车洗洗澡吧？</string>
+    <string name="main_weather_text">晴</string>
+    <string name="main_date_text">4月15日 13:34</string>
+    <string name="main_temperature_text">21C</string>
+    <string name="main_washing_hint_text">洗车指数：</string>
+    <string name="main_washing_hint_value_text">适宜</string>
+
+    <string name="main_actionbar_title">洗游记</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,9 +1,105 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.xiyouji.xiyouji.HomeFragment">
+<?xml version='1.0' encoding='UTF-8'?>
+<LinearLayout
+    android:layout_width='fill_parent'
+    android:layout_height='fill_parent'
+    android:orientation='vertical'
+    android:background="@color/seagreen"
+    xmlns:android='http://schemas.android.com/apk/res/android'>
+    <TextView
+        android:layout_width='wrap_content'
+        android:layout_height='wrap_content'
+        android:text='@string/main_welcome_text'
+        android:layout_marginTop="20dp"
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/wash_needed"/>
 
-</FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/lightgray"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp">
+            <ImageView
+                android:id="@+id/weather_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/sun"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_weather_text"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:layout_below="@+id/weather_img"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_date_text"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_temperature_text"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/date"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/washing_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_washing_hint_text"
+                android:textSize="17dp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/temperature"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/washing_hint_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_washing_hint_value_text"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:layout_toRightOf="@+id/washing_hint"
+                android:layout_alignBottom="@+id/washing_hint"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
