@@ -20,4 +20,9 @@
     <string name="wantwashing_actionbar_title">我要洗车</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- common bar text -->
+    <string name="common_bar_phone">电话号码</string>
+    <string name="common_bar_carInfo">车辆信息</string>
+    <string name="common_bar_carPos">车辆位置</string>
 </resources>
