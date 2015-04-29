@@ -8,7 +8,7 @@
     <TextView
         android:layout_width='wrap_content'
         android:layout_height='wrap_content'
-        android:text='@string/main_welcome_text'
+        android:text='天气不错，给你的爱车洗洗澡'
         android:layout_marginTop="20dp"
         android:textSize="16dp"
         android:layout_gravity="center_horizontal"
