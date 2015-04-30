@@ -20,5 +20,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         return inflater.inflate(R.layout.fragment_home, container, false);
+
+
     }
 }
