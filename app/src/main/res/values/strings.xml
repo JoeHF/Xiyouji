@@ -20,6 +20,7 @@
     <string name="wantwashing_actionbar_title">我要洗车</string>
     <string name="waitwashing_actionbar_cancel">取消订单</string>
     <string name="waitwashing_actionbar_title">立即清洗</string>
+    <string name="carinfo_actionbar_right">保存</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -29,6 +30,12 @@
     <string name="common_bar_carInfo">车辆信息</string>
     <string name="common_bar_carPos">车辆位置</string>
     <string name="common_bar_sure">确定</string>
-
-
+    <!-- carinformation text-->
+    <string name="car_information">车辆信息</string>
+    <string name="car_number">请输入车牌号</string>
+    <string name="car_icon">请选择车的品牌</string>
+    <string name="car_color">请选择车的颜色</string>
+    <string name="car_usual">常用车辆</string>
+    <string name="car_location">车辆位置</string>
+    <string name="location_usual">常用位置</string>
 </resources>
