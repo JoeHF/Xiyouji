@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightgray">
+
+    <include layout="@layout/location_head"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/CommonBar_LinearLayout_Style"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
+
+            <LinearLayout
+                style="@style/CommonBar_InLinearLayout_Style">
+                <ImageView
+                    style="@style/CommonBar_LeftImg_Style"
+                    android:src="@drawable/phone"/>
+                <TextView
+                    style="@style/CommonBar_CenterText_Style"
+                    android:text="@string/car_number"
+                    />
+                <ImageView
+                    style="@style/CommonBar_RightImg_Style"
+                    android:src="@drawable/arrow_gray_right"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
+
+            <LinearLayout
+                style="@style/CommonBar_InLinearLayout_Style">
+                <ImageView
+                    style="@style/CommonBar_LeftImg_Style"
+                    android:src="@drawable/phone"/>
+                <TextView
+                    style="@style/CommonBar_CenterText_Style"
+                    android:text="@string/car_icon"
+                    />
+                <ImageView
+                    style="@style/CommonBar_RightImg_Style"
+                    android:src="@drawable/arrow_gray_right"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
+
+            <LinearLayout
+                style="@style/CommonBar_InLinearLayout_Style">
+                <ImageView
+                    style="@style/CommonBar_LeftImg_Style"
+                    android:src="@drawable/phone"/>
+                <TextView
+                    style="@style/CommonBar_CenterText_Style"
+                    android:text="@string/car_color"
+                    />
+                <ImageView
+                    style="@style/CommonBar_RightImg_Style"
+                    android:src="@drawable/arrow_gray_right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/location_usual"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:src="@drawable/phone"/>
+        <TextView
+            style="@style/CommonBar_CenterText_Style"
+            android:text="车辆信息"
+            />
+        <ImageView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"/>
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ActionBar_Style"
+        android:weightSum="1">
+        <TextView
+            style="@style/ActionBar_RightText_Style"
+            android:text="取消"
+            android:clickable="true"
+            android:onClick="click_to_delete_city"/>
+        <TextView
+            style="@style/ActionBar_CenterText_Style"
+            android:text="选择省份"
+            />
+    </LinearLayout>
+</LinearLayout>
+
