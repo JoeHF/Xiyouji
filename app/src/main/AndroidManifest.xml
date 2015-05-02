@@ -14,9 +14,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
         <activity
             android:name=".WantWashingActivity"
             android:label="Xiyouji"
@@ -29,6 +29,11 @@
         </activity>
         <activity
             android:name=".xiaoerInfoActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="CarInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>

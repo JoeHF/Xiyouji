@@ -13,4 +13,5 @@ public class WaitWashingActivity extends Activity{
         setContentView(R.layout.wait_washing);
     }
 
+
 }
