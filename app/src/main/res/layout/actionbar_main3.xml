@@ -6,6 +6,7 @@
         style="@style/ActionBar_LeftImg_Style"
         android:src="@drawable/back"/>
     <TextView
+        android:id="@+id/title"
         style="@style/ActionBar_CenterText_Style"
         android:text="@string/xiaoer_info_title"
         />

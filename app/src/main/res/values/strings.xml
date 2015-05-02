@@ -38,10 +38,24 @@
     <string name="car_usual">常用车辆</string>
     <string name="car_location">车辆位置</string>
     <string name="location_usual">常用位置</string>
-    <!-- numebr_check text-->
+    <!-- number_check text-->
     <string name="phone_check">验证手机</string>
     <string name="phone_number">手机号码</string>
     <string name="code_identify">验证码</string>
     <string name="submit_text">提交</string>
     <string name="get_identify">获取验证码</string>
+    <!-- pay and check text -->
+    <string name="pay_check_yuan">元</string>
+    <string name="pay_check_carinfo_example">浙A 88888</string>
+    <string name="pay_check_cartype_example">奥迪A6L</string>
+    <string name="pay_check_carcolor_example">黑色</string>
+    <string name="pay_check_washing_type_example">车外清洗</string>
+    <string name="pay_check_payment">支付方式</string>
+    <string name="pay_check_pay_weixin">微信支付</string>
+    <string name="pay_check_pay_zhifubao">支付宝支付</string>
+    <string name="pay_check_sure">确定支付</string>
+
+    <!-- xiaoer info text -->
+    <string name="xiaoer_info_title">小二信息</string>
+    <string name="xiaoer_info_latest">最近清洗</string>
 </resources>
