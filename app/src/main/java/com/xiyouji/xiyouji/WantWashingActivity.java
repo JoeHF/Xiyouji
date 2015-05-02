@@ -18,7 +18,8 @@ public class WantWashingActivity extends Activity {
     public void click_to_waitwash(View v)
     {
         Intent intent = new Intent();
-        intent.setClass(this, WaitWashingActivity.class);
+        //intent.setClass(this, WaitWashingActivity.class);
+        intent.setClass(this, xiaoerInfoActivity.class);  //test code
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);

@@ -4,7 +4,7 @@
 
     <ImageView
         style="@style/ActionBar_LeftImg_Style"
-        android:src="@drawable/back_icon_white"
+        android:src="@drawable/back"
         android:id="@+id/imageView2" />
     <TextView
         style="@style/ActionBar_CenterText_Style"

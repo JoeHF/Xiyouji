@@ -4,7 +4,7 @@
 
     <ImageView
         style="@style/ActionBar_LeftImg_Style"
-        android:src="@drawable/back_icon_white"/>
+        android:src="@drawable/back"/>
     <TextView
         style="@style/ActionBar_CenterText_Style"
         android:text="@string/waitwashing_actionbar_title"

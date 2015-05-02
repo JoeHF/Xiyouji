@@ -38,4 +38,8 @@
     <string name="car_usual">常用车辆</string>
     <string name="car_location">车辆位置</string>
     <string name="location_usual">常用位置</string>
+
+    <!-- xiaoer information text -->
+    <string name="xiaoer_info_title">小二信息</string>
+    <string name="xiaoer_info_latest">最近清洗</string>
 </resources>
