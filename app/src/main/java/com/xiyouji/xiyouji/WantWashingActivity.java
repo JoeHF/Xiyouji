@@ -19,7 +19,8 @@ public class WantWashingActivity extends Activity {
     {
         Intent intent = new Intent();
         //intent.setClass(this, WaitWashingActivity.class);
-        intent.setClass(this, xiaoerInfoActivity.class);  //test code
+        //intent.setClass(this, xiaoerInfoActivity.class);  //test code
+        intent.setClass(this, PayJudgeActivity.class);  //test code
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
