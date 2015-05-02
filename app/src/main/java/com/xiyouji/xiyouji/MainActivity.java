@@ -139,7 +139,7 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         //当是Fragment0的时候
         if(MARK==0)
         {
-            if(arg1.getX()>arg0.getX()+DISTANT)
+            if(arg1.getX()<arg0.getX()+DISTANT)
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[1]).commit();
@@ -150,13 +150,13 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
             else
             {
                 linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[0].setTextColor(getResources().getColor(R.color.black));
+                textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
             }
         }
         //当是Fragment1的时候
         else if (MARK==1)
         {
-            if(arg1.getX()>arg0.getX()+DISTANT)
+            if(arg1.getX() < arg0.getX()+DISTANT)
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[2]).commit();
@@ -164,24 +164,24 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
                 textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=2;
             }
-            else if(arg0.getX()>arg1.getX()+DISTANT)
+            else if(arg0.getX() < arg1.getX()+DISTANT)
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[0]).commit();
                 linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
                 textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=0;
-                }
+            }
             else
             {
                 linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[1].setTextColor(getResources().getColor(R.color.black));
+                textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
             }
         }
         //当是Fragment2的时候
         else if(MARK==2)
         {
-            if(arg0.getX()>arg1.getX()+DISTANT)
+            if(arg0.getX() < arg1.getX()+DISTANT)
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[1]).commit();
@@ -192,7 +192,7 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
             else
             {
                 linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[2].setTextColor(getResources().getColor(R.color.black));
+                textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
             }
         }
         return false;

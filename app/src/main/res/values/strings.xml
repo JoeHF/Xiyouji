@@ -58,4 +58,8 @@
     <!-- xiaoer info text -->
     <string name="xiaoer_info_title">小二信息</string>
     <string name="xiaoer_info_latest">最近清洗</string>
+    
+    <!-- order fragment text -->
+    <string name="order_ing">进行中</string>
+    <string name="order_history">历史订单</string>
 </resources>
