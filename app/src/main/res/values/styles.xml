@@ -80,5 +80,18 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:layout_weight">10.0</item>
     </style>
-
+    <!-- order page style -->
+    <style name="Order_LeftImg_Style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+    <style name="Order_CenterText_Style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textSize">16dp</item>
+    </style>
 </resources>

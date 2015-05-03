@@ -4,18 +4,25 @@ package com.xiyouji.xiyouji;
  * Created by houfang on 15/4/28.
  */
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xiyouji.xiyouji.Adapter.CommonPagerAdapter;
+import com.xiyouji.xiyouji.Adapter.OrderOngoingAdapter;
+import com.xiyouji.xiyouji.Model.Order;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class OrderFragment extends Fragment
 {
@@ -24,7 +31,11 @@ public class OrderFragment extends Fragment
     private View page1, page2;
     private List<View> pages;
     private TextView text1, text2;
+    private ListView view1, view2;
 
+    //data
+    private List<Order> orderOngoings;
+    private OrderOngoingAdapter orderOngoingAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
@@ -33,6 +44,13 @@ public class OrderFragment extends Fragment
             pager = (ViewPager) rootView.findViewById(R.id.view_pager);
             page1 = inflater.inflate(R.layout.order_ing, null);
             page2 = inflater.inflate(R.layout.order_history, null);
+            view1 = (ListView)page1.findViewById(R.id.listView);
+
+            orderOngoings = new ArrayList<Order>();
+            orderOngoings.add(new Order());
+            orderOngoings.add(new Order());
+            orderOngoingAdapter = new OrderOngoingAdapter(orderOngoings, getActivity());
+
             text1 = (TextView)rootView.findViewById(R.id.text1);
             text2 = (TextView)rootView.findViewById(R.id.text2);
             text1.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +68,7 @@ public class OrderFragment extends Fragment
                                      }
             );
             initPager();
+            view1.setAdapter(orderOngoingAdapter);
         }
 
         ViewGroup parent = (ViewGroup)rootView.getParent();

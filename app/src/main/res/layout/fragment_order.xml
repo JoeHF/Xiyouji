@@ -33,16 +33,10 @@
             android:background="@color/white"
             android:textColor="@color/forestgreen"/>
     </LinearLayout>
-    <TextView
-        android:layout_width='wrap_content'
-        android:layout_height='wrap_content'
-        android:text='This the second fragment'
-        />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-
     </android.support.v4.view.ViewPager>
 </LinearLayout>
