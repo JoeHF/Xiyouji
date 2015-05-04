@@ -47,6 +47,8 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_carInfo"
+                    android:clickable="true"
+                    android:onClick="click_to_information"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
@@ -67,6 +69,8 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_carPos"
+                    android:clickable="true"
+                    android:onClick="click_to_location"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
@@ -117,6 +121,7 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_carInfo"
+
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
