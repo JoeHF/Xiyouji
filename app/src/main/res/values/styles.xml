@@ -56,29 +56,30 @@
         <item name="android:background">@color/white</item>
     </style>
     <style name="CommonBar_InLinearLayout_Style">
+        <item name="android:weightSum">20.0</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@color/white</item>
     </style>
     <style name="CommonBar_LeftImg_Style">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
-        <item name="android:layout_weight">10.0</item>
+        <item name="android:layout_weight">4.0</item>
     </style>
     <style name="CommonBar_CenterText_Style">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_weight">5.0</item>
+        <item name="android:layout_weight">12.0</item>
         <item name="android:textColor">@color/black</item>
     </style>
     <style name="CommonBar_RightImg_Style">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
-        <item name="android:layout_weight">10.0</item>
+        <item name="android:layout_weight">4.0</item>
     </style>
     <!-- order page style -->
     <style name="Order_LeftImg_Style">

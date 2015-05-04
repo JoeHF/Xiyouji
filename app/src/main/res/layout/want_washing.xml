@@ -72,9 +72,6 @@
                     android:clickable="true"
                     android:onClick="click_to_location"
                     />
-                <ImageView
-                    style="@style/CommonBar_RightImg_Style"
-                    android:src="@drawable/arrow_gray_right"/>
             </LinearLayout>
         </LinearLayout>
 
