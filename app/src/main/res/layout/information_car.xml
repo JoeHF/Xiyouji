@@ -29,9 +29,7 @@
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_number"
                     />
-                <ImageView
-                    style="@style/CommonBar_RightImg_Style"
-                    android:src="@drawable/arrow_gray_right"/>
+
             </LinearLayout>
             <View
                 android:layout_width="match_parent"

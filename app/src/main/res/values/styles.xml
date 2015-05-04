@@ -81,6 +81,8 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:layout_weight">4.0</item>
     </style>
+
+
     <!-- order page style -->
     <style name="Order_LeftImg_Style">
         <item name="android:layout_width">wrap_content</item>

@@ -32,12 +32,7 @@
             style="@style/CommonBar_CenterText_Style"
             android:text="@string/phone_number"
             />
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="80dp"
-            android:textColor="@color/blue"
-            android:clickable="true"
-            android:onClick="get_identify"
-          />
+
     </LinearLayout>
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style">
@@ -48,9 +43,7 @@
             style="@style/CommonBar_CenterText_Style"
             android:text="@string/code_identify"
             />
-          <TextView android:layout_height="wrap_content"
-              android:layout_width="80dp"
-              android:textColor="@color/blue"
+          <TextView style="@style/CommonBar_RightImg_Style"
               android:clickable="true"
               android:onClick="get_identify"
               android:text="@string/get_identify"/>
