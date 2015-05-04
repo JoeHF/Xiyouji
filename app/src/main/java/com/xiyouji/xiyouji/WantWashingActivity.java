@@ -33,4 +33,12 @@ public class WantWashingActivity extends Activity {
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
     }
+    public   void click_to_location(View w)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, CarlocActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
 }

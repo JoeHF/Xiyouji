@@ -32,6 +32,16 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".CarInfoActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".CarlocActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

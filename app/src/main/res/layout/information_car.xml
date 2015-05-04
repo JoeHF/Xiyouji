@@ -24,7 +24,7 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable-hdpi/position"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_number"
