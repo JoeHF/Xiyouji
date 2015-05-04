@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightgray">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/ActionBar_Style">
+
+        <ImageView
+            style="@style/ActionBar_LeftImg_Style"
+            android:src="@drawable/back"/>
+        <TextView
+            style="@style/ActionBar_CenterText_Style"
+            android:text="@string/phone_check"
+            />
+        <ImageView
+            style="@style/ActionBar_RightImg_Style"
+            android:src="@drawable/setting"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+    </LinearLayout>
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:src="@drawable/phone"/>
+        <TextView
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/phone_number"
+            />
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:textColor="@color/blue"
+            android:clickable="true"
+            android:onClick="get_identify"
+          />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:src="@drawable/mark"/>
+        <TextView
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/code_identify"
+            />
+          <TextView android:layout_height="wrap_content"
+              android:layout_width="80dp"
+              android:textColor="@color/blue"
+              android:clickable="true"
+              android:onClick="get_identify"
+              android:text="@string/get_identify"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="25dp"
+        android:clickable="true"
+        android:onClick="click_to_phone_check"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/textview_round_style"
+        android:text="@string/submit_text"/>
+</LinearLayout>
