@@ -2,11 +2,41 @@
     android:layout_width='fill_parent'
     android:layout_height='fill_parent'
     android:orientation='vertical'
-    android:gravity='center_horizontal|center_vertical'
+    android:gravity='center_horizontal'
     xmlns:android='http://schemas.android.com/apk/res/android'>
-    <TextView
-        android:layout_width='wrap_content'
-        android:layout_height='wrap_content'
-        android:text='This the second fragment'
-        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/switcher_stroke_bg"
+        android:padding="1dp">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:text="@string/order_ing"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:text="@string/order_history"
+            android:background="@color/white"
+            android:textColor="@color/forestgreen"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </android.support.v4.view.ViewPager>
 </LinearLayout>
