@@ -73,16 +73,23 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
         <TextView
             style="@style/CommonBar_CenterText_Style"
             android:text="常用地址"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView

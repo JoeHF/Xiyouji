@@ -24,7 +24,14 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/position"/>
+                    android:src="@drawable/car_number"/>
+                <TextView
+                    style="@style/CommonBar_LeftText_Style"
+                    android:text="浙"
+                    />
+                <ImageView
+                    style="@style/CommonBar_RightImg_Style1"
+                    android:src="@drawable/raw"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_number"
@@ -41,7 +48,7 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/carinfo"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_icon"
@@ -61,7 +68,7 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/color"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_color"
@@ -73,21 +80,29 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        >
         <TextView
             style="@style/CommonBar_CenterText_Style"
             android:text="@string/car_usual"
             />
         </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/phone"/>
+            android:src="@drawable/carinfo"/>
         <TextView
             style="@style/CommonBar_CenterText_Style"
             android:text="车辆信息"

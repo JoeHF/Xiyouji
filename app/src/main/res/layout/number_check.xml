@@ -17,12 +17,19 @@
             style="@style/ActionBar_RightImg_Style"
             android:src="@drawable/setting"/>
     </RelativeLayout>
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="30dp">
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView
@@ -34,6 +41,11 @@
             />
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView
@@ -49,6 +61,11 @@
               android:text="@string/get_identify"/>
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
