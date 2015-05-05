@@ -31,7 +31,10 @@
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style1"
-                    android:src="@drawable/raw"/>
+                    android:src="@drawable/raw"
+                    android:clickable="true"
+                    android:onClick="click_to_city"
+                    />
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_number"
@@ -111,5 +114,26 @@
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
 
+        >
+        <LinearLayout
+            style="@style/ActionBar_Style">
+            <TextView
+                style="@style/CommonBar_LeftImg_Style"
+                android:text="取消" />
+            <TextView
+                style="@style/CommonBar_LeftImg_Style"
+                />
+            <TextView
+                style="@style/CommonBar_CenterText_Style"
+                android:text="选择省份"
+                />
+
+        </LinearLayout>
+        </LinearLayout>
 </LinearLayout>
+
