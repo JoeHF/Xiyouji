@@ -28,6 +28,9 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_phone"
+                    android:clickable="true"
+                    android:onClick="click_to_number"
+
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"

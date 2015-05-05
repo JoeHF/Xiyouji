@@ -41,4 +41,12 @@ public class WantWashingActivity extends Activity {
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
     }
+    public void click_to_number(View v)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, NumberCheckActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
 }

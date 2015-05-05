@@ -42,6 +42,11 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".NumberCheckActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
