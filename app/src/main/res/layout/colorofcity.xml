@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/lightgray">
+    android:background="@color/lightgray"
+    android:id="@+id/cityname">
 
-    <include layout="@layout/location_head"/>
+    <include layout="@layout/information_head"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -24,14 +25,22 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/car_number"/>
+                <TextView
+                    style="@style/CommonBar_LeftText_Style"
+                    android:text="浙"
+                    />
+                <ImageView
+                    style="@style/CommonBar_RightImg_Style1"
+                    android:src="@drawable/raw"
+                    android:clickable="true"
+                    android:onClick="click_to_city"
+                    />
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_number"
                     />
-                <ImageView
-                    style="@style/CommonBar_RightImg_Style"
-                    android:src="@drawable/arrow_gray_right"/>
+
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -43,7 +52,7 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/carinfo"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_icon"
@@ -63,7 +72,7 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/color"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_color"
@@ -75,21 +84,29 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        >
         <TextView
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/location_usual"
+            android:text="@string/car_usual"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/phone"/>
+            android:src="@drawable/carinfo"/>
         <TextView
             style="@style/CommonBar_CenterText_Style"
             android:text="车辆信息"
@@ -99,18 +116,26 @@
             android:src="@drawable/arrow_gray_right"/>
     </LinearLayout>
     <LinearLayout
-        style="@style/ActionBar_Style"
-        android:weightSum="1">
-        <TextView
-            style="@style/ActionBar_RightText_Style"
-            android:text="取消"
-            android:clickable="true"
-            android:onClick="click_to_delete_color"/>
-        <TextView
-            style="@style/ActionBar_CenterText_Style"
-            android:text="选择颜色"
-            />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/cityofcar"
+        >
+        <LinearLayout
+            style="@style/ActionBar_Style">
+            <TextView
+                style="@style/CommonBar_LeftImg_Style"
+                android:text="取消" />
+            <TextView
+                style="@style/CommonBar_LeftImg_Style"
+                />
+            <TextView
+                style="@style/CommonBar_CenterText_Style"
+                android:text="选择颜色"
+                />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-
 

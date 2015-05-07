@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * Created by houfang on 2015/4/29.
@@ -17,10 +18,25 @@ public class CarInfoActivity extends Activity{
     public void click_to_city(View v)
     {
         Intent intent = new Intent();
-        intent.setClass(this, NumberCheckActivity.class);
+        intent.setClass(this, CityChooseActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
     }
-
+    public void click_to_icon(View v)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, IconChooseActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
+    public void click_to_color(View v)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, ColorChooseActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
 }

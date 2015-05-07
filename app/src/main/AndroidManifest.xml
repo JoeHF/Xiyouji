@@ -47,6 +47,22 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".CityChooseActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".IconChooseActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ColorChooseActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>
