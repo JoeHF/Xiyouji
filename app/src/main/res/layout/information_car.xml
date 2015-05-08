@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/lightgray">
+    android:background="@color/lightgray"
+    android:id="@+id/cityname">
 
     <include layout="@layout/information_head"/>
 
@@ -55,6 +56,8 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_icon"
+                   android:clickable="true"
+                    android:onClick="click_to_icon"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
@@ -75,6 +78,10 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_color"
+                    android:clickable="true"
+                    android:onClick="click_to_color"
+
+
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
@@ -118,7 +125,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
+        android:visibility="invisible"
+        android:id="@+id/cityofcar"
         >
         <LinearLayout
             style="@style/ActionBar_Style">

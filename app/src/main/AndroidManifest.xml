@@ -47,19 +47,6 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".PayJudgeActivity"
-            android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <!-- mine fragment activity -->
-        <activity
-            android:name=".MineFragmentActivity.RechargeActivity"
-            android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
-
     </application>
 
 </manifest>
