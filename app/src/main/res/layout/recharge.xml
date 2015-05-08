@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/actionbar_main2"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="180dp"
+        android:background="@color/seagreen">
+        
+        <TextView
+            android:id="@+id/left_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/mine_left_money"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/left_textview"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/left_money"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6888"
+                android:textSize="30dp"
+                android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            >
+            
+            <TextView
+                android:id="@+id/r300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_recharge"
+                android:layout_centerVertical="true"
+                android:textSize="18dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_toRightOf="@id/r300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_recharge_300"
+                android:layout_centerVertical="true"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <CheckBox
+                android:id="@+id/recharge_300"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="click_choose_recharge"
+                android:button="@null"
+                android:background="@drawable/pay_check_checkbox"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            >
+
+            <TextView
+                android:id="@+id/r800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_recharge"
+                android:layout_centerVertical="true"
+                android:textSize="18dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_toRightOf="@id/r800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_recharge_800"
+                android:layout_centerVertical="true"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <CheckBox
+                android:id="@+id/recharge_800"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="click_choose_recharge"
+                android:button="@null"
+                android:background="@drawable/pay_check_checkbox"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            >
+
+            <TextView
+                android:id="@+id/r1500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_recharge"
+                android:layout_centerVertical="true"
+                android:textSize="18dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_toRightOf="@id/r1500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_recharge_1500"
+                android:layout_centerVertical="true"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <CheckBox
+                android:id="@+id/recharge_1500"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="click_choose_recharge"
+                android:button="@null"
+                android:background="@drawable/pay_check_checkbox"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="25dp"
+        android:clickable="true"
+        android:onClick="click_to_pay"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/textview_round_style"
+        android:text="@string/mine_recharge_immediate"/>
+</LinearLayout>

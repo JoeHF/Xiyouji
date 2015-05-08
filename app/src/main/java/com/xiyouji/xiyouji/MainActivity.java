@@ -18,6 +18,8 @@ import android.os.Build;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.xiyouji.xiyouji.MineFragmentActivity.RechargeActivity;
+
 
 public class MainActivity extends FragmentActivity implements OnGestureListener
 {
@@ -223,6 +225,14 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
     public void click_to_wash(View v) {
         Intent intent = new Intent();
         intent.setClass(this, WantWashingActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
+
+    public void click_to_recharge(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, RechargeActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);

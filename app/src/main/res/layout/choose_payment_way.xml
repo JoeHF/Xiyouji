@@ -1,0 +1,150 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/ll2"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:gravity="center"
+            android:text="@string/mine_payment_way"
+            android:textSize="16sp"
+            android:textColor="@color/main_theme_color"
+            android:clickable="true"
+            android:onClick="choose_pic_for_icon" />
+
+        <View
+            android:id="@+id/View02"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="@color/lightgrey" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            >
+
+            <ImageView
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/alipay"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="支付宝支付"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/main_theme_color"
+                android:clickable="true"
+                android:onClick="take_photo_for_icon" />
+        </RelativeLayout>
+
+
+
+        <View
+            android:id="@+id/View03"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="@color/lightgrey" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            >
+
+            <ImageView
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/weichat"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text=" 微信支付"
+                android:textSize="16sp"
+                android:textColor="@color/main_theme_color"
+                android:clickable="true"
+                android:onClick="take_photo_for_icon" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/View04"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="@color/lightgrey" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            >
+
+            <ImageView
+                android:layout_marginLeft="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/bank"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text=" 银联支付"
+                android:textSize="16sp"
+                android:textColor="@color/main_theme_color"
+                android:clickable="true"
+                android:onClick="take_photo_for_icon" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="45dip"
+            android:gravity="center"
+            android:text="稍后充值"
+            android:textSize="16sp"
+            android:textColor="@color/main_theme_color"
+            android:clickable="true"
+            android:onClick="payment_cancel" /> />
+
+    </RelativeLayout>
+
+</RelativeLayout>

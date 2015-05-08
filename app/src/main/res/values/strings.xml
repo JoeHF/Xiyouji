@@ -62,4 +62,22 @@
     <!-- order fragment text -->
     <string name="order_ing">进行中</string>
     <string name="order_history">历史订单</string>
+    
+    <!-- mine fragment text -->
+    <string name="mine_recharge">充值</string>
+    <string name="mine_discount">优惠劵</string>
+    <string name="mine_query">违章查询</string>
+    <string name="mine_address">常用地址</string>
+    <string name="mine_car">我的车辆</string>
+    <string name="mine_insurance">车辆保险</string>
+    <string name="mine_xiaoer">专属小儿</string>
+    <string name="mine_contact">联系我们</string>
+    <string name="mine_quit_login">退出登录</string>
+    <string name="mine_left_money">我的余额</string>
+    <string name="mine_recharge_text">充值</string>
+    <string name="mine_recharge_300">300元</string>
+    <string name="mine_recharge_800">800元</string>
+    <string name="mine_recharge_1500">1500元</string>
+    <string name="mine_recharge_immediate">立即充值</string>
+    <string name="mine_payment_way">请选择支付方式</string>
 </resources>

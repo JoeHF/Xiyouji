@@ -4,7 +4,9 @@
 
     <ImageView
         style="@style/ActionBar_LeftImg_Style"
-        android:src="@drawable/back"/>
+        android:src="@drawable/back"
+        android:clickable="true"
+        android:onClick="click_to_back"/>
     <TextView
         android:id="@+id/title"
         style="@style/ActionBar_CenterText_Style"
