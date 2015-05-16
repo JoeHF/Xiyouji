@@ -2,6 +2,7 @@ package com.xiyouji.xiyouji.MineFragmentActivity;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -44,6 +45,14 @@ public class RechargeActivity extends Activity {
 
     public void payment_cancel(View v) {
         dialog.dismiss();
+    }
+
+    public void click_right(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, RechargeRecordActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
     }
 
 }

@@ -58,6 +58,12 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".MineFragmentActivity.RechargeRecordActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>

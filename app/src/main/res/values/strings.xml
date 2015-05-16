@@ -80,4 +80,11 @@
     <string name="mine_recharge_1500">1500元</string>
     <string name="mine_recharge_immediate">立即充值</string>
     <string name="mine_payment_way">请选择支付方式</string>
+    
+    <string name="discount_price">￥30</string>
+    <string name="discount_discription">您可在下单过程中选择要使用的优惠劵</string>
+    <string name="discount_change">兑换</string>
+    <string name="discount_hint">输入优惠劵兑换码</string>
+    <string name="discount_list_hint">优惠劵</string>
+    <string name="discount_list_due">有效期至</string>
 </resources>

@@ -3,21 +3,16 @@ package com.xiyouji.xiyouji;
 import android.content.Intent;
 import android.view.GestureDetector.OnGestureListener;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.GestureDetector;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.xiyouji.xiyouji.MineFragmentActivity.DiscountActivity;
 import com.xiyouji.xiyouji.MineFragmentActivity.RechargeActivity;
 
 
@@ -233,6 +228,14 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
     public void click_to_recharge(View v) {
         Intent intent = new Intent();
         intent.setClass(this, RechargeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
+
+    public void click_to_discount(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, DiscountActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
