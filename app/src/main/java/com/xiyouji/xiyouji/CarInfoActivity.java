@@ -15,6 +15,13 @@ public class CarInfoActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.information_car);
     }
+
+    public void click_to_back(View v) {
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
+    }
+
     public void click_to_city(View v)
     {
         Intent intent = new Intent();

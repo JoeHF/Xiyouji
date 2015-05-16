@@ -3,6 +3,7 @@
     style="@style/ActionBar_Style">
 
     <ImageView
+        android:onClick="click_to_back"
         style="@style/ActionBar_LeftImg_Style"
         android:src="@drawable/back"
         android:id="@+id/imageView2" />
@@ -10,11 +11,6 @@
         style="@style/ActionBar_CenterText_Style"
         android:text="@string/car_location"
         android:id="@+id/textView" />
-    <ImageView
-        style="@style/ActionBar_RightImg_Style"
-        android:src="@drawable/setting"
-        android:id="@+id/imageView" />
-
     <TextView
         style="@style/ActionBar_RightText_Style"
         android:text="@string/carinfo_actionbar_right"

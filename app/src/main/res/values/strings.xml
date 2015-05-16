@@ -30,6 +30,13 @@
     <string name="common_bar_carInfo">车辆信息</string>
     <string name="common_bar_carPos">车辆位置</string>
     <string name="common_bar_sure">确定</string>
+    <string name="common_bar_wash_immediately">立即清洗</string>
+    <string name="common_bar_wash_order">预约清洗</string>
+    <string name="common_bar_discount">优惠劵</string>
+    <string name="common_bar_discount_hint">暂无可用优惠劵</string>
+    <string name="common_bar_xiaoer_number">小二编号</string>
+    <string name="common_bar_wash_outside">车外清洗</string>
+    <string name="common_bar_wash_inout">车内+车外清洗</string>
     <!-- carinformation text-->
     <string name="car_information">车辆信息</string>
     <string name="car_number">请输入车牌号</string>

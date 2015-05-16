@@ -15,17 +15,23 @@ public class WantWashingActivity extends Activity {
         setContentView(R.layout.want_washing);
     }
 
+    public void click_to_back(View v) {
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
+    }
+
     public void click_to_waitwash(View v)
     {
         Intent intent = new Intent();
-        //intent.setClass(this, WaitWashingActivity.class);
+        intent.setClass(this, WaitWashingActivity.class);
         //intent.setClass(this, xiaoerInfoActivity.class);  //test code
-        intent.setClass(this, PayJudgeActivity.class);  //test code
+        //intent.setClass(this, PayJudgeActivity.class);  //test code
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
     }
-    public   void click_to_information(View w)
+    public void click_to_information(View w)
     {
         Intent intent = new Intent();
         intent.setClass(this, CarInfoActivity.class);
@@ -33,7 +39,7 @@ public class WantWashingActivity extends Activity {
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
     }
-    public   void click_to_location(View w)
+    public void click_to_location(View w)
     {
         Intent intent = new Intent();
         intent.setClass(this, CarlocActivity.class);

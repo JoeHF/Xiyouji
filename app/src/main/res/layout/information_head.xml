@@ -3,15 +3,15 @@
     style="@style/ActionBar_Style">
 
     <ImageView
+        android:id="@+id/back"
+        android:clickable="true"
+        android:onClick="click_to_back"
         style="@style/ActionBar_LeftImg_Style"
         android:src="@drawable/back"/>
     <TextView
         style="@style/ActionBar_CenterText_Style"
         android:text="@string/car_information"
         />
-    <ImageView
-        style="@style/ActionBar_RightImg_Style"
-        android:src="@drawable/setting"/>
     <TextView
         style="@style/ActionBar_RightText_Style"
         android:text="@string/carinfo_actionbar_right"

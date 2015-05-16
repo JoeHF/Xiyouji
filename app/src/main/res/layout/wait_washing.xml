@@ -1,8 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/lightgray">
+    android:orientation="vertical" >
 
     <include layout="@layout/actionbar_main2"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:weightSum="20.0"
+        android:background="@color/seagreen"
+        android:gravity="center_horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="4.0"
+            android:text="正在呼叫店小二"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10.0"
+            android:gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="4:59"
+                android:textSize="30dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/time"
+                android:text="正在呼叫小二"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3.0">
+
+        <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:layout_weight="1.0"
+        android:layout_height="0dp">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:layout_margin="15dp"
+            android:src="@drawable/carinfo"/>
+        <TextView
+            style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="18.0"
+            android:text="浙A 00000000 奥迪A6L 黑色"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+
+        <LinearLayout
+            style="@style/CommonBar_InLinearLayout_Style"
+            android:layout_weight="1.0"
+            android:layout_height="0dp">
+            <ImageView
+                style="@style/CommonBar_LeftImg_Style"
+                android:layout_margin="15dp"
+                android:src="@drawable/position"/>
+            <TextView
+                style="@style/CommonBar_CenterText_Style"
+                android:layout_weight="18.0"
+                android:text="杭州市西湖区行政服务中心"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+
+        <LinearLayout
+            style="@style/CommonBar_InLinearLayout_Style"
+            android:layout_weight="1.0"
+            android:layout_height="0dp">
+            <ImageView
+                style="@style/CommonBar_LeftImg_Style"
+                android:layout_margin="15dp"
+                android:src="@drawable/mode"/>
+            <TextView
+                style="@style/CommonBar_CenterText_Style"
+                android:layout_weight="18.0"
+                android:text="车外清洗  15元"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

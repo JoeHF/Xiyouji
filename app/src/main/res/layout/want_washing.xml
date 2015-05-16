@@ -21,6 +21,8 @@
                 />
 
             <LinearLayout
+                android:clickable="true"
+                android:onClick="click_to_number"
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
@@ -28,8 +30,7 @@
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_phone"
-                    android:clickable="true"
-                    android:onClick="click_to_number"
+
 
                     />
                 <ImageView
@@ -43,16 +44,15 @@
                 />
 
             <LinearLayout
-                style="@style/CommonBar_InLinearLayout_Style">
+                style="@style/CommonBar_InLinearLayout_Style"
+                android:clickable="true"
+                android:onClick="click_to_information" >
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/carinfo"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/common_bar_carInfo"
-                    android:clickable="true"
-                    android:onClick="click_to_information"
-                    />
+                    android:text="@string/common_bar_carInfo" />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
                     android:src="@drawable/arrow_gray_right"/>
@@ -68,13 +68,16 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/position"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_carPos"
                     android:clickable="true"
                     android:onClick="click_to_location"
                     />
+                <ImageView
+                    style="@style/CommonBar_RightImg_Style"
+                    android:src="@drawable/arrow_gray_right"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -98,14 +101,52 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
-                <TextView
+                    android:src="@drawable/time"/>
+                <LinearLayout
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/common_bar_phone"
-                    />
+                    android:layout_weight="7.0"
+                    android:text="@string/common_bar_phone" >
+                    <CheckBox
+                        android:id="@+id/wash_immediately"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:onClick="click_wash_immediately"
+                        android:button="@null"
+                        android:tag="immediately"
+                        android:background="@drawable/pay_check_checkbox"/>
+                    <TextView
+                        style="@style/CommonBar_CenterText_Style"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="7.0"
+                        android:text="@string/common_bar_wash_immediately"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/CommonBar_CenterText_Style"
+                    android:layout_weight="7.0"
+                    android:text="@string/common_bar_phone" >
+                    <CheckBox
+                        android:id="@+id/wash_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:onClick="click_wash_order"
+                        android:button="@null"
+                        android:tag="order"
+                        android:background="@drawable/pay_check_checkbox"/>
+                    <TextView
+                        style="@style/CommonBar_CenterText_Style"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="7.0"
+                        android:text="@string/common_bar_wash_order"
+                        />
+
+                </LinearLayout>
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
-                    android:src="@drawable/arrow_gray_right"/>
+                    />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -117,17 +158,37 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    />
                 <TextView
+                    android:id="@+id/order_time"
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/common_bar_carInfo"
+                    android:layout_marginLeft="34dp"
+                    android:text="预约时间： 3月26日 19:30"
 
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
-                    android:src="@drawable/arrow_gray_right"/>
+                    />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/CommonBar_LinearLayout_Style"
+            >
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -138,17 +199,157 @@
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/preferential"/>
+
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/common_bar_carPos"
+                    android:text="@string/common_bar_discount"
+                    android:layout_weight="4.0"
                     />
-                <ImageView
-                    style="@style/CommonBar_RightImg_Style"
-                    android:src="@drawable/arrow_gray_right"/>
+
+                <TextView
+                    style="@style/CommonBar_CenterText_Style"
+                    android:text="@string/common_bar_discount_hint"
+                    android:layout_weight="14.0"
+                    android:textColor="@color/gray"
+                    />
+
+                </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
+
+        <LinearLayout
+            style="@style/CommonBar_InLinearLayout_Style">
+            <ImageView
+                style="@style/CommonBar_LeftImg_Style"
+                android:src="@drawable/number"/>
+
+            <TextView
+                style="@style/CommonBar_CenterText_Style"
+                android:text="@string/common_bar_xiaoer_number"
+                android:layout_weight="4.0"
+                />
+
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            style="@style/CommonBar_LinearLayout_Style"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
+
+            <ImageView
+                android:id="@+id/mode"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/mode"/>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/mode"
+                android:layout_toRightOf="@+id/mode"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:id="@+id/lay1"
+                android:layout_marginLeft="15dp"
+                style="@style/CommonBar_CenterText_Style"
+                android:text="@string/common_bar_phone" >
+                <CheckBox
+                    android:id="@+id/wash_outside"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="click_wash_immediately"
+                    android:button="@null"
+                    android:tag="outside"
+                    android:background="@drawable/pay_check_checkbox"/>
+                <TextView
+                    style="@style/CommonBar_CenterText_Style"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="7.0"
+                    android:text="@string/common_bar_wash_outside"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/mode"
+                android:layout_toRightOf="@+id/lay1"
+                android:layout_marginLeft="40dp"
+                android:orientation="horizontal"
+                style="@style/CommonBar_CenterText_Style"
+                android:text="@string/common_bar_phone" >
+                <CheckBox
+                    android:id="@+id/wash_inout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="click_wash_order"
+                    android:button="@null"
+                    android:tag="intout"
+                    android:background="@drawable/pay_check_checkbox"/>
+                <TextView
+                    style="@style/CommonBar_CenterText_Style"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/common_bar_wash_inout"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_below="@+id/lay1"
+                android:id="@+id/outside_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/lay1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:text="99元"
+                android:textColor="@color/orange"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/inout_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/lay2"
+                android:layout_below="@+id/lay2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:text="999元"
+                android:textColor="@color/orange" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                />
 
     <TextView
         android:layout_width="match_parent"
