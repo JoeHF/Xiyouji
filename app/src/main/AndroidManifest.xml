@@ -97,6 +97,18 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.xiyouji.app.MineFragmentActivity.DiscountActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.xiyouji.app.MineFragmentActivity.CommonAddressActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

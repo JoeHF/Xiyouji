@@ -1,49 +1,78 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <LinearLayout
     android:layout_width='fill_parent'
-    android:layout_height='44dp'
+    android:layout_height='wrap_content'
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
     android:orientation='horizontal'
-    android:background='@drawable/tabfootbg'
+    android:background='@color/white'
     xmlns:android='http://schemas.android.com/apk/res/android'>
     <LinearLayout
         android:id='@+id/lay1'
         android:layout_width='match_parent'
-        android:layout_height='match_parent'
+        android:layout_height='wrap_content'
         android:layout_weight='1'
         style='@style/Linearlayout_Style'
         >
+        <!--
         <TextView
             android:layout_width='wrap_content'
             android:layout_height='wrap_content'
             android:id='@+id/fratext1'
             android:text='@string/main_home'
             android:textColor='@color/black'
-            />
+            />-->
+        <CheckBox
+            android:onClick="clickcheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hometab"
+            android:tag="home"
+            android:checked="true"
+            android:background="@null"
+            android:button="@drawable/hometab"/>
     </LinearLayout>
     <LinearLayout
         android:id='@+id/lay2'
         android:layout_width='match_parent'
-        android:layout_height='match_parent'
+        android:layout_height='wrap_content'
         android:layout_weight='1'
         style='@style/Linearlayout_Style'>
-        <TextView
+        <!--<TextView
             android:layout_width='wrap_content'
             android:layout_height='wrap_content'
             android:id='@+id/fratext2'
             android:text='@string/main_order'
-            android:textColor='@color/black'/>
+            android:textColor='@color/black'/>-->
+        <CheckBox
+            android:tag="order"
+            android:onClick="clickcheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ordertab"
+            android:background="@null"
+            android:button="@drawable/ordertab"/>
     </LinearLayout>
     <LinearLayout
         android:id='@+id/lay3'
         android:layout_width='match_parent'
-        android:layout_height='match_parent'
+        android:layout_height='wrap_content'
         android:layout_weight='1'
         style='@style/Linearlayout_Style'>
+        <!--
         <TextView
             android:layout_width='wrap_content'
             android:layout_height='wrap_content'
             android:id='@+id/fratext3'
             android:text='@string/main_mine'
-            android:textColor='@color/black'/>
+            android:textColor='@color/black'/>-->
+        <CheckBox
+            android:onClick="clickcheckbox"
+            android:tag="mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/minetab"
+            android:background="@null"
+            android:button="@drawable/minetab"/>
     </LinearLayout>
 </LinearLayout>

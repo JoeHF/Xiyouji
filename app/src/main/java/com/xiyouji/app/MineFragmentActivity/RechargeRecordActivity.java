@@ -2,6 +2,7 @@ package com.xiyouji.app.MineFragmentActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,5 +47,11 @@ public class RechargeRecordActivity extends Activity {
         recordsListView.setAdapter(rechargeAdapter);
         centerTitle.setText("充值记录");
 
+    }
+
+    public void click_to_back(View v) {
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
     }
 }

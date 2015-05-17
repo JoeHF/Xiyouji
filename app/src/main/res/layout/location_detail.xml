@@ -28,6 +28,7 @@
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/position"/>
                 <TextView
+                    android:id="@+id/location"
                     style="@style/CommonBar_CenterText_Style"
                     android:text="当前位置"
                     />

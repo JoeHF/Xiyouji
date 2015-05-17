@@ -2,6 +2,7 @@ package com.xiyouji.app.MineFragmentActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,5 +37,11 @@ public class DiscountActivity extends Activity {
         discountsAdapter = new DiscountsAdapter(discounts, DiscountActivity.this);
 
         view.setAdapter(discountsAdapter);
+    }
+
+    public void click_to_back(View v) {
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
     }
 }

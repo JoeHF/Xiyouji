@@ -13,12 +13,15 @@ import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.xiyouji.app.MineFragmentActivity.CommonAddressActivity;
 import com.xiyouji.app.MineFragmentActivity.DiscountActivity;
 import com.xiyouji.app.MineFragmentActivity.RechargeActivity;
+import com.xiyouji.app.Model.Address;
 
 
 public class MainActivity extends FragmentActivity implements OnGestureListener
@@ -44,7 +47,7 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
 
     public static Fragment[] fragments;
     public static LinearLayout[] linearLayouts;
-    public static TextView[] textViews;
+    public static CheckBox[] checkBoxes;
     /**定义手势检测实例*/
     public static GestureDetector detector;
     /**做标签，记录当前是哪个fragment*/
@@ -59,7 +62,7 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         //分别实例化和初始化fragement、lineatlayout、textview
         setfragment();
         setlinearLayouts();
-        settextview();
+        setCheckBoxes();
         //创建手势检测器
         detector=new GestureDetector(this, this, null);
 
@@ -97,16 +100,17 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         linearLayouts[0]=(LinearLayout)findViewById(R.id.lay1);
         linearLayouts[1]=(LinearLayout)findViewById(R.id.lay2);
         linearLayouts[2]=(LinearLayout)findViewById(R.id.lay3);
-        linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
+        //linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
     }
     /**初始化textview*/
-    public void settextview()
+    public void setCheckBoxes()
     {
-        textViews=new TextView[3];
-        textViews[0]=(TextView)findViewById(R.id.fratext1);
-        textViews[1]=(TextView)findViewById(R.id.fratext2);
-        textViews[2]=(TextView)findViewById(R.id.fratext3);
-        textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
+
+        checkBoxes=new CheckBox[3];
+        checkBoxes[0] = (CheckBox)findViewById(R.id.hometab);
+        checkBoxes[1] = (CheckBox)findViewById(R.id.ordertab);
+        checkBoxes[2] = (CheckBox)findViewById(R.id.minetab);
+        checkBoxes[0].setChecked(true);
     }
 
     /**点击底部linerlayout实现切换fragment的效果*/
@@ -117,36 +121,80 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
             case R.id.lay1:
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[0]).commit();
-                linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
+                //linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
+                checkBoxes[0].setChecked(true);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(false);
+                //textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=0;
                 break;
             case R.id.lay2:
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[1]).commit();
-                linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
+                //linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(true);
+                checkBoxes[2].setChecked(false);
+                //textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=1;
                 break;
             case R.id.lay3:
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[2]).commit();
-                linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
+                //linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(true);
+                //textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=2;
                 break;
             default:
                 break;
             }
     }
+
+    public void clickcheckbox(View v) {
+        switch (v.getId()) {
+            case R.id.hometab:
+                getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
+                        .show(fragments[0]).commit();
+                checkBoxes[0].setChecked(true);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(false);
+                MARK = 0;
+                break;
+            case R.id.ordertab:
+                getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
+                        .show(fragments[1]).commit();
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(true);
+                checkBoxes[2].setChecked(false);
+                MARK = 1;
+                break;
+            case R.id.minetab:
+                getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
+                        .show(fragments[2]).commit();
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(true);
+                MARK = 2;
+                break;
+            default:
+                break;
+        }
+    }
     /**重置linearLayouts、textViews*/
     public void resetlaybg()
     {
+        checkBoxes[0].setChecked(false);
+        checkBoxes[1].setChecked(false);
+        checkBoxes[2].setChecked(false);
+        /*
         for(int i=0;i<3;i++)
         {
             linearLayouts[i].setBackgroundResource(R.drawable.tabfootbg);
             textViews[i].setTextColor(getResources().getColor(R.color.black));
-        }
+        }*/
     }
 
     @Override
@@ -172,14 +220,20 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[1]).commit();
-                linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
+                //linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(true);
+                checkBoxes[2].setChecked(false);
                 MARK=1;
             }
             else
             {
-                linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(true);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(false);
+                //linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
             }
         }
         //当是Fragment1的时候
@@ -189,22 +243,31 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[2]).commit();
-                linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
+                //linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(true);
                 MARK=2;
             }
             else if(arg0.getX() < arg1.getX()+DISTANT)
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[0]).commit();
-                linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(true);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(false);
+                //linearLayouts[0].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[0].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=0;
             }
             else
             {
-                linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(true);
+                checkBoxes[2].setChecked(false);
+                //linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
             }
         }
         //当是Fragment2的时候
@@ -214,14 +277,20 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
             {
                 getSupportFragmentManager().beginTransaction().hide(fragments[0]).hide(fragments[1]).hide(fragments[2])
                     .show(fragments[1]).commit();
-                linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(true);
+                checkBoxes[2].setChecked(false);
+                //linearLayouts[1].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[1].setTextColor(getResources().getColor(R.color.lightseagreen));
                 MARK=1;
             }
             else
             {
-                linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
-                textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
+                //linearLayouts[2].setBackgroundResource(R.drawable.lay_select_bg);
+                //textViews[2].setTextColor(getResources().getColor(R.color.lightseagreen));
+                checkBoxes[0].setChecked(false);
+                checkBoxes[1].setChecked(false);
+                checkBoxes[2].setChecked(true);
             }
         }
         return false;
@@ -272,6 +341,15 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
     }
+
+    public void click_to_address(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, CommonAddressActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
+
 }
 
 
