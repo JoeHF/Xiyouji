@@ -21,6 +21,8 @@
                 />
 
             <LinearLayout
+                android:clickable="true"
+                android:onClick="click_to_lbs"
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
