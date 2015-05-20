@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xiyouji.app.Adapter.CommonPagerAdapter;
+import com.xiyouji.app.Adapter.OrderHistoryAdapter;
 import com.xiyouji.app.Adapter.OrderOngoingAdapter;
 import com.xiyouji.app.Model.Order;
 
@@ -31,6 +32,7 @@ public class OrderFragment extends Fragment
     //data
     private List<Order> orderOngoings;
     private OrderOngoingAdapter orderOngoingAdapter;
+    private OrderHistoryAdapter orderHistoryAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class OrderFragment extends Fragment
             page1 = inflater.inflate(R.layout.order_ing, null);
             page2 = inflater.inflate(R.layout.order_history, null);
             view1 = (ListView)page1.findViewById(R.id.listView);
+            view2 = (ListView)page2.findViewById(R.id.listView);
 
             orderOngoings = new ArrayList<Order>();
             orderOngoings.add(new Order());
@@ -64,6 +67,13 @@ public class OrderFragment extends Fragment
             );
             initPager();
             view1.setAdapter(orderOngoingAdapter);
+
+            orderOngoings = new ArrayList<Order>();
+            orderOngoings.add(new Order());
+            orderOngoings.add(new Order());
+            orderHistoryAdapter = new OrderHistoryAdapter(orderOngoings, getActivity());
+
+            view2.setAdapter(orderHistoryAdapter);
         }
 
         ViewGroup parent = (ViewGroup)rootView.getParent();
