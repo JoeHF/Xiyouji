@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="main_theme_color">#49AEED </color>
-<color name="main_theme_pressed_color">#54B9F8 </color>
+<color name="main_theme_color">#49b01d </color>
+<color name="main_theme_tab_color">#43a21b </color>
 <color name="bar_text_color">#49AEED </color>
 <color name="isHoliday_BgColor">#E0E0E0</color>
 <color name="white">#FFFFFF</color><!--白色 --> 
@@ -131,8 +131,8 @@
 <color name="limegreen">#32CD32</color><!--橙绿色 --> 
 <color name="darkslategray">#2F4F4F</color><!--暗瓦灰色 --> 
 <color name="darkslategrey">#2F4F4F</color><!--暗瓦灰色 --> 
-<color name="seagreen">#2E8B57</color><!--海绿色 --> 
-<color name="forestgreen">#228B22</color><!--森林绿 --> 
+<!--<color name="seagreen">#2E8B57</color>--><!--海绿色 -->
+<!--<color name="forestgreen">#228B22</color>--><!--森林绿 -->
 <color name="lightseagreen">#20B2AA</color><!--亮海蓝色 --> 
 <color name="dodgerblue">#1E90FF</color><!--闪兰色 --> 
 <color name="midnightblue">#191970</color><!--中灰兰色 --> 

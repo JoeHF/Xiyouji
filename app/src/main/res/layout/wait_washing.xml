@@ -10,7 +10,7 @@
         android:layout_height="350dp"
         android:orientation="vertical"
         android:weightSum="20.0"
-        android:background="@color/seagreen"
+        android:background="@color/main_theme_color"
         android:gravity="center_horizontal" >
         <TextView
             android:layout_width="wrap_content"

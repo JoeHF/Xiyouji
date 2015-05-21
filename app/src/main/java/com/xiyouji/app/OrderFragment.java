@@ -103,13 +103,13 @@ public class OrderFragment extends Fragment
         @Override
         public void onPageSelected(int position) {
             if(position == 0) {
-                text1.setBackgroundResource(R.color.forestgreen);
+                text1.setBackgroundResource(R.color.main_theme_tab_color);
                 text1.setTextColor(0xffffffff);
                 text2.setBackgroundResource(R.color.white);
                 text2.setTextColor(0xff228B22);
             }
             else {
-                text2.setBackgroundResource(R.color.forestgreen);
+                text2.setBackgroundResource(R.color.main_theme_tab_color);
                 text2.setTextColor(0xffffffff);
                 text1.setBackgroundResource(R.color.white);
                 text1.setTextColor(0xff228B22);

@@ -3,7 +3,7 @@
     android:layout_width='fill_parent'
     android:layout_height='fill_parent'
     android:orientation='vertical'
-    android:background="@color/seagreen"
+    android:background="@color/main_theme_color"
     xmlns:android='http://schemas.android.com/apk/res/android'>
     <TextView
         android:layout_width='wrap_content'
@@ -11,17 +11,26 @@
         android:text='天气不错，给你的爱车洗洗澡'
         android:layout_marginTop="20dp"
         android:textSize="16dp"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         />
 
-    <ImageView
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="30dp"
+    <com.makeramen.roundedimageview.RoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/head_photo"
+        android:src="@drawable/wash_needed"
+        android:scaleType="fitCenter"
+        app:riv_corner_radius="30dip"
+        app:riv_border_width="3dip"
+        app:riv_border_color="@color/white"
+        app:riv_mutate_background="true"
+        app:riv_oval="true"
         android:layout_gravity="center_horizontal"
         android:clickable="true"
         android:onClick="click_to_wash"
-        android:src="@drawable/wash_needed"/>
+        android:layout_marginTop="30dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
     <View
         android:layout_width="match_parent"

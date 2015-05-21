@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="180dp"
-        android:background="@color/seagreen">
+        android:background="@color/main_theme_color">
         
         <TextView
             android:id="@+id/left_textview"
