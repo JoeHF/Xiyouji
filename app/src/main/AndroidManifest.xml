@@ -67,6 +67,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name="com.xiyouji.app.ColorChooseActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name="com.xiyouji.app.CarInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait">

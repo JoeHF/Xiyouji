@@ -9,4 +9,8 @@ public class Constant {
 
 
     public static final int START_LBS_BACK = 100;
+
+
+    //rest http request
+    public static final String GET_WEATHER_BY_CITY = "my/getWeatherByCity";
 }

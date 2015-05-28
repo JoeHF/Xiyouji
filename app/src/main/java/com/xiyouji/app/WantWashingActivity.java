@@ -4,15 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 
 /**
  * Created by houfang on 15/4/28.
  */
 public class WantWashingActivity extends Activity {
+    private CheckBox wash_immediately, wash_order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.want_washing);
+        wash_immediately = (CheckBox)findViewById(R.id.wash_immediately);
+        wash_order = (CheckBox)findViewById(R.id.wash_order);
     }
 
     public void click_to_back(View v) {
@@ -54,5 +58,11 @@ public class WantWashingActivity extends Activity {
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
+    }
+
+    public void click_wash_type(View v){
+        wash_immediately.setChecked(false);
+        wash_order.setChecked(false);
+        ((CheckBox)v).setChecked(true);
     }
 }

@@ -23,8 +23,7 @@
             android:text="@string/mine_payment_way"
             android:textSize="16sp"
             android:textColor="@color/main_theme_color"
-            android:clickable="true"
-            android:onClick="choose_pic_for_icon" />
+             />
 
         <View
             android:id="@+id/View02"
@@ -55,8 +54,7 @@
                 android:layout_marginLeft="15dp"
                 android:textSize="16sp"
                 android:textColor="@color/main_theme_color"
-                android:clickable="true"
-                android:onClick="take_photo_for_icon" />
+                 />
         </RelativeLayout>
 
 
@@ -89,8 +87,7 @@
                 android:text=" 微信支付"
                 android:textSize="16sp"
                 android:textColor="@color/main_theme_color"
-                android:clickable="true"
-                android:onClick="take_photo_for_icon" />
+                 />
         </RelativeLayout>
 
         <View
@@ -121,8 +118,7 @@
                 android:text=" 银联支付"
                 android:textSize="16sp"
                 android:textColor="@color/main_theme_color"
-                android:clickable="true"
-                android:onClick="take_photo_for_icon" />
+                 />
         </RelativeLayout>
     </LinearLayout>
 

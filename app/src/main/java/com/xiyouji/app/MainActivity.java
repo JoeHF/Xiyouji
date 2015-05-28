@@ -350,6 +350,11 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
                 R.anim.push_left_out	);
     }
 
+    //todo 退出登录
+    public void click_to_logout(View v){
+
+    }
+
 }
 
 

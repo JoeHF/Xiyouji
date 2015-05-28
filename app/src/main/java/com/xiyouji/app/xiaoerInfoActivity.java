@@ -51,4 +51,10 @@ public class xiaoerInfoActivity extends Activity {
         }
 
     }
+
+    public void click_to_back(View v) {
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
+    }
 }

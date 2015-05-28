@@ -49,15 +49,15 @@
                 />
 
             <LinearLayout
-                style="@style/CommonBar_InLinearLayout_Style">
+                style="@style/CommonBar_InLinearLayout_Style"
+                android:clickable="true"
+                android:onClick="click_to_choose_car_brand">
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/carinfo"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_icon"
-                   android:clickable="true"
-                    android:onClick="click_to_icon"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"

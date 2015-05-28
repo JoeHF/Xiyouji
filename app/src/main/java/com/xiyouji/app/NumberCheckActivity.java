@@ -20,4 +20,9 @@ public class NumberCheckActivity extends Activity{
                 R.anim.push_right_out);
     }
 
+    //todo 获取验证码
+    public void get_identify(View v) {
+
+    }
+
 }

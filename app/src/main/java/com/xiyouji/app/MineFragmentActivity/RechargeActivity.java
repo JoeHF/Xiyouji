@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.xiyouji.app.R;
@@ -17,12 +18,16 @@ import com.xiyouji.app.R;
 public class RechargeActivity extends Activity {
     private Dialog dialog;
     private TextView centerTitle, rechargeRecord;
+    private CheckBox recharge300, recharge800, recharger1500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recharge);
         centerTitle = (TextView)findViewById(R.id.title);
         rechargeRecord = (TextView)findViewById(R.id.right);
+        recharge300 = (CheckBox)findViewById(R.id.recharge_300);
+        recharge800 = (CheckBox)findViewById(R.id.recharge_800);
+        recharger1500 = (CheckBox)findViewById(R.id.recharge_1500);
         centerTitle.setText("充值");
         rechargeRecord.setText("充值记录");
     }
@@ -53,6 +58,14 @@ public class RechargeActivity extends Activity {
         startActivity(intent);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out	);
+    }
+
+    public void click_choose_recharge(View v) {
+        recharge300.setChecked(false);
+        recharge800.setChecked(false);
+        recharger1500.setChecked(false);
+        ((CheckBox)v).setChecked(true);
+
     }
 
 }
