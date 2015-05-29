@@ -40,11 +40,20 @@
             android:name="com.xiyouji.app.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.xiyouji.app.Login.LoginActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.xiyouji.app.Login.RegisterActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.xiyouji.app.WantWashingActivity"

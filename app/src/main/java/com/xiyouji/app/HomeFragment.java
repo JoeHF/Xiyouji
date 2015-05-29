@@ -24,11 +24,14 @@ import org.json.JSONObject;
  *
  */
 public class HomeFragment extends Fragment {
-    private String weatherHint = "";
-    private String weather = "";
+    private String weather_hint_value = "";
+    private String weather_value = "";
+    private String date_value = "";
+    private String temperature_value = "";
+
 
     //ui
-    private TextView weather_hint_value, weather_value;
+    private TextView weather_hint, weather, date, temperature;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,8 +48,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray weathers) {
                 // Pull out the first event on the public timeline
-                //JSONObject firstEvent = timeline.get(0);
-                //String tweetText = firstEvent.getString("text");
                 for(int i = 0 ; i < weathers.length() ; i++) {
                     try {
                         JSONObject weather = (JSONObject)weathers.get(i);
@@ -57,24 +58,27 @@ public class HomeFragment extends Fragment {
                 }
 
                 try {
-                    weatherHint = ((JSONObject)weathers.get(0)).getString("xiche");
-                    weather = ((JSONObject)weathers.get(0)).getString("weather");
-                    weather_hint_value.setText(weatherHint);
-                    weather_value.setText(weather);
+                    weather_hint_value = ((JSONObject)weathers.get(0)).getString("xiche");
+                    weather_value = ((JSONObject)weathers.get(0)).getString("weather");
+                    date_value = ((JSONObject)weathers.get(0)).getString("date");
+                    temperature_value = ((JSONObject)weathers.get(0)).getString("temp");
+                    weather_hint.setText(weather_hint_value);
+                    weather.setText(weather_value);
+                    date.setText(date_value);
+                    temperature.setText(temperature_value);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                // Do something with the response
-                //System.out.println(tweetText);
             }
         });
 
         View rootView;
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        weather_hint_value = (TextView)rootView.findViewById(R.id.washing_hint_value);
-        weather_value = (TextView)rootView.findViewById(R.id.weather_value);
-
+        weather_hint = (TextView)rootView.findViewById(R.id.washing_hint_value);
+        weather = (TextView)rootView.findViewById(R.id.weather_value);
+        date = (TextView)rootView.findViewById(R.id.date);
+        temperature = (TextView)rootView.findViewById(R.id.temperature);
 
 
         return rootView;

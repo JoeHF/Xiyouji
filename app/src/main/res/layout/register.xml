@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <include layout="@layout/loginhead"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:src="@drawable/phone"/>
+        <EditText
+            android:id="@+id/username"
+            style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="18.0"
+            android:hint="输入注册手机号"
+            android:background="@null" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray" />
+
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:src="@drawable/mark"/>
+        <EditText
+            android:id="@+id/password"
+            style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="18.0"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray" />
+
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            android:src="@drawable/mark"/>
+        <EditText
+            android:id="@+id/password_repeat"
+            style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="18.0"
+            android:hint="请再次输入密码"
+            android:inputType="textPassword"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray" />
+
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <EditText
+            android:id="@+id/nickname"
+            style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="18.0"
+            android:hint="昵称"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:clickable="true"
+        android:onClick="click_to_register"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textview_round_style"
+        android:text="确定"/>
+</LinearLayout>

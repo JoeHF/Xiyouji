@@ -54,6 +54,13 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
     public int MARK=0;
     /**定义手势两点之间的最小距离*/
     final int DISTANT=50;
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mReceiver);
+        super.onDestroy();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
