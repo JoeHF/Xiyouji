@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="选择省份"
+            android:text="选择车辆品牌"
             android:gravity="center"
             android:layout_centerInParent="true"
             android:clickable="true"
@@ -37,9 +37,9 @@
     </RelativeLayout>
 
     <GridView
-        android:id="@+id/province"
+        android:id="@+id/brand"
         style="@style/CarInfoDialog"
-        android:columnWidth="50dp"
+        android:columnWidth="80dp"
         ></GridView>
 
 </LinearLayout>

@@ -83,7 +83,8 @@
         <activity
             android:name="com.xiyouji.app.CarInfoActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name="com.xiyouji.app.CarlocActivity"

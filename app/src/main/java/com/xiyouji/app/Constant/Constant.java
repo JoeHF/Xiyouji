@@ -17,4 +17,6 @@ public class Constant {
     public static final String GET_WEATHER_BY_CITY = "my/getWeatherByCity";
     public static final String REGISTER = "my/addUserByAccount";
     public static final String LOGIN = "my/userLoginByAccount";
+    public static final String ADD_CAR_INFO = "my/addCarById";
+    public static final String GET_CAR_LIST_INFO = "my/getCarListById";
 }

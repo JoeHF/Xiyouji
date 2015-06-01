@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    <!--
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@color/lightgray"
     android:id="@+id/cityname">
 
     <include layout="@layout/information_head"/>
+
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -28,18 +37,23 @@
                     android:src="@drawable/car_number"/>
                 <TextView
                     style="@style/CommonBar_LeftText_Style"
+                    android:id="@+id/province"
                     android:text="浙"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style1"
                     android:src="@drawable/raw"
                     android:clickable="true"
-                    android:onClick="click_to_city"
+                    android:onClick="click_to_province_choose"
                     />
-                <TextView
+                <EditText
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/car_number"
-                    />
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16dp"
+                    android:hint="@string/car_number"
+                    android:id="@+id/number"
+                    android:layout_weight="16.0"
+                    android:background="@null"/>
 
             </LinearLayout>
             <View
@@ -57,10 +71,15 @@
                     android:src="@drawable/carinfo"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
+                    android:clickable="true"
+                    android:id="@+id/brand"
+                    android:onClick="click_to_brand_choose"
                     android:text="@string/car_icon"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
+                    android:clickable="true"
+                    android:onClick="click_to_brand_choose"
                     android:src="@drawable/arrow_gray_right"/>
             </LinearLayout>
 
@@ -76,15 +95,16 @@
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/color"/>
                 <TextView
+                    android:id="@+id/color"
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/car_color"
                     android:clickable="true"
-                    android:onClick="click_to_color"
-
-
+                    android:onClick="click_to_color_choose"
                     />
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
+                    android:clickable="true"
+                    android:onClick="click_to_color_choose"
                     android:src="@drawable/arrow_gray_right"/>
             </LinearLayout>
         </LinearLayout>
@@ -97,8 +117,12 @@
         />
     <LinearLayout
         style="@style/CommonBar_InLinearLayout_Style"
+        android:layout_height="50dp"
+        android:background="@color/lightgray"
         >
         <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_weight="20.0"
             style="@style/CommonBar_CenterText_Style"
             android:text="@string/car_usual"
             />
@@ -108,40 +132,16 @@
         android:layout_height="1dp"
         android:background="@color/lightgray"
         />
-    <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
-        <ImageView
-            style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/carinfo"/>
-        <TextView
-            style="@style/CommonBar_CenterText_Style"
-            android:text="车辆信息"
-            />
-        <ImageView
-            style="@style/CommonBar_RightImg_Style"
-            android:src="@drawable/arrow_gray_right"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        android:id="@+id/cityofcar"
-        >
-        <LinearLayout
-            style="@style/ActionBar_Style">
-            <TextView
-                style="@style/CommonBar_LeftImg_Style"
-                android:text="取消" />
-            <TextView
-                style="@style/CommonBar_LeftImg_Style"
-                />
-            <TextView
-                style="@style/CommonBar_CenterText_Style"
-                android:text="选择省份"
-                />
 
-        </LinearLayout>
-        </LinearLayout>
+    <ListView
+        android:id="@+id/common_car_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
+     </ListView>
+
 </LinearLayout>
+
+<!--
+</ScrollView>-->
 

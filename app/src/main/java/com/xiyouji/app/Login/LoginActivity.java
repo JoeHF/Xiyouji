@@ -41,6 +41,10 @@ public class LoginActivity extends Activity {
         requestParams.put("phone", username_value);
         requestParams.put("password", password_value);
 
+        //for test
+        requestParams.put("phone", "123");
+        requestParams.put("password", "123");
+
         RestClient.get(Constant.LOGIN, requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
