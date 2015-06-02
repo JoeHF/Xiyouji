@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xiyouji.app.CarInfoActivity;
@@ -52,9 +53,10 @@ public class CommonCarAdapter extends BaseAdapter{
         if(convertView == null) {
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.common_car_info_listitem, null);
             holder = new ViewHolder();
+            holder.ll = (LinearLayout)convertView.findViewById(R.id.ll);
             holder.car_info = (TextView)convertView.findViewById(R.id.car_info);
             holder.make_sure = (ImageView)convertView.findViewById(R.id.make_sure);
-            holder.make_sure.setOnClickListener(new View.OnClickListener() {
+            holder.ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((CarInfoActivity)mContext).clickCommonCar(cars.get(position));
@@ -73,6 +75,7 @@ public class CommonCarAdapter extends BaseAdapter{
     }
 
     private class ViewHolder {
+        LinearLayout ll;
         TextView car_info;
         ImageView make_sure;
     }

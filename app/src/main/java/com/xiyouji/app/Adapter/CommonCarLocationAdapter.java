@@ -6,12 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.xiyouji.app.CarInfoActivity;
 import com.xiyouji.app.CarlocActivity;
 import com.xiyouji.app.Model.Address;
-import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.R;
 
 import java.util.List;
@@ -54,9 +53,10 @@ public class CommonCarLocationAdapter extends BaseAdapter {
         if(convertView == null) {
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.common_car_loc_listitem, null);
             holder = new ViewHolder();
+            holder.ll = (LinearLayout)convertView.findViewById(R.id.ll);
             holder.address = (TextView)convertView.findViewById(R.id.address);
             holder.make_sure = (ImageView)convertView.findViewById(R.id.make_sure);
-            holder.make_sure.setOnClickListener(new View.OnClickListener() {
+            holder.ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((CarlocActivity)mContext).clickCommonCarLoc(carLocs.get(position));
@@ -75,6 +75,7 @@ public class CommonCarLocationAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
+        LinearLayout ll;
         TextView address;
         ImageView make_sure;
     }

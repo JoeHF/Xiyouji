@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/ll"
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView
             style="@style/CommonBar_LeftImg_Style"

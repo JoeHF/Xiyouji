@@ -33,12 +33,18 @@
 
     <View
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_height="1dp"
         android:background="@color/lightgray"
         android:layout_marginTop="40dp" />
 
     <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
+        android:background="@drawable/login_shape"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:layout_height="50dp" >
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
             android:src="@drawable/phone"/>
@@ -49,14 +55,20 @@
             android:hint="输入您的账号"
             android:background="@null" />
     </LinearLayout>
-
+<!--
     <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/lightgray" />
+        android:background="@color/lightgray" /> -->
 
     <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
+        android:background="@drawable/login_shape"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:layout_height="50dp" >
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
             android:src="@drawable/mark"/>
@@ -68,12 +80,12 @@
             android:inputType="textPassword"
             android:background="@null"/>
     </LinearLayout>
-
+<!--
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/lightgray" />
-
+-->
     <TextView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
