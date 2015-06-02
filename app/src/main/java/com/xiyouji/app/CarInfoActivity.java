@@ -74,6 +74,18 @@ public class CarInfoActivity extends Activity{
         getCommonCarData();
     }
 
+    public void clickCommonCar(CarInfo carInfo) {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putString("carInfo", carInfo.getNumber() + " " + carInfo.getColor() + " " + carInfo.getBrand());
+        bundle.putString("carId", carInfo.getCarid());
+        intent.putExtras(bundle);
+        setResult(Constant.START_CAR_INFO_BACK, intent);
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
+    }
+
     public void getCommonCarData() {
         Log.i("user id", userId);
         final RequestParams requestParams = new RequestParams();

@@ -9,36 +9,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xiyouji.app.CarInfoActivity;
+import com.xiyouji.app.CarlocActivity;
+import com.xiyouji.app.Model.Address;
 import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.R;
 
 import java.util.List;
 
 /**
- * Created by houfang on 15/6/1.
+ * Created by houfang on 15/6/2.
  */
-public class CommonCarAdapter extends BaseAdapter{
-    private List<CarInfo> cars;
+public class CommonCarLocationAdapter extends BaseAdapter {
+    private List<Address> carLocs;
     private Context mContext;
 
-    public CommonCarAdapter(List<CarInfo> _cars, Context context) {
-        this.cars = _cars;
+    public CommonCarLocationAdapter(List<Address> _carLocs, Context context) {
+        this.carLocs = _carLocs;
         this.mContext = context;
     }
 
-    public void refresh(List<CarInfo> _cars) {
-        this.cars = _cars;
+    public void refresh(List<Address> _carLocs) {
+        this.carLocs = _carLocs;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return cars.size();
+        return carLocs.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cars.get(position);
+        return carLocs.get(position);
     }
 
     @Override
@@ -50,14 +52,14 @@ public class CommonCarAdapter extends BaseAdapter{
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView == null) {
-            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.common_car_info_listitem, null);
+            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.common_car_loc_listitem, null);
             holder = new ViewHolder();
-            holder.car_info = (TextView)convertView.findViewById(R.id.car_info);
+            holder.address = (TextView)convertView.findViewById(R.id.address);
             holder.make_sure = (ImageView)convertView.findViewById(R.id.make_sure);
             holder.make_sure.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((CarInfoActivity)mContext).clickCommonCar(cars.get(position));
+                    ((CarlocActivity)mContext).clickCommonCarLoc(carLocs.get(position));
                 }
             });
 
@@ -67,14 +69,13 @@ public class CommonCarAdapter extends BaseAdapter{
             holder = (ViewHolder)convertView.getTag();
         }
 
-        CarInfo carInfo = this.cars.get(position);
-        holder.car_info.setText(carInfo.getNumber() + " " + carInfo.getColor() + " " + carInfo.getBrand());
+        Address address = this.carLocs.get(position);
+        holder.address.setText(address.getAddr());
         return convertView;
     }
 
     private class ViewHolder {
-        TextView car_info;
+        TextView address;
         ImageView make_sure;
     }
-
 }

@@ -28,6 +28,7 @@
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/phone"/>
                 <TextView
+                    android:id="@+id/phone"
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_phone"
 
@@ -51,6 +52,7 @@
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/carinfo"/>
                 <TextView
+                    android:id="@+id/car_info"
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_carInfo" />
                 <ImageView
@@ -70,6 +72,7 @@
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/position"/>
                 <TextView
+                    android:id="@+id/car_loc"
                     style="@style/CommonBar_CenterText_Style"
                     android:text="@string/common_bar_carPos"
                     android:clickable="true"
@@ -273,9 +276,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:onClick="click_wash_immediately"
+                    android:onClick="click_wash_inout"
                     android:button="@null"
-                    android:tag="outside"
+                    android:tag="1"
                     android:background="@drawable/pay_check_checkbox"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"
@@ -302,9 +305,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:onClick="click_wash_order"
+                    android:onClick="click_wash_inout"
                     android:button="@null"
-                    android:tag="intout"
+                    android:tag="2"
                     android:background="@drawable/pay_check_checkbox"/>
                 <TextView
                     style="@style/CommonBar_CenterText_Style"

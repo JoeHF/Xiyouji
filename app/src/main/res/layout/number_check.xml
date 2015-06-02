@@ -37,9 +37,12 @@
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
             android:src="@drawable/phone"/>
-        <TextView
+        <EditText
+            android:id="@+id/phone"
+            android:background="@null"
+            android:textSize="16dp"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/phone_number"
+            android:hint="@string/phone_number"
             />
 
     </LinearLayout>

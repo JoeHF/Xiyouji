@@ -67,10 +67,12 @@
                 <ImageView
                     style="@style/CommonBar_LeftImg_Style"
                     android:src="@drawable/more"/>
-                <TextView
+                <EditText
+                    android:id="@+id/remark"
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="备注 如：4号楼停车场"
-                    />
+                    android:hint="备注 如：4号楼停车场"
+                    android:textSize="16dp"
+                    android:background="@null" />
 
             </LinearLayout>
         </LinearLayout>
@@ -82,9 +84,13 @@
         android:background="@color/lightgray"
         />
     <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:layout_height="50dp"
+        android:background="@color/lightgray">
         <TextView
+            android:layout_marginLeft="20dp"
             style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="20.0"
             android:text="常用地址"
             />
     </LinearLayout>
@@ -93,17 +99,12 @@
         android:layout_height="1dp"
         android:background="@color/lightgray"
         />
-    <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
-        <ImageView
-            style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/mark"/>
-        <TextView
-            style="@style/CommonBar_CenterText_Style"
-            android:text="地址待数据库中获得"
-            />
 
-    </LinearLayout>
+    <ListView
+        android:id="@+id/common_car_loc_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
 
+    </ListView>
 </LinearLayout>
 

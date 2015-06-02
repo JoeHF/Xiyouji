@@ -47,6 +47,7 @@ public class CarLbsActivity extends Activity implements OnGetGeoCoderResultListe
     GeoCoder mSearch = null; // 搜索模块，也可去掉地图模块独立使用
 
     private String locationAddress = "";
+    private Double longitude, latitude;
     // UI相关
     private TextView save;
     boolean isFirstLoc = true;// 是否首次定位
@@ -90,6 +91,8 @@ public class CarLbsActivity extends Activity implements OnGetGeoCoderResultListe
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putString("location_addr", locationAddress);
+        bundle.putDouble("latitude", latitude);
+        bundle.putDouble("longitude", longitude);
         intent.putExtras(bundle);
         setResult(Constant.START_LBS_BACK, intent);
         finish();
@@ -144,6 +147,8 @@ public class CarLbsActivity extends Activity implements OnGetGeoCoderResultListe
             mBaiduMap.setMyLocationData(locData);
             LatLng ll = new LatLng(location.getLatitude(),
                     location.getLongitude());
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
             SearchPosition(ll);
             if (isFirstLoc) {
                 isFirstLoc = false;

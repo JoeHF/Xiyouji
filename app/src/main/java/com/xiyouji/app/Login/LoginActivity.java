@@ -34,16 +34,16 @@ public class LoginActivity extends Activity {
     }
 
     public void click_to_homepage(View v) {
-        String username_value = username.getText().toString();
-        String password_value = password.getText().toString();
+        //String username_value = username.getText().toString();
+        //String password_value = password.getText().toString();
 
         RequestParams requestParams = new RequestParams();
-        requestParams.put("phone", username_value);
-        requestParams.put("password", password_value);
 
         //for test
-        requestParams.put("phone", "123");
-        requestParams.put("password", "123");
+        final String username_value = "123";
+        final String password_value = "123";
+        requestParams.put("phone", username_value);
+        requestParams.put("password", password_value);
 
         RestClient.get(Constant.LOGIN, requestParams, new JsonHttpResponseHandler() {
             @Override
@@ -67,6 +67,9 @@ public class LoginActivity extends Activity {
                     editor.putString("longitude", longitude);
                     editor.putString("latitude", latitude);
                     editor.putString("money", money);
+                    editor.putString("username", username_value);
+                    editor.putString("password", password_value);
+
                     //提交当前数据
                     editor.commit();
 

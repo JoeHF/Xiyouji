@@ -7,15 +7,17 @@
         style="@style/CommonBar_InLinearLayout_Style">
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/carinfo"/>
+            android:src="@drawable/mark"/>
         <TextView
-            android:id="@+id/car_info"
+            android:id="@+id/address"
             style="@style/CommonBar_CenterText_Style"
-            android:text="车辆信息"
+            android:text="地址待数据库中获得"
             />
         <ImageView
             android:id="@+id/make_sure"
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"/>
+
     </LinearLayout>
 </LinearLayout>
+
