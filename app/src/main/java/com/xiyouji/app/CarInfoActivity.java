@@ -17,12 +17,18 @@ import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.xiyouji.app.Adapter.CarBrandDialogAdapter;
+import com.xiyouji.app.Adapter.CarVersionDialogAdapter;
 import com.xiyouji.app.Adapter.CommonCarAdapter;
 import com.xiyouji.app.Adapter.OrderOngoingAdapter;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.Model.CarBrand;
 import com.xiyouji.app.Model.CarInfo;
+import com.xiyouji.app.Model.CarVersion;
 import com.xiyouji.app.Model.Order;
 import com.xiyouji.app.Utils.RestClient;
+import com.xiyouji.app.Utils.db.Dao.CarBrandDao;
+import com.xiyouji.app.Utils.db.Dao.CarVersionDao;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -38,7 +44,7 @@ import java.util.Map;
  * Created by houfang on 2015/4/29.
  */
 public class CarInfoActivity extends Activity{
-    private Dialog dialog;
+    private Dialog dialog, subDialog;
     private TextView provinceValue, brandValue, colorValue;
     private EditText number;
     private ListView commonCarListView;
@@ -51,6 +57,10 @@ public class CarInfoActivity extends Activity{
 
     private List<CarInfo> carInfos;
     private CommonCarAdapter commonCarAdapter;
+
+    private CarBrandDialogAdapter carBrandDialogAdapter;
+    private CarVersionDialogAdapter carVersionDialogAdapter;
+    private CarVersion carVersion = null;
 
     private String userId;
 
@@ -165,15 +175,13 @@ public class CarInfoActivity extends Activity{
 
     public void click_to_brand_choose(View v) {
         View view = View.inflate(this,R.layout.choose_car_brand, null);
-        GridView gridView = (GridView)view.findViewById(R.id.brand);
-        data_list = new ArrayList<Map<String, Object>>();
-        getBrandData();
+        ListView listView = (ListView)view.findViewById(R.id.brandList);
 
-        String [] from = {"brand"};
-        int [] to = {R.id.brand};
+        CarBrandDao carBrandDao = new CarBrandDao(this);
+        List<CarBrand> carBrands = carBrandDao.get();
 
-        SimpleAdapter sim_adapter = new SimpleAdapter(this, data_list, R.layout.brand_item, from, to);
-        gridView.setAdapter(sim_adapter);
+        carBrandDialogAdapter = new CarBrandDialogAdapter(this, carBrands);
+        listView.setAdapter(carBrandDialogAdapter);
 
         dialog = new Dialog(this,R.style.MyDialog);
         dialog.setContentView(view);
@@ -181,22 +189,6 @@ public class CarInfoActivity extends Activity{
         Window window = dialog.getWindow();
         window.setGravity(Gravity.BOTTOM);
         dialog.show();
-    }
-
-    public List<Map<String, Object>> getBrandData(){
-        for(int i = 0 ; i < brands.length ; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("brand", brands[i]);
-            data_list.add(map);
-        }
-
-        return data_list;
-    }
-
-    public void click_to_brand(View v) {
-        Log.i("brand", (String) ((TextView)v).getText());
-        brandValue.setText(((TextView)v).getText());
-        dialog.dismiss();
     }
 
     public void click_to_color_choose(View v) {
@@ -235,34 +227,84 @@ public class CarInfoActivity extends Activity{
         dialog.dismiss();
     }
 
-    public void click_to_icon(View v)
-    {
-        Intent intent = new Intent();
-        intent.setClass(this, IconChooseActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.push_left_in,
-                R.anim.push_left_out	);
-    }
-
-    //todo 保存车辆信息
     public void click_to_save_information(View v) {
         RequestParams requestParams = new RequestParams();
-        requestParams.put("number", provinceValue.getText().toString() + number.getText().toString());
-        requestParams.put("versionid", brandValue.getText().toString());
-        requestParams.put("color", colorValue.getText().toString());
-        requestParams.put("userid", userId);
-
-        RestClient.post(Constant.ADD_CAR_INFO, requestParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.i("add car info", response.toString());
-
+        if(carVersion != null) {
+            if(provinceValue.getText().toString().length() == 0) {
+                return;
             }
-        });
+            if(colorValue.getText().toString().length() == 0) {
+                return;
+            }
+            if(number.getText().toString().length() == 0) {
+                return;
+            }
 
+            requestParams.put("number", provinceValue.getText().toString() + number.getText().toString());
+            requestParams.put("versionid", carVersion.getVersionid());
+            requestParams.put("color", colorValue.getText().toString());
+            requestParams.put("userid", userId);
+
+            RestClient.post(Constant.ADD_CAR_INFO, requestParams, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    Log.i("add car info", response.toString());
+                    try {
+                        if(response.getString("state").toString().equals("success")) {
+                            Intent intent = new Intent();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("carInfo", provinceValue.getText().toString() + number.getText().toString() + " " + colorValue.getText().toString() + " " + carVersion.getBrand() + carVersion.getVersion());
+                            bundle.putString("carId", "1");
+                            intent.putExtras(bundle);
+                            setResult(Constant.START_CAR_INFO_BACK, intent);
+                            finish();
+                            overridePendingTransition(R.anim.push_right_in,
+                                    R.anim.push_right_out);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+        }
+    }
+
+    public void clickBrand(CarBrand carBrand) {
+        View view = View.inflate(this,R.layout.choose_car_version, null);
+        ListView listView = (ListView)view.findViewById(R.id.versionList);
+
+        CarVersionDao carVersionDao = new CarVersionDao(this);
+        List<CarVersion> carVersions = carVersionDao.getVersionByBrand(carBrand);
+
+        carVersionDialogAdapter = new CarVersionDialogAdapter(this, carVersions);
+        listView.setAdapter(carVersionDialogAdapter);
+
+        subDialog = new Dialog(this,R.style.MyDialog);
+        subDialog.setContentView(view);
+        subDialog.setCanceledOnTouchOutside(false);
+        Window window = subDialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        dialog.dismiss();
+        subDialog.show();
+
+    }
+
+    public void clickVersion(CarVersion _carVersion) {
+        dialog.dismiss();
+        subDialog.dismiss();
+        brandValue.setText(_carVersion.getBrand() + " " + _carVersion.getVersion());
+        carVersion = _carVersion;
     }
 
     public void click_to_cancel(View v) {
+        Log.i("dialog", "dialog cancel");
         dialog.dismiss();
+    }
+
+    public void click_version_cancel(View v) {
+        Log.i("dialog", "sub dialog close");
+        subDialog.dismiss();
+        dialog.show();
     }
 }

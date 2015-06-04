@@ -3,19 +3,31 @@ package com.xiyouji.app;
 /**
  * Created by houfang on 15/4/28.
  */
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Adapter.CommonPagerAdapter;
 import com.xiyouji.app.Adapter.OrderHistoryAdapter;
 import com.xiyouji.app.Adapter.OrderOngoingAdapter;
+import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.Model.Order;
+import com.xiyouji.app.Utils.RestClient;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +45,7 @@ public class OrderFragment extends Fragment
     private List<Order> orderOngoings;
     private OrderOngoingAdapter orderOngoingAdapter;
     private OrderHistoryAdapter orderHistoryAdapter;
+    private String userId;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
@@ -45,8 +58,6 @@ public class OrderFragment extends Fragment
             view2 = (ListView)page2.findViewById(R.id.listView);
 
             orderOngoings = new ArrayList<Order>();
-            orderOngoings.add(new Order());
-            orderOngoings.add(new Order());
             orderOngoingAdapter = new OrderOngoingAdapter(orderOngoings, getActivity());
 
             text1 = (TextView)rootView.findViewById(R.id.text1);
@@ -74,13 +85,62 @@ public class OrderFragment extends Fragment
             orderHistoryAdapter = new OrderHistoryAdapter(orderOngoings, getActivity());
 
             view2.setAdapter(orderHistoryAdapter);
+
+
         }
 
         ViewGroup parent = (ViewGroup)rootView.getParent();
         if(parent != null) {
             parent.removeView(rootView);
         }
+
+        SharedPreferences user = getActivity().getSharedPreferences("user", 0);;
+        userId = user.getString("id", "0");
+        GetOrderData();
         return rootView;
+    }
+
+    public void GetOrderData() {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("userid", userId);
+
+        RestClient.get(Constant.GET_ORDER_LIST, requestParams, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+            }
+
+            public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
+                Log.i("order list info", responses.toString());
+
+                try {
+                    orderOngoings = new ArrayList<Order>();
+                    for(int i = 0 ; i < responses.length() ; i++) {
+                        Order order = new Order();
+                        JSONObject jsonObject = responses.getJSONObject(i);
+                        order.setVersion(jsonObject.getString("version"));
+                        order.setBrand(jsonObject.getString("brand"));
+                        order.setSitename(jsonObject.getString("sitename"));
+                        order.setColor(jsonObject.getString("color"));
+                        int type = jsonObject.getInt("type");
+                        if(type == 1) {
+                            order.setType("车外清洗");
+                        }
+                        else {
+                            order.setType("车内外清洗");
+                        }
+
+                        order.setStage(jsonObject.getString("stage"));
+                        order.setNumber(jsonObject.getString("number"));
+                        orderOngoings.add(order);
+                    }
+
+                    orderOngoingAdapter.refresh(orderOngoings);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     private void initPager() {

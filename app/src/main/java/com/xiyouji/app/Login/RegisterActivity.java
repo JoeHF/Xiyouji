@@ -1,6 +1,7 @@
 package com.xiyouji.app.Login;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,16 +50,18 @@ public class RegisterActivity extends Activity {
         String nickname_value = nickname.getText().toString();
 
         if(password_value.equals(password_repeat_value)) {
+            Log.i("register", "begin to register");
             RequestParams params = new RequestParams();
             params.put("phone", username_value);
             params.put("password", password_value);
             params.put("nickname", nickname_value);
-            RestClient.get(Constant.REGISTER, params, new JsonHttpResponseHandler() {
+            RestClient.post(Constant.REGISTER, params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     try {
+                        Log.i("register", response.toString());
                         String status = response.getString("state");
-                        if(status.equals("success")) {
+                        if (status.equals("success")) {
                             Intent intent = new Intent();
                             Bundle bundle = new Bundle();
                             bundle.putString("status", status);
@@ -67,6 +70,8 @@ public class RegisterActivity extends Activity {
                             intent.putExtras(bundle);
                             setResult(Constant.START_REGISTER_BACK, intent);
                             finish();
+                        } else {
+                            new AlertDialog.Builder(RegisterActivity.this).setTitle("提示信息").setMessage("注册失败").show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

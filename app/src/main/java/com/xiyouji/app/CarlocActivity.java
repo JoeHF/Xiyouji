@@ -76,7 +76,7 @@ public class CarlocActivity extends Activity{
                     for (int i = 0 ; i < responses.length() ; i++) {
                         JSONObject jsonObject = responses.getJSONObject(i);
                         Address carLoc = new Address();
-                        carLoc.setAddr(jsonObject.getString("sitename"));
+                        carLoc.setSitename(jsonObject.getString("sitename"));
                         carLoc.setHint(jsonObject.getString("hint"));
                         carLoc.setLatitude(jsonObject.getDouble("lat"));
                         carLoc.setLongitude(jsonObject.getDouble("long"));
@@ -96,7 +96,7 @@ public class CarlocActivity extends Activity{
     public void clickCommonCarLoc(Address address) {
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
-        bundle.putString("carLoc", address.getAddr());
+        bundle.putString("carLoc", address.getSitename());
         bundle.putString("siteId", address.getSiteId());
         intent.putExtras(bundle);
         setResult(Constant.START_CAR_LOC_BACK, intent);

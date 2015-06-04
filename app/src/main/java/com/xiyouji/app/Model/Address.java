@@ -6,15 +6,15 @@ package com.xiyouji.app.Model;
 public class Address {
     private String siteId;
     private String hint;
-    private String addr;
+    private String sitename;
     private Double longitude;
     private Double latitude;
 
-    public void setAddr(String _addr) {
-        this.addr = _addr;
+    public void setSitename(String _addr) {
+        this.sitename = _addr;
     }
-    public String getAddr() {
-        return this.addr;
+    public String getSitename() {
+        return this.sitename;
     }
     public void setSiteId(String _siteId) {
         this.siteId = _siteId;

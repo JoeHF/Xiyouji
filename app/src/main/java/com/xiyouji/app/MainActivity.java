@@ -15,13 +15,26 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.MineFragmentActivity.CommonAddressActivity;
 import com.xiyouji.app.MineFragmentActivity.DiscountActivity;
 import com.xiyouji.app.MineFragmentActivity.RechargeActivity;
-import com.xiyouji.app.Model.Address;
+import com.xiyouji.app.Model.CarBrand;
+import com.xiyouji.app.Model.CarVersion;
+import com.xiyouji.app.Utils.RestClient;
+import com.xiyouji.app.Utils.db.Dao.CarBrandDao;
+import com.xiyouji.app.Utils.db.Dao.CarVersionDao;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
 
 
 public class MainActivity extends FragmentActivity implements OnGestureListener
@@ -80,8 +93,57 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         mReceiver = new SDKReceiver();
         registerReceiver(mReceiver, iFilter);
 
+        LoadCarData();
     }
 
+    private void LoadCarData() {
+        RestClient.get(Constant.GET_BRRAND_LIST, null, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
+                Log.i("car brand", responses.toString());
+                try {
+                    CarBrandDao carBrandDao = new CarBrandDao(MainActivity.this);
+                    final CarVersionDao carVersionDao = new CarVersionDao(MainActivity.this);
+                    carBrandDao.clear();
+                    carVersionDao.clear();
+                    for (int i = 0; i < responses.length(); i++) {
+                        JSONObject jsonObject = responses.getJSONObject(i);
+                        String brand = jsonObject.getString("brand");
+                        CarBrand carBrand = new CarBrand();
+                        carBrand.setBrand(brand);
+                        carBrandDao.insert(carBrand);
+
+                        RequestParams requestParams = new RequestParams();
+                        requestParams.put("brand", brand);
+                        RestClient.post(Constant.GET_VERSION_LIST_BY_BRAND, requestParams, new JsonHttpResponseHandler() {
+                            public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
+                                Log.i("car version by brand", responses.toString());
+                                try {
+                                    for (int i = 0 ; i < responses.length() ; i++) {
+                                        JSONObject jsonObject = responses.getJSONObject(i);
+                                        CarVersion carVersion = new CarVersion();
+                                        carVersion.setVersionid(jsonObject.getString("versionid"));
+                                        carVersion.setBrand(jsonObject.getString("brand"));
+                                        carVersion.setVersion(jsonObject.getString("version"));
+                                        carVersionDao.insert(carVersion);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                carVersionDao.get();
+                            }
+                        });
+                    }
+
+                    List<CarBrand> carBrands = carBrandDao.get();
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

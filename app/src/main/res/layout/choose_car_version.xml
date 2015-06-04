@@ -6,28 +6,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        >
+        android:layout_height="40dp" >
 
-        <TextView
-            android:id="@+id/cancel"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="取消"
             android:clickable="true"
-            android:onClick="click_to_cancel"
+            android:onClick="click_version_cancel"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:textSize="14sp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"/>
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择车辆品牌"
+            android:text="选择车辆型号"
             android:gravity="center"
             android:layout_centerInParent="true"
+            android:clickable="true"
             android:textSize="18sp"
             android:textColor="@color/white" />
 
@@ -37,15 +34,15 @@
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/brandList"
+        android:id="@+id/versionList"
         android:background="@color/white">
 
-        </ListView>
-<!--
-    <GridView
-        android:id="@+id/brand"
-        style="@style/CarInfoDialog"
-        android:columnWidth="80dp"
-        ></GridView>
--->
+    </ListView>
+    <!--
+        <GridView
+            android:id="@+id/brand"
+            style="@style/CarInfoDialog"
+            android:columnWidth="80dp"
+            ></GridView>
+    -->
 </LinearLayout>

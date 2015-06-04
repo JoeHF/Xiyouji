@@ -4,6 +4,9 @@ package com.xiyouji.app.Constant;
  * Created by houfang on 15/5/17.
  */
 public class Constant {
+    public static final String DATABASE_NAME = "xiyouji.db";
+    public static final int DB_VERSION = 1;
+
     //StartActivityForResult constant number
     public static final int START_LBS = 10;
     public static final int START_REGISTER = 11;
@@ -28,4 +31,8 @@ public class Constant {
     public static final String GET_CAR_LIST_INFO = "my/getCarListById";
     public static final String GET_CAR_LOC_LIST_INFO = "my/getSiteListById";
     public static final String ADD_ORDER = "order/addOrderByAccount";
+    public static final String GET_ORDER_LIST = "order/getOrderListById";
+    public static final String GET_BRRAND_LIST = "my/getBrandList";
+    public static final String GET_VERSION_LIST_BY_BRAND = "my/getVersionListByBrand";
+
 }

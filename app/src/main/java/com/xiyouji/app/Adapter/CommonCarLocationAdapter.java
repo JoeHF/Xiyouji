@@ -70,7 +70,7 @@ public class CommonCarLocationAdapter extends BaseAdapter {
         }
 
         Address address = this.carLocs.get(position);
-        holder.address.setText(address.getAddr());
+        holder.address.setText(address.getSitename());
         return convertView;
     }
 

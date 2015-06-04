@@ -1,6 +1,7 @@
 package com.xiyouji.app.Login;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,51 +35,57 @@ public class LoginActivity extends Activity {
     }
 
     public void click_to_homepage(View v) {
-        //String username_value = username.getText().toString();
-        //String password_value = password.getText().toString();
+        final String username_value = username.getText().toString();
+        final String password_value = password.getText().toString();
 
         RequestParams requestParams = new RequestParams();
 
         //for test
-        final String username_value = "123";
-        final String password_value = "123";
+        //final String username_value = "123";
+        //final String password_value = "123";
         requestParams.put("phone", username_value);
         requestParams.put("password", password_value);
 
-        RestClient.get(Constant.LOGIN, requestParams, new JsonHttpResponseHandler() {
+        RestClient.post(Constant.LOGIN, requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.i("http login jsonobject", response.toString());
+
                 try {
-                    String money = response.getString("money");
-                    String id = response.getString("userid");
-                    String phone = response.getString("phone");
-                    String longitude = response.getString("long");
-                    String latitude = response.getString("lat");
+                    if(response.getString("state").equals("success")) {
+                        String money = response.getString("money");
+                        String id = response.getString("userid");
+                        String phone = response.getString("phone");
+                        String longitude = response.getString("long");
+                        String latitude = response.getString("lat");
 
-                    //实例化SharedPreferences对象（第一步）
-                    SharedPreferences mySharedPreferences= getSharedPreferences("user",
-                            Activity.MODE_PRIVATE);
-                    //实例化SharedPreferences.Editor对象（第二步）
-                    SharedPreferences.Editor editor = mySharedPreferences.edit();
-                    //用putString的方法保存数据
-                    editor.putString("id", id);
-                    editor.putString("phone", phone);
-                    editor.putString("longitude", longitude);
-                    editor.putString("latitude", latitude);
-                    editor.putString("money", money);
-                    editor.putString("username", username_value);
-                    editor.putString("password", password_value);
+                        //实例化SharedPreferences对象（第一步）
+                        SharedPreferences mySharedPreferences = getSharedPreferences("user",
+                                Activity.MODE_PRIVATE);
+                        //实例化SharedPreferences.Editor对象（第二步）
+                        SharedPreferences.Editor editor = mySharedPreferences.edit();
+                        //用putString的方法保存数据
+                        editor.putString("id", id);
+                        editor.putString("phone", phone);
+                        editor.putString("longitude", longitude);
+                        editor.putString("latitude", latitude);
+                        editor.putString("money", money);
+                        editor.putString("username", username_value);
+                        editor.putString("password", password_value);
 
-                    //提交当前数据
-                    editor.commit();
+                        //提交当前数据
+                        editor.commit();
 
-                    Intent intent1 = new Intent();
-                    intent1.setClass(LoginActivity.this, MainActivity.class);
-                    startActivity(intent1);
-                    overridePendingTransition(R.anim.push_left_in,
-                            R.anim.push_left_out	);
-                    finish();
+                        Intent intent1 = new Intent();
+                        intent1.setClass(LoginActivity.this, MainActivity.class);
+                        startActivity(intent1);
+                        overridePendingTransition(R.anim.push_left_in,
+                                R.anim.push_left_out);
+                        finish();
+                    }
+                    else {
+                        new AlertDialog.Builder(LoginActivity.this).setTitle("提示信息").setMessage("登陆失败").show();
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -148,6 +155,7 @@ public class LoginActivity extends Activity {
                         });
 
                     }
+
                     break;
                 default:
                     break;
