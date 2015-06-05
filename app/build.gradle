@@ -33,6 +33,7 @@ android {
 
 repositories {
     mavenCentral()
+    maven { url 'http://clinker.47deg.com/nexus/content/groups/public' }
 }
 
 dependencies {
@@ -40,4 +41,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.makeramen:roundedimageview:2.0.1'
     compile 'com.loopj.android:android-async-http:1.4.7'
+    compile ('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
+        transitive = true
+    }
+    compile project(':extras:pull')
 }

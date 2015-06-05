@@ -57,8 +57,10 @@ public class WantWashingActivity extends Activity {
     public void click_to_waitwash(View v)
     {
         Date date=new Date();
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time = format.format(date);
+        String time = date.getTime() + "";
+        //Log.i("Time:", date.getTime() + "");
+        //DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //String time = format.format(date);
 
         RequestParams requestParams = new RequestParams();
         Log.i("add order", "carid:" + carId + " siteid:" + siteId + " createtime:" + time + " phone:" + username + " password:" + password + " type:" + type);

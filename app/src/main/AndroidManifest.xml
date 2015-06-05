@@ -125,6 +125,12 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.xiyouji.app.MineFragmentActivity.CommonCarActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

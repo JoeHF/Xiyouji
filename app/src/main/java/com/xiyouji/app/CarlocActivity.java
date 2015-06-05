@@ -1,6 +1,7 @@
 package com.xiyouji.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -64,7 +65,7 @@ public class CarlocActivity extends Activity{
         final RequestParams requestParams = new RequestParams();
         requestParams.put("userid", userId);;
 
-        RestClient.get(Constant.GET_CAR_LOC_LIST_INFO, requestParams, new JsonHttpResponseHandler() {
+        RestClient.get(Constant.GET_SITE_LIST, requestParams, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
             }
@@ -131,6 +132,22 @@ public class CarlocActivity extends Activity{
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.i("add location info", response.toString());
+                try {
+                    String siteId = response.getString("siteid");
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("carLoc", location.getText().toString());
+                    bundle.putString("siteId", siteId);
+                    intent.putExtras(bundle);
+                    setResult(Constant.START_CAR_LOC_BACK, intent);
+                    finish();
+                    overridePendingTransition(R.anim.push_right_in,
+                            R.anim.push_right_out);
+                }
+                catch (JSONException e) {
+                    new AlertDialog.Builder(CarlocActivity.this).setTitle("提示信息").setMessage("添加地址失败").show();
+                    e.printStackTrace();
+                }
 
             }
         });

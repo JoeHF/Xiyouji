@@ -54,6 +54,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
             holder.status = (TextView)convertView.findViewById(R.id.status);
             holder.carType = (TextView)convertView.findViewById(R.id.carType);
             holder.location = (TextView)convertView.findViewById(R.id.location);
+            holder.time = (TextView)convertView.findViewById(R.id.time);
             convertView.setTag(holder);
         }
         else {
@@ -65,6 +66,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
                 + order_ongoings.get(position).getBrand() + order_ongoings.get(position).getVersion() + " "
                 + order_ongoings.get(position).getColor() + " " + order_ongoings.get(position).getType());
         holder.location.setText(order_ongoings.get(position).getSitename());
+        holder.time.setText(order_ongoings.get(position).getTime());
         return convertView;
 
     }
@@ -73,5 +75,6 @@ public class OrderOngoingAdapter extends BaseAdapter {
         TextView status;
         TextView carType;
         TextView location;
+        TextView time;
     }
 }

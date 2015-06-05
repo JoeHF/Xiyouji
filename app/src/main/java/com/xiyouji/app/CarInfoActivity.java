@@ -1,6 +1,7 @@
 package com.xiyouji.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import com.xiyouji.app.Adapter.CarVersionDialogAdapter;
 import com.xiyouji.app.Adapter.CommonCarAdapter;
 import com.xiyouji.app.Adapter.OrderOngoingAdapter;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.Login.LoginActivity;
 import com.xiyouji.app.Model.CarBrand;
 import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.Model.CarVersion;
@@ -250,18 +252,19 @@ public class CarInfoActivity extends Activity{
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     Log.i("add car info", response.toString());
                     try {
-                        if(response.getString("state").toString().equals("success")) {
-                            Intent intent = new Intent();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("carInfo", provinceValue.getText().toString() + number.getText().toString() + " " + colorValue.getText().toString() + " " + carVersion.getBrand() + carVersion.getVersion());
-                            bundle.putString("carId", "1");
-                            intent.putExtras(bundle);
-                            setResult(Constant.START_CAR_INFO_BACK, intent);
-                            finish();
-                            overridePendingTransition(R.anim.push_right_in,
-                                    R.anim.push_right_out);
-                        }
+                        int carId = response.getInt("carid");
+                        Intent intent = new Intent();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("carInfo", provinceValue.getText().toString() + number.getText().toString() + " " + colorValue.getText().toString() + " " + carVersion.getBrand() + carVersion.getVersion());
+                        bundle.putString("carId", "" + carId);
+                        intent.putExtras(bundle);
+                        setResult(Constant.START_CAR_INFO_BACK, intent);
+                        finish();
+                        overridePendingTransition(R.anim.push_right_in,
+                                R.anim.push_right_out);
+
                     } catch (JSONException e) {
+                        new AlertDialog.Builder(CarInfoActivity.this).setTitle("提示信息").setMessage("添加车辆失败").show();
                         e.printStackTrace();
                     }
 

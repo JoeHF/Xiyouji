@@ -20,7 +20,9 @@ import com.baidu.mapapi.SDKInitializer;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.Login.LoginActivity;
 import com.xiyouji.app.MineFragmentActivity.CommonAddressActivity;
+import com.xiyouji.app.MineFragmentActivity.CommonCarActivity;
 import com.xiyouji.app.MineFragmentActivity.DiscountActivity;
 import com.xiyouji.app.MineFragmentActivity.RechargeActivity;
 import com.xiyouji.app.Model.CarBrand;
@@ -97,7 +99,7 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
     }
 
     private void LoadCarData() {
-        RestClient.get(Constant.GET_BRRAND_LIST, null, new JsonHttpResponseHandler() {
+        RestClient.get(Constant.GET_BRAND_LIST, null, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
                 Log.i("car brand", responses.toString());
                 try {
@@ -419,8 +421,22 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
                 R.anim.push_left_out	);
     }
 
+    public void click_to_car(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, CommonCarActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out	);
+    }
+
     //todo 退出登录
     public void click_to_logout(View v){
+        Intent intent = new Intent();
+        intent.setClass(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
 
     }
 

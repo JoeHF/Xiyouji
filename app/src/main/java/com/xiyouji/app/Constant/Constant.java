@@ -29,10 +29,12 @@ public class Constant {
     public static final String ADD_CAR_INFO = "my/addCarById";
     public static final String ADD_CAR_LOC = "my/addSiteById";
     public static final String GET_CAR_LIST_INFO = "my/getCarListById";
-    public static final String GET_CAR_LOC_LIST_INFO = "my/getSiteListById";
+    public static final String GET_SITE_LIST = "my/getSiteListById";
     public static final String ADD_ORDER = "order/addOrderByAccount";
     public static final String GET_ORDER_LIST = "order/getOrderListById";
-    public static final String GET_BRRAND_LIST = "my/getBrandList";
+    public static final String GET_BRAND_LIST = "my/getBrandList";
     public static final String GET_VERSION_LIST_BY_BRAND = "my/getVersionListByBrand";
+    public static final String DELETE_CAR_INFO = "my/deleteCarByAccount";
+    public static final String DELETE_SITE = "my/deleteSiteByAccount";
 
 }

@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="40dp">
             <ImageView
                 android:id="@+id/weather_img"
                 android:layout_width="50dp"
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/main_washing_hint_value_text"
-                android:textSize="25dp"
+                android:textSize="23dp"
                 android:textColor="@color/white"
                 android:layout_toRightOf="@+id/washing_hint"
                 android:layout_alignBottom="@+id/washing_hint"/>
