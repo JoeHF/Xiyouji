@@ -36,5 +36,6 @@ public class Constant {
     public static final String GET_VERSION_LIST_BY_BRAND = "my/getVersionListByBrand";
     public static final String DELETE_CAR_INFO = "my/deleteCarByAccount";
     public static final String DELETE_SITE = "my/deleteSiteByAccount";
+    public static final String GET_DISCOUNT_LIST = "my/getTicketListById";
 
 }

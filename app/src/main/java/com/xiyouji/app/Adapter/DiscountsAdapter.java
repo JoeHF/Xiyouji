@@ -1,6 +1,7 @@
 package com.xiyouji.app.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,11 @@ public class DiscountsAdapter extends BaseAdapter {
     public DiscountsAdapter(List<Discount> _discountLists, Context context) {
         this.discountLists = _discountLists;
         this.mContext = context;
+    }
+
+    public void refresh(List<Discount> _discountLists) {
+        this.discountLists = _discountLists;
+        notifyDataSetChanged();
     }
     @Override
     public int getCount() {
@@ -52,8 +58,8 @@ public class DiscountsAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        holder.price.setText("30元");
-
+        holder.price.setText("￥" + discountLists.get(position).getPrice());
+        holder.dueDate.setText(discountLists.get(position).getDueDate());
         return convertView;
     }
 
