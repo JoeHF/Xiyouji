@@ -110,14 +110,14 @@
             android:layout_alignTop="@+id/discount1"
             android:textSize="16dp"
             android:text="张"/>
-
+<!--
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignRight="@+id/phone"
             android:src="@drawable/edit"
             android:layout_alignTop="@id/name"
-            />
+            /> -->
     </RelativeLayout>
 
     <ScrollView

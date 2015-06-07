@@ -56,6 +56,7 @@ public class LoginActivity extends Activity {
                     String phone = response.getString("phone");
                     String longitude = response.getString("long");
                     String latitude = response.getString("lat");
+                    String nickname = response.getString("nickname");
 
                     //实例化SharedPreferences对象（第一步）
                     SharedPreferences mySharedPreferences = getSharedPreferences("user",
@@ -70,6 +71,7 @@ public class LoginActivity extends Activity {
                     editor.putString("money", money);
                     editor.putString("username", username_value);
                     editor.putString("password", password_value);
+                    editor.putString("nickname", nickname);
 
                     //提交当前数据
                     editor.commit();
@@ -120,6 +122,7 @@ public class LoginActivity extends Activity {
                                     String phone = response.getString("phone");
                                     String longitude = response.getString("long");
                                     String latitude = response.getString("lat");
+                                    String nickname = response.getString("nickname");
 
                                     //实例化SharedPreferences对象（第一步）
                                     SharedPreferences mySharedPreferences= getSharedPreferences("user",
@@ -132,6 +135,7 @@ public class LoginActivity extends Activity {
                                     editor.putString("longitude", longitude);
                                     editor.putString("latitude", latitude);
                                     editor.putString("money", money);
+                                    editor.putString("nickname", nickname);
                                     //提交当前数据
                                     editor.commit();
 
