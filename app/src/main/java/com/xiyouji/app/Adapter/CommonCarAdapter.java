@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.xiyouji.app.CarInfoActivity;
+import com.xiyouji.app.HomeFragmentActivity.CarInfoActivity;
 import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.R;
 

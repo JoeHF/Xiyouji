@@ -1,4 +1,4 @@
-package com.xiyouji.app;
+package com.xiyouji.app.MineFragmentActivity;
 
 /**
  * Created by houfang on 15/4/28.
@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.xiyouji.app.R;
 
 public class MineFragment extends Fragment
 {

@@ -1,4 +1,4 @@
-package com.xiyouji.app;
+package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -31,6 +31,7 @@ import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.R;
 
 /**
  * Created by houfang on 15/5/16.

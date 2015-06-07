@@ -1,4 +1,4 @@
-package com.xiyouji.app;
+package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,13 +21,11 @@ import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Adapter.CarBrandDialogAdapter;
 import com.xiyouji.app.Adapter.CarVersionDialogAdapter;
 import com.xiyouji.app.Adapter.CommonCarAdapter;
-import com.xiyouji.app.Adapter.OrderOngoingAdapter;
 import com.xiyouji.app.Constant.Constant;
-import com.xiyouji.app.Login.LoginActivity;
 import com.xiyouji.app.Model.CarBrand;
 import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.Model.CarVersion;
-import com.xiyouji.app.Model.Order;
+import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
 import com.xiyouji.app.Utils.db.Dao.CarBrandDao;
 import com.xiyouji.app.Utils.db.Dao.CarVersionDao;

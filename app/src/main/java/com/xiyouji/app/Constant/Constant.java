@@ -37,5 +37,8 @@ public class Constant {
     public static final String DELETE_CAR_INFO = "my/deleteCarByAccount";
     public static final String DELETE_SITE = "my/deleteSiteByAccount";
     public static final String GET_DISCOUNT_LIST = "my/getTicketListById";
+    public static final String GET_RECHARGE_RECORD_LIST = "my/getRechargeListById";
+    public static final String GET_MONEY = "my/getMoneyById";
+    public static final String RECHARGE = "my/rechargeByAccount";
 
 }

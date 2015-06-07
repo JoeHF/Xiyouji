@@ -38,7 +38,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6888"
                 android:textSize="30dp"
                 android:textColor="@color/white"/>
 
@@ -93,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:onClick="click_choose_recharge"
+                android:tag="300"
                 android:button="@null"
                 android:background="@drawable/pay_check_checkbox"/>
 
@@ -136,11 +136,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:onClick="click_choose_recharge"
+                android:tag="800"
                 android:button="@null"
                 android:background="@drawable/pay_check_checkbox"/>
 
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -175,6 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:onClick="click_choose_recharge"
+                android:tag="1500"
                 android:button="@null"
                 android:background="@drawable/pay_check_checkbox"/>
 

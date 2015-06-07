@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.xiyouji.app.CarlocActivity;
+import com.xiyouji.app.HomeFragmentActivity.CarlocActivity;
 import com.xiyouji.app.Model.Address;
 import com.xiyouji.app.R;
 

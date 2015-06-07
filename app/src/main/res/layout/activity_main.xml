@@ -7,7 +7,7 @@
     <include layout="@layout/actionbar_main"/>
 
     <fragment
-        android:name='com.xiyouji.app.HomeFragment'
+        android:name='com.xiyouji.app.HomeFragmentActivity.HomeFragment'
         android:id='@+id/fragment1'
         android:layout_height='0dp'
         android:layout_weight='1.0'
@@ -21,7 +21,7 @@
         android:layout_width='fill_parent'
         />
     <fragment
-        android:name='com.xiyouji.app.MineFragment'
+        android:name='com.xiyouji.app.MineFragmentActivity.MineFragment'
         android:id='@+id/fragment3'
         android:layout_height='0dp'
         android:layout_weight='1.0'

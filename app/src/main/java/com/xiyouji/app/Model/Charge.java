@@ -8,6 +8,7 @@ public class Charge {
     private String date;
     private String time;
     private String price;
+    private int payway;
     private Boolean tag = true;
 
     public void setId(int _id) {
@@ -39,5 +40,11 @@ public class Charge {
     }
     public Boolean getTag() {
         return this.tag;
+    }
+    public void setPayway(int _payway) {
+        this.payway = _payway;
+    }
+    public int getPayway() {
+        return this.payway;
     }
 }

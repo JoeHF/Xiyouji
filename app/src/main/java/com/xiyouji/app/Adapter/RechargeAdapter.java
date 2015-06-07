@@ -23,6 +23,12 @@ public class RechargeAdapter extends BaseAdapter {
         this.chargeList = _chargeList;
         this.mContext = context;
     }
+
+    public void refresh(List<Charge> _chargeList) {
+        this.chargeList = _chargeList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return chargeList.size();
@@ -45,13 +51,14 @@ public class RechargeAdapter extends BaseAdapter {
             if(chargeList.get(position).getTag() == false) {
                 convertView = LayoutInflater.from(this.mContext).inflate(R.layout.recharge_list_item_head, null);
                 holder = new ViewHolder();
-                //holder.date = (TextView)convertView.findViewById(R.id.price);
+                holder.date = (TextView)convertView.findViewById(R.id.date);
                 convertView.setTag(holder);
             }
             else {
                 convertView = LayoutInflater.from(this.mContext).inflate(R.layout.recharge_list_item, null);
                 holder = new ViewHolder();
                 holder.price = (TextView)convertView.findViewById(R.id.price);
+                holder.time = (TextView)convertView.findViewById(R.id.time);
                 convertView.setTag(holder);
             }
 
@@ -61,7 +68,12 @@ public class RechargeAdapter extends BaseAdapter {
         }
 
         if(chargeList.get(position).getTag() == true) {
-            holder.price.setText("30元");
+            holder.price.setText(chargeList.get(position).getPrice());
+            holder.time.setText(chargeList.get(position).getTime());
+        }
+        else {
+            holder.date.setText(chargeList.get(position).getDate());
+
         }
 
         return convertView;

@@ -41,6 +41,9 @@ public class DiscountActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discount);
+
+        SharedPreferences user = getSharedPreferences("user", 0);
+        userId = user.getString("id", "0");
         title = (TextView)findViewById(R.id.title);
         title.setText("优惠劵");
 
@@ -54,8 +57,7 @@ public class DiscountActivity extends Activity {
     }
 
     public void GetDiscountData() {
-        SharedPreferences user = getSharedPreferences("user", 0);
-        userId = user.getString("id", "0");
+
 
         RequestParams requestParams = new RequestParams();
         requestParams.put("userid", userId);

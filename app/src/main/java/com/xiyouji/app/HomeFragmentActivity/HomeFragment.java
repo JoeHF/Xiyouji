@@ -1,4 +1,4 @@
-package com.xiyouji.app;
+package com.xiyouji.app.HomeFragmentActivity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
 
 import org.apache.http.Header;

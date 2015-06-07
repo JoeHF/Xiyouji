@@ -1,4 +1,4 @@
-package com.xiyouji.app;
+package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.R;
 
 /**
  * Created by houfang on 2015/4/29.

@@ -1,4 +1,4 @@
-package com.xiyouji.app;
+package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,14 +12,14 @@ import android.widget.TextView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
+import com.xiyouji.app.WaitWashingActivity;
 
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
