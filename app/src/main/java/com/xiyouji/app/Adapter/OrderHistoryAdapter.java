@@ -45,7 +45,7 @@ public class OrderHistoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView == null) {
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.order_history_list_item, null);
@@ -54,6 +54,14 @@ public class OrderHistoryAdapter extends BaseAdapter {
             holder.carType = (TextView)convertView.findViewById(R.id.carType);
             holder.location = (TextView)convertView.findViewById(R.id.location);
             holder.time = (TextView)convertView.findViewById(R.id.time);
+            holder.detail = (TextView)convertView.findViewById(R.id.detail);
+            holder.detail.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    //if (order_historys.get(position).getStage().equals(""))
+                }
+            });
             convertView.setTag(holder);
         }
         else {
@@ -76,5 +84,6 @@ public class OrderHistoryAdapter extends BaseAdapter {
         TextView carType;
         TextView location;
         TextView time;
+        TextView detail;
     }
 }

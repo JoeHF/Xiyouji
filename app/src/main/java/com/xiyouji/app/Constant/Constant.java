@@ -42,5 +42,8 @@ public class Constant {
     public static final String GET_MONEY = "my/getMoneyById";
     public static final String RECHARGE = "my/rechargeByAccount";
     public static final String GET_ORDER_DETAIL = "order/getOrderDetail";
+    public static final String GET_WAITER_INFO = "waiter/getWaiterByWaiterId";
+    public static final String DELETE_ORDER = "order/deleteOrderByAccount";
+
 
 }

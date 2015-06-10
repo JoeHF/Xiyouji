@@ -80,7 +80,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.xiyouji.app.xiaoerInfoActivity"
+            android:name=".HomeFragmentActivity.XiaoerInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
@@ -102,7 +102,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.xiyouji.app.PayJudgeActivity"
+            android:name=".HomeFragmentActivity.PayJudgeActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
@@ -125,6 +125,12 @@
         </activity>
         <activity
             android:name="com.xiyouji.app.HomeFragmentActivity.WaitWaiterActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.xiyouji.app.HomeFragmentActivity.OrderCompleteActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
             android:screenOrientation="portrait">

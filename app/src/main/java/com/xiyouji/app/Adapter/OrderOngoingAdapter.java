@@ -1,12 +1,19 @@
 package com.xiyouji.app.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.xiyouji.app.HomeFragmentActivity.OrderCompleteActivity;
+import com.xiyouji.app.HomeFragmentActivity.PayJudgeActivity;
+import com.xiyouji.app.HomeFragmentActivity.WaitWaiterActivity;
+import com.xiyouji.app.HomeFragmentActivity.WaitWashingActivity;
 import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.Model.Order;
 import com.xiyouji.app.R;
@@ -46,7 +53,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView == null) {
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.order_ing_list_item, null);
@@ -55,12 +62,16 @@ public class OrderOngoingAdapter extends BaseAdapter {
             holder.carType = (TextView)convertView.findViewById(R.id.carType);
             holder.location = (TextView)convertView.findViewById(R.id.location);
             holder.time = (TextView)convertView.findViewById(R.id.time);
+            holder.detail = (TextView)convertView.findViewById(R.id.detail);
+            holder.listener = new MyClickListener(position);
+            convertView.setOnClickListener(holder.listener);
             convertView.setTag(holder);
         }
         else {
             holder = (ViewHolder)convertView.getTag();
         }
 
+        holder.listener.setPosition(position);
         holder.status.setText(order_ongoings.get(position).getStage());
         holder.carType.setText(order_ongoings.get(position).getNumber() + " "
                 + order_ongoings.get(position).getBrand() + order_ongoings.get(position).getVersion() + " "
@@ -76,5 +87,61 @@ public class OrderOngoingAdapter extends BaseAdapter {
         TextView carType;
         TextView location;
         TextView time;
+        TextView detail;
+        MyClickListener listener;
+    }
+
+    private class MyClickListener implements View.OnClickListener {
+        private int position;
+
+        public MyClickListener(int _position) {
+            this.position = _position;
+        }
+        @Override
+        public void onClick(View v) {
+            Log.i("order detail", "click");
+            Order order = order_ongoings.get(position);
+            Log.i("order detail", position + ":" + order.getStage());
+            if (order.getStage().equals("待接单")) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("orderId", order.getId() + "");
+                bundle.putString("waiterId", order.getWaiterId());
+                intent.putExtras(bundle);
+                intent.setClass(mContext, WaitWashingActivity.class);
+                mContext.startActivity(intent);
+            }
+            else if (order.getStage().equals("服务中") || order.getStage().equals("已安排小二")) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("orderId", order.getId() + "");
+                bundle.putString("waiterId", order.getWaiterId());
+                intent.putExtras(bundle);
+                intent.setClass(mContext, WaitWaiterActivity.class);
+                mContext.startActivity(intent);
+            }
+            else if (order.getStage().equals("待支付")) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("orderId", order.getId() + "");
+                bundle.putString("waiterId", order.getWaiterId());
+                intent.putExtras(bundle);
+                intent.setClass(mContext, PayJudgeActivity.class);
+                mContext.startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("orderId", order.getId() + "");
+                bundle.putString("waiterId", order.getWaiterId());
+                intent.putExtras(bundle);
+                intent.setClass(mContext, OrderCompleteActivity.class);
+                mContext.startActivity(intent);
+            }
+        }
+
+        public void setPosition(int _position) {
+            this.position = _position;
+        }
     }
 }

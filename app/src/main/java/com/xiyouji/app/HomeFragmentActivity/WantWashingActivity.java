@@ -78,7 +78,7 @@ public class WantWashingActivity extends Activity {
                     if(response.getString("stage").equals("success")) {
                         Intent intent = new Intent();
                         Bundle bundle = new Bundle();
-                        bundle.putString("orderId", response.getString("orderid"));
+                        bundle.putString("orderId", /*response.getString("orderid")*/"1");
                         intent.putExtras(bundle);
                         intent.setClass(WantWashingActivity.this, WaitWashingActivity.class);
                         //intent.setClass(this, xiaoerInfoActivity.class);  //test code
@@ -90,6 +90,11 @@ public class WantWashingActivity extends Activity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.i("make order failure", responseString);
             }
         });
 
