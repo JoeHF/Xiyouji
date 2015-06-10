@@ -68,6 +68,13 @@ public class OrderFragment extends Fragment
                 }
             });
 
+            view2.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+                @Override
+                public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                    GetOrderData();
+                }
+            });
+
             orderOngoings = new ArrayList<>();
             orderOngoingAdapter = new OrderOngoingAdapter(orderOngoings, getActivity());
 
@@ -91,7 +98,6 @@ public class OrderFragment extends Fragment
             view1.setAdapter(orderOngoingAdapter);
 
             orderHistorys = new ArrayList<>();
-            orderHistorys.add(new Order());
             orderHistoryAdapter = new OrderHistoryAdapter(orderHistorys, getActivity());
 
             view2.setAdapter(orderHistoryAdapter);
@@ -123,40 +129,46 @@ public class OrderFragment extends Fragment
             public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
                 Log.i("order list info", responses.toString());
                 view1.onRefreshComplete();
+                view2.onRefreshComplete();
 
                 try {
                     orderOngoings = new ArrayList<>();
                     for(int i = 0 ; i < responses.length() ; i++) {
                         Order order = new Order();
                         JSONObject jsonObject = responses.getJSONObject(i);
+
                         order.setVersion(jsonObject.getString("version"));
                         order.setBrand(jsonObject.getString("brand"));
                         order.setSitename(jsonObject.getString("sitename"));
                         order.setColor(jsonObject.getString("color"));
                         int type = jsonObject.getInt("type");
-                        if(type == 1) {
+                        if (type == 1) {
                             order.setType("车外清洗");
-                        }
-                        else {
+                        } else {
                             order.setType("车内外清洗");
                         }
 
-                        DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         try {
                             String time = format.format(jsonObject.getLong("createtime") * 1000);
                             order.setTime(time);
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             order.setTime("6月4日 23点");
                             e.printStackTrace();
                         }
 
                         order.setStage(jsonObject.getString("stage"));
                         order.setNumber(jsonObject.getString("number"));
-                        orderOngoings.add(order);
+                        if (!jsonObject.getString("stage").equals("已完成")) {
+                            orderOngoings.add(order);
+                        }
+                        else {
+                            orderHistorys.add(order);
+                        }
                     }
 
                     orderOngoingAdapter.refresh(orderOngoings);
+                    orderHistoryAdapter.refresh(orderHistorys);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -13,6 +13,7 @@ public class Constant {
     public static final int START_CAR_INFO = 12;
     public static final int START_CAR_LOC = 13;
     public static final int START_PHONE_NUMBER = 14;
+    public static final int START_ORDER = 15;
 
 
     public static final int START_LBS_BACK = 100;
@@ -20,7 +21,7 @@ public class Constant {
     public static final int START_CAR_INFO_BACK = 102;
     public static final int START_CAR_LOC_BACK = 103;
     public static final int START_PHONE_NUMBER_BACK = 104;
-
+    public static final int START_ORDER_SUCCESS_BACK = 105;
 
     //rest http request
     public static final String GET_WEATHER_BY_CITY = "my/getWeatherByCity";
@@ -40,5 +41,6 @@ public class Constant {
     public static final String GET_RECHARGE_RECORD_LIST = "my/getRechargeListById";
     public static final String GET_MONEY = "my/getMoneyById";
     public static final String RECHARGE = "my/rechargeByAccount";
+    public static final String GET_ORDER_DETAIL = "order/getOrderDetail";
 
 }

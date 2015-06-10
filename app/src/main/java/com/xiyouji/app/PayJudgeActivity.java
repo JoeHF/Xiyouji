@@ -14,16 +14,29 @@ public class PayJudgeActivity extends Activity {
     private TextView title, right; //Action Bar
     private CheckBox pay_weixin, pay_ali;
 
+    private String waiterId;
+    private String orderId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_judge);
+        Bundle bundle = getIntent().getExtras();
+        waiterId = bundle.getString("waiterId");
+        orderId = bundle.getString("orderId");
+
         title = (TextView)findViewById(R.id.title);
         right = (TextView)findViewById(R.id.right);
         pay_weixin = (CheckBox)findViewById(R.id.pay_weixin);
         pay_ali = (CheckBox)findViewById(R.id.pay_ali);
         title.setText("支付与评价");
         right.setText("投诉");
+    }
+
+    public void click_to_back(View v) {
+        finish();
+        overridePendingTransition(R.anim.push_right_in,
+                R.anim.push_right_out);
     }
 
     public void click_choose_payment(View v) {

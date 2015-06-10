@@ -14,7 +14,6 @@ import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
-import com.xiyouji.app.WaitWashingActivity;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -76,12 +75,15 @@ public class WantWashingActivity extends Activity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.i("make order", response.toString());
                 try {
-                    if(response.getString("state").equals("success")) {
+                    if(response.getString("stage").equals("success")) {
                         Intent intent = new Intent();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("orderId", response.getString("orderid"));
+                        intent.putExtras(bundle);
                         intent.setClass(WantWashingActivity.this, WaitWashingActivity.class);
                         //intent.setClass(this, xiaoerInfoActivity.class);  //test code
                         //intent.setClass(this, PayJudgeActivity.class);  //test code
-                        startActivity(intent);
+                        startActivityForResult(intent, Constant.START_ORDER);
                         overridePendingTransition(R.anim.push_left_in,
                                 R.anim.push_left_out);
                     }
@@ -94,80 +96,92 @@ public class WantWashingActivity extends Activity {
 
     }
 
-            public void click_to_information(View w) {
-                Intent intent = new Intent();
-                intent.setClass(this, CarInfoActivity.class);
-                startActivityForResult(intent, Constant.START_CAR_INFO);
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
-            }
+    public void click_to_information(View w) {
+        Intent intent = new Intent();
+        intent.setClass(this, CarInfoActivity.class);
+        startActivityForResult(intent, Constant.START_CAR_INFO);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);
+    }
 
-            public void click_to_location(View w) {
-                Intent intent = new Intent();
-                intent.setClass(this, CarlocActivity.class);
-                startActivityForResult(intent, Constant.START_CAR_LOC);
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
-            }
+    public void click_to_location(View w) {
+        Intent intent = new Intent();
+        intent.setClass(this, CarlocActivity.class);
+        startActivityForResult(intent, Constant.START_CAR_LOC);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);
+    }
 
-            public void click_to_number(View v) {
-                Intent intent = new Intent();
-                intent.setClass(this, NumberCheckActivity.class);
-                startActivityForResult(intent, Constant.START_PHONE_NUMBER);
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
-            }
+    public void click_to_number(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, NumberCheckActivity.class);
+        startActivityForResult(intent, Constant.START_PHONE_NUMBER);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);
+    }
 
-            public void click_wash_type(View v) {
-                wash_immediately.setChecked(false);
-                wash_order.setChecked(false);
-                ((CheckBox) v).setChecked(true);
-            }
+    public void click_wash_type(View v) {
+        wash_immediately.setChecked(false);
+        wash_order.setChecked(false);
+        ((CheckBox) v).setChecked(true);
+    }
 
-            public void click_wash_inout(View v) {
-                wash_out.setChecked(false);
-                wash_inout.setChecked(false);
-                ((CheckBox) v).setChecked(true);
-                type = ((CheckBox) v).getTag().toString();
-            }
+    public void click_wash_inout(View v) {
+        wash_out.setChecked(false);
+        wash_inout.setChecked(false);
+        ((CheckBox) v).setChecked(true);
+        type = ((CheckBox) v).getTag().toString();
+    }
 
-            @Override
-            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-                // 根据上面发送过去的请求来区别
-                switch (requestCode) {
-                    case Constant.START_CAR_INFO:
-                        switch (resultCode) {
-                            case Constant.START_CAR_INFO_BACK:
-                                Bundle bundle = data.getExtras();
-                                carInfo.setText(bundle.getString("carInfo"));
-                                carId = bundle.getString("carId");
-                                break;
-                            default:
-                                break;
-                        }
+        // 根据上面发送过去的请求来区别
+        switch (requestCode) {
+            case Constant.START_CAR_INFO:
+                switch (resultCode) {
+                    case Constant.START_CAR_INFO_BACK:
+                        Bundle bundle = data.getExtras();
+                        carInfo.setText(bundle.getString("carInfo"));
+                        carId = bundle.getString("carId");
                         break;
-                    case Constant.START_PHONE_NUMBER:
-                        switch (resultCode) {
-                            case Constant.START_PHONE_NUMBER_BACK:
-                                Bundle bundle = data.getExtras();
-                                phone.setText(bundle.getString("phone"));
-                                break;
-                            default:
-                                break;
-                        }
-                    case Constant.START_CAR_LOC:
-                        switch (resultCode) {
-                            case Constant.START_CAR_LOC_BACK:
-                                Bundle bundle = data.getExtras();
-                                carLoc.setText(bundle.getString("carLoc"));
-                                siteId = bundle.getString("siteId");
-                                break;
-                            default:
-                                break;
+                    default:
+                        break;
+                }
+                break;
+            case Constant.START_PHONE_NUMBER:
+                switch (resultCode) {
+                    case Constant.START_PHONE_NUMBER_BACK:
+                        Bundle bundle = data.getExtras();
+                        phone.setText(bundle.getString("phone"));
+                        break;
+                    default:
+                        break;
+                }
+            case Constant.START_CAR_LOC:
+                switch (resultCode) {
+                    case Constant.START_CAR_LOC_BACK:
+                        Bundle bundle = data.getExtras();
+                        carLoc.setText(bundle.getString("carLoc"));
+                        siteId = bundle.getString("siteId");
+                        break;
+                    default:
+                        break;
+                }
+            case Constant.START_ORDER:
+                switch (resultCode) {
+                    case Constant.START_ORDER_SUCCESS_BACK:
+                        Bundle bundle = data.getExtras();
+                        String status = bundle.getString("status");
+                        if (status.equals("success")) {
+                            Log.i("Order has been issued", "success");
+                            finish();
                         }
                     default:
                         break;
                 }
-            }
+            default:
+                break;
         }
+    }
+}

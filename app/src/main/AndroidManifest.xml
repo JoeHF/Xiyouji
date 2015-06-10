@@ -70,7 +70,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.xiyouji.app.WaitWashingActivity"
+            android:name=".HomeFragmentActivity.WaitWashingActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait">
         </activity>
@@ -119,6 +119,12 @@
         </activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.DiscountActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.xiyouji.app.HomeFragmentActivity.WaitWaiterActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
             android:screenOrientation="portrait">
