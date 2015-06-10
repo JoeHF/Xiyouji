@@ -206,7 +206,7 @@ public class WaitWaiterActivity extends Activity {
 
     public void click_to_xiaoer(View v) {
         Intent intent = new Intent();
-        intent.setClass(this, XiaoerInfoActivity.class);
+        intent.setClass(this, XiaoerDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("waiterId", waiterId);
         intent.putExtras(bundle);
