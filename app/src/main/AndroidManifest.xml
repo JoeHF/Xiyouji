@@ -80,11 +80,6 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".HomeFragmentActivity.XiaoerInfoActivity"
-            android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
             android:name=".HomeFragmentActivity.CarInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"
