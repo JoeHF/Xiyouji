@@ -2,6 +2,7 @@ package com.xiyouji.app.MainLogic;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +13,6 @@ import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
-import com.xiyouji.app.xiaoerInfoActivity;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -26,8 +26,8 @@ import java.util.TimerTask;
  */
 public class WaitWashingActivity extends Activity {
     private Timer timer = new Timer();
-    private int totalTime = 10;
-
+    private int totalTime = 300;
+    private String userId, username, password;
     private String orderId;
 
     private TextView timeValue;
@@ -39,6 +39,10 @@ public class WaitWashingActivity extends Activity {
         setContentView(R.layout.wait_washing);
         Bundle bundle = getIntent().getExtras();
 
+        SharedPreferences user = getSharedPreferences("user", 0);
+        userId = user.getString("id", "0");
+        username = user.getString("username", "0");
+        password = user.getString("password", "0");
         timeValue = (TextView)findViewById(R.id.time);
 
         orderId = bundle.getString("orderId");
@@ -102,16 +106,30 @@ public class WaitWashingActivity extends Activity {
     };
 
     public void click_to_back(View v) {
+        timer.cancel();
         finish();
         overridePendingTransition(R.anim.push_right_in,
                 R.anim.push_right_out);
     }
 
+
     public void click_right(View v) {
-        Intent intent = new Intent();
-        intent.setClass(this, xiaoerInfoActivity.class);  //test code
-        startActivity(intent);
-        overridePendingTransition(R.anim.push_left_in,
-                R.anim.push_left_out	);
+
+        RequestParams requestParams1 = new RequestParams();
+        requestParams1.put("phone", username);
+        requestParams1.put("password", password);
+        requestParams1.put("orderid", orderId);
+
+        Log.i("delete", username + " " + password + " " + orderId);
+        RestClient.post(Constant.DELETE_ORDER, requestParams1, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                timer.cancel();
+                Log.i("delete order", response.toString());
+                finish();
+                overridePendingTransition(R.anim.push_right_in,
+                        R.anim.push_right_out);
+            }
+        });
+
     }
 }

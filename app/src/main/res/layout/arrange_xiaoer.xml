@@ -3,10 +3,33 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/head"
+        style="@style/ActionBar_Style">
+
+        <ImageView
+            style="@style/ActionBar_LeftImg_Style"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="click_to_back"/>
+        <TextView
+            android:id="@+id/title"
+            style="@style/ActionBar_CenterText_Style"
+            android:text="小二已安排"
+            />
+        <TextView
+            android:id="@+id/right"
+            style="@style/ActionBar_RightText_Style"
+            android:clickable="true"
+            android:onClick="click_right"
+            android:text="@string/waitwashing_actionbar_cancel"/>
+    </RelativeLayout>
+
     <com.baidu.mapapi.map.MapView
+        android:layout_below="@+id/head"
         android:id="@+id/bmapView"
         android:layout_width="fill_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:clickable="true">
 
     </com.baidu.mapapi.map.MapView>
@@ -17,105 +40,134 @@
         android:layout_height="fill_parent"
         android:background="@color/white">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/head_photo"
-            android:src="@drawable/muller"
-            android:scaleType="fitCenter"
-            app:riv_corner_radius="30dip"
-            app:riv_border_width="2dip"
-            app:riv_border_color="#333333"
-            app:riv_mutate_background="true"
-            app:riv_oval="true"
-            android:layout_centerVertical="true"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="10dp"/>
-
-        <LinearLayout
-            android:layout_toRightOf="@+id/head_photo"
-            android:layout_alignTop="@+id/head_photo"
-            android:id="@+id/lay1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginLeft="20dp">
+        <RelativeLayout
+            android:id="@+id/rl1"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp">
             <TextView
+                android:id="@+id/info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/dimgray"
+                android:text="小二9527正在马不停蹄地赶来"
+                android:textSize="18sp"/>
+        </RelativeLayout>
 
-                android:id="@+id/xiaoer_id"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:text="小二9527"/>
+        <View
+            android:id="@+id/view1"
+            android:layout_below="@+id/rl1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+
+        <RelativeLayout
+            android:layout_below="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/head_photo"
+                android:src="@drawable/muller"
+                android:scaleType="fitCenter"
+                app:riv_corner_radius="30dip"
+                app:riv_border_width="2dip"
+                app:riv_border_color="#333333"
+                app:riv_mutate_background="true"
+                app:riv_oval="true"
+                android:layout_centerVertical="true"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:clickable="true"
+                android:onClick="click_to_xiaoer"/>
 
             <LinearLayout
+                android:layout_toRightOf="@+id/head_photo"
+                android:layout_alignTop="@+id/head_photo"
+                android:id="@+id/lay1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:background="@color/orange">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/star"/>
-
+                android:gravity="center"
+                android:layout_marginLeft="20dp">
                 <TextView
-                    android:id="@+id/xiaoer_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5.0"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"/>
+                    android:id="@+id/xiaoer_id"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:text="小二9527"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/orange">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="4dp"
+                        android:src="@drawable/star"/>
+
+                    <TextView
+                        android:id="@+id/xiaoer_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5.0"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                android:layout_alignLeft="@+id/lay1"
+                android:layout_below="@+id/lay1"
+                android:id="@+id/xiaoer_info"
+                android:textSize="16dp"
+                android:textColor="@color/gray"
+                android:text="已完成清洗"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="20dp"
-            android:layout_alignLeft="@+id/lay1"
-            android:layout_below="@+id/lay1"
-            android:id="@+id/xiaoer_info"
-            android:textSize="16dp"
-            android:textColor="@color/gray"
-            android:text="已完成清洗"/>
+            <TextView
+                android:id="@+id/xiaoer_num"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/xiaoer_info"
+                android:layout_alignBaseline="@+id/xiaoer_info"
+                android:text="86"
+                android:textColor="@color/orange"/>
 
-        <TextView
-            android:id="@+id/xiaoer_num"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/xiaoer_info"
-            android:layout_alignBaseline="@+id/xiaoer_info"
-            android:text="86"
-            android:textColor="@color/orange"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/xiaoer_num"
+                android:layout_alignBaseline="@id/xiaoer_num"
+                android:text="辆"
+                android:textSize="16dp"
+                android:textColor="@color/gray" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/xiaoer_num"
-            android:layout_alignBaseline="@id/xiaoer_num"
-            android:text="辆"
-            android:textSize="16dp"
-            android:textColor="@color/gray" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/phone2"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"/>
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/phone2"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"/>
+        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

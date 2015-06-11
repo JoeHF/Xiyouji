@@ -13,6 +13,7 @@ public class Order extends CarVersion {
     private String sitename;
     private String xiaoEr;
     private String stage;
+    private String waiterId;
 
     public void setId(int id) {
         this.id = id;
@@ -67,5 +68,11 @@ public class Order extends CarVersion {
     }
     public String getStage() {
         return this.stage;
+    }
+    public void setWaiterId(String _waiterId) {
+        this.waiterId = _waiterId;
+    }
+    public String getWaiterId() {
+        return this.waiterId;
     }
 }

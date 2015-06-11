@@ -136,11 +136,15 @@ public class OrderFragment extends Fragment {
                     for (int i = 0; i < responses.length(); i++) {
                         Order order = new Order();
                         JSONObject jsonObject = responses.getJSONObject(i);
+                        if (jsonObject.getString("stage").equals("已关闭"))
+                            continue;
 
                         order.setVersion(jsonObject.getString("version"));
                         order.setBrand(jsonObject.getString("brand"));
                         order.setSitename(jsonObject.getString("sitename"));
                         order.setColor(jsonObject.getString("color"));
+                        order.setWaiterId(jsonObject.getString("waiterid"));
+                        order.setId(jsonObject.getInt("orderid"));
                         int type = jsonObject.getInt("type");
                         if (type == 1) {
                             order.setType("车外清洗");

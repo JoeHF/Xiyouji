@@ -1,10 +1,23 @@
-package com.xiyouji.app;
+package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.Model.Waiter;
+import com.xiyouji.app.R;
+import com.xiyouji.app.Utils.RestClient;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by houfang on 2015/5/2.
@@ -16,6 +29,9 @@ public class PayJudgeActivity extends Activity {
 
     private String waiterId;
     private String orderId;
+    private Waiter waiter = new Waiter();
+
+    private TextView xiaoerScoreValue, xiaoerNumValue, xiaoerIdValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +43,22 @@ public class PayJudgeActivity extends Activity {
 
         title = (TextView)findViewById(R.id.title);
         right = (TextView)findViewById(R.id.right);
-        pay_weixin = (CheckBox)findViewById(R.id.pay_weixin);
-        pay_ali = (CheckBox)findViewById(R.id.pay_ali);
-        title.setText("支付与评价");
-        right.setText("投诉");
+
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("orderid", orderId);
+        RestClient.post(Constant.GET_ORDER_DETAIL, requestParams, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("get order detail", response.toString());
+                try {
+                    if (response.getString("stage").equals("服务中")) {
+                        String waiterId = response.getString("waiterid");
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void click_to_back(View v) {
