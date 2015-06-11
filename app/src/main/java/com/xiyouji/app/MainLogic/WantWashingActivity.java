@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
+import com.xiyouji.app.Utils.SpUtil;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -33,7 +33,7 @@ public class WantWashingActivity extends Activity {
     private TextView carInfo, phone, carLoc;
 
     private String carId = "", siteId = "", type = "";
-    private String username, password;
+    private String phoneNumber, password;
     private int hour;
     private int minute;
 
@@ -49,6 +49,8 @@ public class WantWashingActivity extends Activity {
         phone = (TextView) findViewById(R.id.phone);
         carLoc = (TextView) findViewById(R.id.car_loc);
 
+        phoneNumber = SpUtil.getStringSharedPerference("phone", "0");
+        password = SpUtil.getStringSharedPerference("password", "0");
 
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
@@ -71,14 +73,14 @@ public class WantWashingActivity extends Activity {
 
 
         RequestParams requestParams = new RequestParams();
-        Log.i("add order", "carid:" + carId + " siteid:" + siteId + " createtime:" + createtime + " phone:" + username + " password:" + password + " type:" + type);
+        Log.i("add order", "carid:" + carId + " siteid:" + siteId + " createtime:" + createtime + " phone:" + phoneNumber + " password:" + password + " type:" + type);
         requestParams.put("carid", carId);
         requestParams.put("siteid", siteId);
         requestParams.put("createtime", createtime);
         if (wash_order.isChecked()) {//预约订单
             requestParams.put("asktime", asktime);
         }
-        requestParams.put("phone", username);
+        requestParams.put("phone", phoneNumber);
         requestParams.put("password", password);
         requestParams.put("type", type);
 
@@ -200,7 +202,7 @@ public class WantWashingActivity extends Activity {
                     case Constant.START_PHONE_NUMBER_BACK:
                         Bundle bundle = data.getExtras();
                         phone.setText(bundle.getString("phone"));
-                        username = bundle.getString("phone");
+                        phoneNumber = bundle.getString("phone");
                         break;
                     default:
                         break;
