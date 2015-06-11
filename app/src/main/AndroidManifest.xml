@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
+    <!-- 拍照权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <!-- 这个权限用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
     <!-- 这个权限用于访问GPS定位-->
@@ -112,6 +116,11 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MainLogic.WaitWaiterActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xiyouji.app.MainLogic.TakePictureActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>

@@ -70,7 +70,7 @@ public class DiscountActivity extends Activity {
                     for (int i = 0 ; i < responses.length() ; i++) {
                         JSONObject jsonObject = responses.getJSONObject(i);
                         Discount discount = new Discount();
-                        discount.setId(jsonObject.getInt("ticketid"));
+                        discount.setTicketid(jsonObject.getInt("ticketid") + "");
                         discount.setPrice(jsonObject.getString("money"));
                         DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         try {

@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightgray">
+    <!--<include layout="@layout/upimaginehead"/>-->
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white">
+        <FrameLayout
+            android:id="@+id/camera_preview"
+            android:layout_width="fill_parent"
+            android:layout_height="470dp"
+            android:background="@color/white"
+            ></FrameLayout>
+
+
+        <LinearLayout
+            android:layout_below="@+id/camera_preview"
+            android:layout_alignParentBottom="true"
+            android:layout_height="50dp"
+            android:layout_width="fill_parent"
+            android:background="@color/lightgray"
+            android:weightSum="10.0"
+            >
+            <TextView
+                android:layout_margin="3dp"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:clickable="true"
+                android:onClick="click_to_delete"
+                android:text="取消"
+                />
+
+            <Button
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="7.0"
+                android:layout_gravity="center_horizontal"
+                android:clickable="true"
+                android:id="@+id/button_capture"
+                />
+
+            <TextView
+                android:layout_margin="3dp"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/finish"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:onClick="take_phone"
+                android:clickable="false"
+                android:text="完成"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

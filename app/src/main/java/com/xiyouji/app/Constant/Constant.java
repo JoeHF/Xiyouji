@@ -16,6 +16,7 @@ public class Constant {
     public static final int START_ORDER = 15;
     public static final int START_WAIT_WASHING = 16;
     public static final int START_WAIT_WAITER = 17;
+    public static final int START_ADVICE_PICTURE = 18;
 
 
     public static final int START_LBS_BACK = 100;
@@ -25,6 +26,7 @@ public class Constant {
     public static final int START_PHONE_NUMBER_BACK = 104;
     public static final int START_ORDER_SUCCESS_BACK = 105;
     public static final int CANCEL_ORDER_BACK = 106;
+    public static final int START_ADVICE_PICTURE_BACK = 107;
 
     //rest http request
     public static final String GET_WEATHER_BY_CITY = "my/getWeatherByCity";
@@ -48,5 +50,6 @@ public class Constant {
     public static final String GET_WAITER_INFO = "waiter/getWaiterByWaiterId";
     public static final String DELETE_ORDER = "order/deleteOrderByAccount";
     public static final String ADD_COMPLAIN = "order/addComplainById";
-
+    public static final String UPLOAD_PIC = "image/uploadpic";
+    public static final String UPLOAD_COMPLAIN_IMAGE = "image/userUploadComplainImage";
 }

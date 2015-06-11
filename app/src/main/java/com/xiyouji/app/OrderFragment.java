@@ -124,6 +124,7 @@ public class OrderFragment extends Fragment
         RestClient.get(Constant.GET_ORDER_LIST, requestParams, new JsonHttpResponseHandler() {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 view1.onRefreshComplete();
+                view2.onRefreshComplete();
                 new AlertDialog.Builder(getActivity()).setTitle("提示信息").setMessage("刷新失败").show();
             }
 
