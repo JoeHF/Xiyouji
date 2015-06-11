@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/head"
+        style="@style/ActionBar_Style">
+
+        <ImageView
+            style="@style/ActionBar_LeftImg_Style"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="click_to_back"/>
+        <TextView
+            android:id="@+id/title"
+            style="@style/ActionBar_CenterText_Style"
+            android:text="投诉建议"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/white">
+    
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="10.0"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:src="@drawable/more"/>
+            <EditText
+                android:id="@+id/content"
+                android:background="@null"
+                android:hint="投诉内容"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8.5"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="10.0"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:src="@drawable/car_number"/>
+            <EditText
+                android:id="@+id/contact"
+                android:background="@null"
+                android:hint="您的联系方式"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8.5"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="10.0"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:src="@drawable/phone"/>
+            <TextView
+                android:id="@+id/call"
+                android:background="@null"
+                android:text="联系客服"
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8.5"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="25dp"
+        android:clickable="true"
+        android:onClick="click_to_advice"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/textview_round_style"
+        android:text="发送"/>
+</LinearLayout>

@@ -92,6 +92,10 @@
             android:name=".HomeFragmentActivity.PayJudgeActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".HomeFragmentActivity.AdviceActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait"></activity>
         <!-- mine fragment activity -->
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.RechargeActivity"

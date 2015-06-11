@@ -47,6 +47,6 @@ public class Constant {
     public static final String GET_ORDER_DETAIL = "order/getOrderDetail";
     public static final String GET_WAITER_INFO = "waiter/getWaiterByWaiterId";
     public static final String DELETE_ORDER = "order/deleteOrderByAccount";
-
+    public static final String ADD_COMPLAIN = "order/addComplainById";
 
 }

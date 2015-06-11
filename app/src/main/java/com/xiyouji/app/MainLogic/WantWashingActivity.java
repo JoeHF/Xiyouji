@@ -2,6 +2,7 @@ package com.xiyouji.app.MainLogic;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -194,6 +195,14 @@ public class WantWashingActivity extends Activity {
         wash_inout.setChecked(false);
         ((CheckBox) v).setChecked(true);
         type = ((CheckBox) v).getTag().toString();
+        if (type.equals("2")) {//外部
+            new AlertDialog.Builder(this).setTitle("提示").setMessage("请在车辆旁等待，并将车钥匙交给店小二").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+             }).show();
+        }
     }
 
     TimerTask task = new TimerTask() {
