@@ -1,4 +1,4 @@
-package com.xiyouji.app.HomeFragmentActivity;
+package com.xiyouji.app.MainLogic;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.MainLogic.WaitWashingActivity;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.DateTimePickDialogUtil;
 import com.xiyouji.app.Utils.RestClient;

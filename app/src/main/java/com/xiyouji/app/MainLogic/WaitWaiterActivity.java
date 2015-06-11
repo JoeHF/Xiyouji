@@ -26,6 +26,8 @@ import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.HomeFragmentActivity.PayJudgeActivity;
+import com.xiyouji.app.HomeFragmentActivity.XiaoerDetailActivity;
 import com.xiyouji.app.Model.Waiter;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;

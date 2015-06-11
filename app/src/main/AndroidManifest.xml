@@ -63,7 +63,7 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".MainLogic.WantWashingActivity"
+            android:name="com.xiyouji.app.MainLogic.WantWashingActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -72,10 +72,6 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainLogic.CarLbsActivity"
-            android:label="Xiyouji"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.xiyouji.app.xiaoerInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
