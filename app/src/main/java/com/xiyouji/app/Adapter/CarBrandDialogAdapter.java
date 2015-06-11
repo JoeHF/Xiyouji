@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.xiyouji.app.HomeFragmentActivity.CarInfoActivity;
+import com.xiyouji.app.MainLogic.CarInfoActivity;
 import com.xiyouji.app.Model.CarBrand;
 import com.xiyouji.app.R;
 

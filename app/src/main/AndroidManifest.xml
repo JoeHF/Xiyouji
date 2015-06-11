@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xiyouji.app" >
+    package="com.xiyouji.app">
 
     <!-- Push service 运行需要的权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
@@ -32,24 +32,23 @@
     <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
 
     <application
-        android:name="com.baidu.frontia.FrontiaApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote">
-        </service>
+            android:process=":remote"></service>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="oFs2TtwCwjcTggEqhdgicjc7" />
+
         <activity
             android:name="com.xiyouji.app.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.Login.LoginActivity"
             android:label="Xiyouji"
@@ -62,68 +61,60 @@
         <activity
             android:name="com.xiyouji.app.Login.RegisterActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.WantWashingActivity"
+            android:name=".MainLogic.WantWashingActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.WaitWashingActivity"
+            android:name=".MainLogic.WaitWashingActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.CarLbsActivity"
+            android:name=".MainLogic.CarLbsActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.CarInfoActivity"
+            android:name="com.xiyouji.app.xiaoerInfoActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.CarlocActivity"
+            android:name=".MainLogic.CarInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".HomeFragmentActivity.NumberCheckActivity"
+            android:name=".MainLogic.CarlocActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".MainLogic.NumberCheckActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".HomeFragmentActivity.PayJudgeActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <!-- mine fragment activity -->
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.RechargeActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.RechargeRecordActivity"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.DiscountActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.xiyouji.app.HomeFragmentActivity.WaitWaiterActivity"
+            android:name="com.xiyouji.app.MainLogic.WaitWaiterActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.HomeFragmentActivity.XiaoerDetailActivity"
             android:windowSoftInputMode="stateHidden"
@@ -134,20 +125,17 @@
             android:name="com.xiyouji.app.HomeFragmentActivity.OrderCompleteActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.CommonAddressActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.CommonCarActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <!-- push应用定义消息receiver声明 -->
         <receiver android:name="com.xiyouji.app.Utils.MyPushMessageReceiver">
@@ -161,7 +149,8 @@
         </receiver>
 
         <!-- push必须的receviver和service声明 -->
-        <receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -175,23 +164,25 @@
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.METHOD" />
                 <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+
         <service
             android:name="com.baidu.android.pushservice.PushService"
             android:exported="true"
-            android:process=":bdservice_v1" >
-            <intent-filter >
-                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE"/>
+            android:process=":bdservice_v1">
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
         </service>
         <!-- 4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率 -->

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/lightgray">
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/ActionBar_Style">
 
@@ -10,14 +12,15 @@
             android:id="@+id/back"
             android:onClick="click_to_back"
             style="@style/ActionBar_LeftImg_Style"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back" />
+
         <TextView
             style="@style/ActionBar_CenterText_Style"
-            android:text="@string/phone_check"
-            />
+            android:text="@string/phone_check" />
+
         <ImageView
             style="@style/ActionBar_RightImg_Style"
-            android:src="@drawable/my"/>
+            android:src="@drawable/my" />
     </RelativeLayout>
 
 
@@ -27,50 +30,59 @@
         android:layout_height="30dp">
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/lightgray"
-        />
-    <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
+        android:background="@color/lightgray" />
+
+    <LinearLayout style="@style/CommonBar_InLinearLayout_Style">
+
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/phone"/>
+            android:src="@drawable/phone" />
+
         <EditText
             android:id="@+id/phone"
             android:background="@null"
             android:textSize="16dp"
+            android:inputType="phone"
             style="@style/CommonBar_CenterText_Style"
-            android:hint="@string/phone_number"
-            />
+            android:hint="@string/phone_number" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/lightgray"
-        />
-    <LinearLayout
-        style="@style/CommonBar_InLinearLayout_Style">
+        android:background="@color/lightgray" />
+
+    <LinearLayout style="@style/CommonBar_InLinearLayout_Style">
+
         <ImageView
+
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/mark"/>
-        <TextView
+            android:src="@drawable/mark" />
+
+        <EditText
+            android:background="@null"
+            android:textSize="16dp"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/code_identify"
-            />
-          <TextView style="@style/CommonBar_RightImg_Style"
-              android:clickable="true"
-              android:onClick="get_identify"
-              android:text="@string/get_identify"/>
+            android:hint="@string/code_identify" />
+
+        <TextView
+            style="@style/CommonBar_RightImg_Style"
+            android:clickable="true"
+            android:onClick="get_identify"
+            android:text="@string/get_identify" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/lightgray"
-        />
+        android:background="@color/lightgray" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,5 +95,5 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:background="@drawable/textview_round_style"
-        android:text="@string/submit_text"/>
+        android:text="@string/submit_text" />
 </LinearLayout>

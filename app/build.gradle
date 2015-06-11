@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
-
+    buildToolsVersion '20.0.0'
     defaultConfig {
         applicationId "com.xiyouji.app"
         minSdkVersion 14
@@ -29,6 +28,8 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    productFlavors {
+    }
 }
 
 repositories {
@@ -41,7 +42,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.makeramen:roundedimageview:2.0.1'
     compile 'com.loopj.android:android-async-http:1.4.7'
-    compile ('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
+    compile('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
         transitive = true
     }
     compile project(':extras:pull')
