@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@color/white">
 
 
-    <include layout="@layout/loginhead"/>
+    <include layout="@layout/loginhead" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -14,8 +15,7 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/head_photo"
             android:src="@color/dimgray"
             android:scaleType="fitCenter"
@@ -27,7 +27,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp" />
 
     </LinearLayout>
 
@@ -44,10 +44,12 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         style="@style/CommonBar_InLinearLayout_Style"
-        android:layout_height="50dp" >
+        android:layout_height="50dp">
+
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/phone"/>
+            android:src="@drawable/phone" />
+
         <EditText
             android:id="@+id/username"
             style="@style/CommonBar_CenterText_Style"
@@ -55,37 +57,39 @@
             android:hint="输入您的账号"
             android:background="@null" />
     </LinearLayout>
-<!--
-    <View
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/lightgray" /> -->
+    <!--
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" /> -->
 
     <LinearLayout
         android:background="@drawable/login_shape"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         style="@style/CommonBar_InLinearLayout_Style"
-        android:layout_height="50dp" >
+        android:layout_height="50dp">
+
         <ImageView
             style="@style/CommonBar_LeftImg_Style"
-            android:src="@drawable/mark"/>
+            android:src="@drawable/mark" />
+
         <EditText
             android:id="@+id/password"
             style="@style/CommonBar_CenterText_Style"
             android:layout_weight="18.0"
             android:hint="请输入密码"
             android:inputType="textPassword"
-            android:background="@null"/>
+            android:background="@null" />
     </LinearLayout>
-<!--
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/lightgray" />
--->
+    <!--
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+    -->
     <TextView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -96,5 +100,5 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:background="@drawable/textview_round_style"
-        android:text="确定"/>
+        android:text="确定" />
 </LinearLayout>

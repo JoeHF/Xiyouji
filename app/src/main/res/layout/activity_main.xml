@@ -4,22 +4,22 @@
     android:orientation='vertical'
     xmlns:android='http://schemas.android.com/apk/res/android'>
 
-    <include layout="@layout/actionbar_main"/>
+    <include layout="@layout/actionbar_main" />
 
     <fragment
         android:name='com.xiyouji.app.HomeFragmentActivity.HomeFragment'
         android:id='@+id/fragment1'
         android:layout_height='0dp'
         android:layout_weight='1.0'
-        android:layout_width='fill_parent'
-        />
+        android:layout_width='fill_parent' />
+
     <fragment
         android:name='com.xiyouji.app.OrderFragment'
         android:id='@+id/fragment2'
         android:layout_height='0dp'
         android:layout_weight='1.0'
-        android:layout_width='fill_parent'
-        />
+        android:layout_width='fill_parent' />
+
     <fragment
         android:name='com.xiyouji.app.MineFragmentActivity.MineFragment'
         android:id='@+id/fragment3'
@@ -29,7 +29,7 @@
 
         />
 
-    
-    <include layout='@layout/tabfoot'/>
+
+    <include layout='@layout/tabfoot' />
 
 </LinearLayout>

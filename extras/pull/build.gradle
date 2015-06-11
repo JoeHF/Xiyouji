@@ -1,7 +1,7 @@
 apply plugin: 'android-library'
 android {
-    compileSdkVersion 17
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 20
+    buildToolsVersion '20.0.0'
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -13,4 +13,6 @@ android {
             assets.srcDirs = ['assets']
         }
     }
+}
+dependencies {
 }

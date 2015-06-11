@@ -47,7 +47,7 @@ public class WaitWaiterActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
+//        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.arrange_xiaoer);
         Bundle bundle = getIntent().getExtras();
         waiterId = bundle.getString("waiterId");

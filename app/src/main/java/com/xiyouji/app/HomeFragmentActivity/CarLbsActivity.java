@@ -56,7 +56,7 @@ public class CarLbsActivity extends Activity implements OnGetGeoCoderResultListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
+//        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.car_location);
         save = (TextView)findViewById(R.id.right);
         save.setClickable(false);

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -15,6 +16,7 @@ import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.MainActivity;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
+import com.xiyouji.app.Utils.SpUtil;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -30,19 +32,29 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        username = (EditText)findViewById(R.id.username);
-        password = (EditText)findViewById(R.id.password);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        if (!SpUtil.getStringSharedPerference("id", "").equals("")) {
+            Intent intent1 = new Intent();
+            intent1.setClass(LoginActivity.this, MainActivity.class);
+            startActivity(intent1);
+            finish();
+        }
     }
 
     public void click_to_homepage(View v) {
-        //final String username_value = username.getText().toString();
-        //final String password_value = password.getText().toString();
+        if (username.getText() == null || password.getText() == null) {
+            Toast.makeText(this, "请输入账号密码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        final String username_value = username.getText().toString();
+        final String password_value = password.getText().toString();
 
         RequestParams requestParams = new RequestParams();
 
         //for test
-        final String username_value = "123";
-        final String password_value = "123";
+//        final String username_value = "123";
+//        final String password_value = "123";
         requestParams.put("phone", username_value);
         requestParams.put("password", password_value);
 
@@ -58,23 +70,31 @@ public class LoginActivity extends Activity {
                     String latitude = response.getString("lat");
                     String nickname = response.getString("nickname");
 
-                    //实例化SharedPreferences对象（第一步）
-                    SharedPreferences mySharedPreferences = getSharedPreferences("user",
-                            Activity.MODE_PRIVATE);
-                    //实例化SharedPreferences.Editor对象（第二步）
-                    SharedPreferences.Editor editor = mySharedPreferences.edit();
-                    //用putString的方法保存数据
-                    editor.putString("id", id);
-                    editor.putString("phone", phone);
-                    editor.putString("longitude", longitude);
-                    editor.putString("latitude", latitude);
-                    editor.putString("money", money);
-                    editor.putString("username", username_value);
-                    editor.putString("password", password_value);
-                    editor.putString("nickname", nickname);
-
-                    //提交当前数据
-                    editor.commit();
+//                    //实例化SharedPreferences对象（第一步）
+//                    SharedPreferences mySharedPreferences = getSharedPreferences("user",
+//                            Activity.MODE_PRIVATE);
+//                    //实例化SharedPreferences.Editor对象（第二步）
+//                    SharedPreferences.Editor editor = mySharedPreferences.edit();
+//                    //用putString的方法保存数据
+//                    editor.putString("id", id);
+//                    editor.putString("phone", phone);
+//                    editor.putString("longitude", longitude);
+//                    editor.putString("latitude", latitude);
+//                    editor.putString("money", money);
+//                    editor.putString("username", username_value);
+//                    editor.putString("password", password_value);
+//                    editor.putString("nickname", nickname);
+//
+//                    //提交当前数据
+//                    editor.commit();
+                    SpUtil.setStringSharedPerference("id", id);
+                    SpUtil.setStringSharedPerference("phone", phone);
+                    SpUtil.setStringSharedPerference("longitude", longitude);
+                    SpUtil.setStringSharedPerference("latitude", latitude);
+                    SpUtil.setStringSharedPerference("money", money);
+                    SpUtil.setStringSharedPerference("username", username_value);
+                    SpUtil.setStringSharedPerference("password", password_value);
+                    SpUtil.setStringSharedPerference("nickname", nickname);
 
                     Intent intent1 = new Intent();
                     intent1.setClass(LoginActivity.this, MainActivity.class);
@@ -95,19 +115,19 @@ public class LoginActivity extends Activity {
         intent.setClass(this, RegisterActivity.class);
         startActivityForResult(intent, Constant.START_REGISTER);
         overridePendingTransition(R.anim.push_left_in,
-                R.anim.push_left_out	);
+                R.anim.push_left_out);
 
     }
 
     protected void onActivityResult(final int requestCode, int resultCode, Intent intent) {
-        if(requestCode == Constant.START_REGISTER) {
+        if (requestCode == Constant.START_REGISTER) {
             switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
                 case Constant.START_REGISTER_BACK:
                     Bundle bundle = intent.getExtras(); //data为B中回传的Intent
                     String status = bundle.getString("status");//str即为回传的值
                     String username = bundle.getString("username");
                     String password = bundle.getString("password");
-                    if(status.equals("success")) {
+                    if (status.equals("success")) {
                         RequestParams requestParams = new RequestParams();
                         requestParams.put("phone", username);
                         requestParams.put("password", password);
@@ -125,7 +145,7 @@ public class LoginActivity extends Activity {
                                     String nickname = response.getString("nickname");
 
                                     //实例化SharedPreferences对象（第一步）
-                                    SharedPreferences mySharedPreferences= getSharedPreferences("user",
+                                    SharedPreferences mySharedPreferences = getSharedPreferences("user",
                                             Activity.MODE_PRIVATE);
                                     //实例化SharedPreferences.Editor对象（第二步）
                                     SharedPreferences.Editor editor = mySharedPreferences.edit();
@@ -143,7 +163,7 @@ public class LoginActivity extends Activity {
                                     intent1.setClass(LoginActivity.this, MainActivity.class);
                                     startActivity(intent1);
                                     overridePendingTransition(R.anim.push_left_in,
-                                            R.anim.push_left_out	);
+                                            R.anim.push_left_out);
                                     finish();
 
                                 } catch (JSONException e) {

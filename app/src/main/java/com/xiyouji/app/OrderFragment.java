@@ -3,8 +3,8 @@ package com.xiyouji.app;
 /**
  * Created by houfang on 15/4/28.
  */
+
 import android.app.AlertDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -25,6 +25,7 @@ import com.xiyouji.app.Adapter.OrderOngoingAdapter;
 import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.Model.Order;
 import com.xiyouji.app.Utils.RestClient;
+import com.xiyouji.app.Utils.SpUtil;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -36,8 +37,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderFragment extends Fragment
-{
+public class OrderFragment extends Fragment {
     private ViewPager pager;
     private View rootView;
     private View page1, page2;
@@ -49,17 +49,19 @@ public class OrderFragment extends Fragment
     private List<Order> orderOngoings, orderHistorys;
     private OrderOngoingAdapter orderOngoingAdapter;
     private OrderHistoryAdapter orderHistoryAdapter;
-    private String userId;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
-        if(rootView == null) {
+                             Bundle savedInstanceState) {
+        if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_order, container, false);
             pager = (ViewPager) rootView.findViewById(R.id.view_pager);
             page1 = inflater.inflate(R.layout.order_ing, null);
             page2 = inflater.inflate(R.layout.order_history, null);
-            view1 = (PullToRefreshListView)page1.findViewById(R.id.listView);
-            view2 = (PullToRefreshListView)page2.findViewById(R.id.listView);
+            view1 = (PullToRefreshListView) page1.findViewById(R.id.listView);
+            view2 = (PullToRefreshListView) page2.findViewById(R.id.listView);
+            view1.setMode(PullToRefreshBase.Mode.DISABLED);
+            view2.setMode(PullToRefreshBase.Mode.DISABLED);
 
             view1.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
                 @Override
@@ -78,8 +80,8 @@ public class OrderFragment extends Fragment
             orderOngoings = new ArrayList<>();
             orderOngoingAdapter = new OrderOngoingAdapter(orderOngoings, getActivity());
 
-            text1 = (TextView)rootView.findViewById(R.id.text1);
-            text2 = (TextView)rootView.findViewById(R.id.text2);
+            text1 = (TextView) rootView.findViewById(R.id.text1);
+            text2 = (TextView) rootView.findViewById(R.id.text2);
             text1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,20 +107,18 @@ public class OrderFragment extends Fragment
 
         }
 
-        ViewGroup parent = (ViewGroup)rootView.getParent();
-        if(parent != null) {
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
             parent.removeView(rootView);
         }
 
-        SharedPreferences user = getActivity().getSharedPreferences("user", 0);
-        userId = user.getString("id", "0");
         GetOrderData();
         return rootView;
     }
 
     public void GetOrderData() {
         RequestParams requestParams = new RequestParams();
-        requestParams.put("userid", userId);
+        requestParams.put("userid", SpUtil.getStringSharedPerference("id", "0"));
 
         RestClient.get(Constant.GET_ORDER_LIST, requestParams, new JsonHttpResponseHandler() {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
@@ -127,13 +127,13 @@ public class OrderFragment extends Fragment
             }
 
             public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
-                Log.i("order list info", responses.toString());
+                Log.e("order list info", responses.toString());
                 view1.onRefreshComplete();
                 view2.onRefreshComplete();
 
                 try {
                     orderOngoings = new ArrayList<>();
-                    for(int i = 0 ; i < responses.length() ; i++) {
+                    for (int i = 0; i < responses.length(); i++) {
                         Order order = new Order();
                         JSONObject jsonObject = responses.getJSONObject(i);
 
@@ -161,8 +161,7 @@ public class OrderFragment extends Fragment
                         order.setNumber(jsonObject.getString("number"));
                         if (!jsonObject.getString("stage").equals("已完成")) {
                             orderOngoings.add(order);
-                        }
-                        else {
+                        } else {
                             orderHistorys.add(order);
                         }
                     }
@@ -196,13 +195,12 @@ public class OrderFragment extends Fragment
 
         @Override
         public void onPageSelected(int position) {
-            if(position == 0) {
+            if (position == 0) {
                 text1.setBackgroundResource(R.color.main_theme_tab_color);
                 text1.setTextColor(0xffffffff);
                 text2.setBackgroundResource(R.color.white);
                 text2.setTextColor(0xff228B22);
-            }
-            else {
+            } else {
                 text2.setBackgroundResource(R.color.main_theme_tab_color);
                 text2.setTextColor(0xffffffff);
                 text1.setBackgroundResource(R.color.white);

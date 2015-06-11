@@ -20,9 +20,7 @@ import org.json.JSONObject;
 
 
 /**
- *
  * Created by houfang on 15/4/26.
- *
  */
 public class HomeFragment extends Fragment {
     private String weather_hint_value = "";
@@ -38,7 +36,12 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        View rootView;
+        rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        weather_hint = (TextView) rootView.findViewById(R.id.washing_hint_value);
+        weather = (TextView) rootView.findViewById(R.id.weather_value);
+        date = (TextView) rootView.findViewById(R.id.date);
+        temperature = (TextView) rootView.findViewById(R.id.temperature);
         RestClient.get(Constant.GET_WEATHER_BY_CITY + "?city=杭州", null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -49,9 +52,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray weathers) {
                 // Pull out the first event on the public timeline
-                for(int i = 0 ; i < weathers.length() ; i++) {
+                for (int i = 0; i < weathers.length(); i++) {
                     try {
-                        JSONObject weather = (JSONObject)weathers.get(i);
+                        JSONObject weather = (JSONObject) weathers.get(i);
                         Log.i("http:weather JSONObject", weather.toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -59,10 +62,10 @@ public class HomeFragment extends Fragment {
                 }
 
                 try {
-                    weather_hint_value = ((JSONObject)weathers.get(0)).getString("xiche");
-                    weather_value = ((JSONObject)weathers.get(0)).getString("weather");
-                    date_value = ((JSONObject)weathers.get(0)).getString("date");
-                    temperature_value = ((JSONObject)weathers.get(0)).getString("temp");
+                    weather_hint_value = ((JSONObject) weathers.get(0)).getString("xiche");
+                    weather_value = ((JSONObject) weathers.get(0)).getString("weather");
+                    date_value = ((JSONObject) weathers.get(0)).getString("date");
+                    temperature_value = ((JSONObject) weathers.get(0)).getString("temp");
                     weather_hint.setText(weather_hint_value);
                     weather.setText(weather_value);
                     date.setText(date_value);
@@ -73,13 +76,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-        View rootView;
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        weather_hint = (TextView)rootView.findViewById(R.id.washing_hint_value);
-        weather = (TextView)rootView.findViewById(R.id.weather_value);
-        date = (TextView)rootView.findViewById(R.id.date);
-        temperature = (TextView)rootView.findViewById(R.id.temperature);
 
 
         return rootView;
