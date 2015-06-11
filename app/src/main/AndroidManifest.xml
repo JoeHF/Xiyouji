@@ -63,15 +63,15 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.WantWashingActivity"
+            android:name=".MainLogic.WantWashingActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.WaitWashingActivity"
+            android:name=".MainLogic.WaitWashingActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.CarLbsActivity"
+            android:name=".MainLogic.CarLbsActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -79,17 +79,17 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".HomeFragmentActivity.CarInfoActivity"
+            android:name=".MainLogic.CarInfoActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".HomeFragmentActivity.CarlocActivity"
+            android:name=".MainLogic.CarlocActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".HomeFragmentActivity.NumberCheckActivity"
+            android:name=".MainLogic.NumberCheckActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -111,7 +111,7 @@
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.xiyouji.app.HomeFragmentActivity.WaitWaiterActivity"
+            android:name="com.xiyouji.app.MainLogic.WaitWaiterActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>

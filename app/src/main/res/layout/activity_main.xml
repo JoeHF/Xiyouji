@@ -7,7 +7,7 @@
     <include layout="@layout/actionbar_main" />
 
     <fragment
-        android:name='com.xiyouji.app.HomeFragmentActivity.HomeFragment'
+        android:name='com.xiyouji.app.MainLogic.HomeFragment'
         android:id='@+id/fragment1'
         android:layout_height='0dp'
         android:layout_weight='1.0'

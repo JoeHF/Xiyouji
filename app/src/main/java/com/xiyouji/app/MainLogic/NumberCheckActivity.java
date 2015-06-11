@@ -1,4 +1,4 @@
-package com.xiyouji.app.HomeFragmentActivity;
+package com.xiyouji.app.MainLogic;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,17 +12,19 @@ import com.xiyouji.app.R;
 /**
  * Created by houfang on 2015/4/29.
  */
-public class NumberCheckActivity extends Activity{
+public class NumberCheckActivity extends Activity {
     private EditText phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.number_check);
-        phone = (EditText)findViewById(R.id.phone);
+        phone = (EditText) findViewById(R.id.phone);
     }
 
     public void click_to_phone_check(View v) {
+        //TODO netcheck
+
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putString("phone", phone.getText().toString());

@@ -1,4 +1,4 @@
-package com.xiyouji.app.HomeFragmentActivity;
+package com.xiyouji.app.MainLogic;
 
 import android.app.Activity;
 import android.app.AlertDialog;

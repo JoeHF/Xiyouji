@@ -31,8 +31,7 @@
                 <TextView
                     android:id="@+id/phone"
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/common_bar_phone"
-                    />
+                    android:text="@string/common_bar_phone" />
 
                 <ImageView
                     style="@style/CommonBar_RightImg_Style"
@@ -120,6 +119,7 @@
                         android:onClick="click_wash_type"
                         android:button="@null"
                         android:tag="immediately"
+                        android:checked="true"
                         android:background="@drawable/pay_check_checkbox" />
 
                     <TextView
@@ -161,7 +161,10 @@
                 android:layout_height="1dp"
                 android:background="@color/lightgray" />
 
-            <LinearLayout style="@style/CommonBar_InLinearLayout_Style">
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/wash_order_time"
+                style="@style/CommonBar_InLinearLayout_Style">
 
                 <ImageView style="@style/CommonBar_LeftImg_Style" />
 
@@ -169,7 +172,7 @@
                     android:id="@+id/order_time"
                     style="@style/CommonBar_CenterText_Style"
                     android:layout_marginLeft="34dp"
-                    android:text="预约时间： 3月26日 19:30"
+                    android:text="预约时间： 19:30"
 
                     />
 
@@ -275,6 +278,7 @@
                     android:onClick="click_wash_inout"
                     android:button="@null"
                     android:tag="1"
+                    android:checked="true"
                     android:background="@drawable/pay_check_checkbox" />
 
                 <TextView

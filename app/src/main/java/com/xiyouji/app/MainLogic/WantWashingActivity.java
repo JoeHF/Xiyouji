@@ -1,6 +1,9 @@
-package com.xiyouji.app.HomeFragmentActivity;
+package com.xiyouji.app.MainLogic;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -19,7 +23,7 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by houfang on 15/4/28.
@@ -30,21 +34,26 @@ public class WantWashingActivity extends Activity {
 
     private String carId = "", siteId = "", type = "";
     private String username, password;
+    private int hour;
+    private int minute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.want_washing);
-        wash_immediately = (CheckBox)findViewById(R.id.wash_immediately);
-        wash_order = (CheckBox)findViewById(R.id.wash_order);
-        wash_out = (CheckBox)findViewById(R.id.wash_outside);
-        wash_inout = (CheckBox)findViewById(R.id.wash_inout);
-        carInfo = (TextView)findViewById(R.id.car_info);
-        phone = (TextView)findViewById(R.id.phone);
-        carLoc = (TextView)findViewById(R.id.car_loc);
+        wash_immediately = (CheckBox) findViewById(R.id.wash_immediately);
+        wash_order = (CheckBox) findViewById(R.id.wash_order);
+        wash_out = (CheckBox) findViewById(R.id.wash_outside);
+        wash_inout = (CheckBox) findViewById(R.id.wash_inout);
+        carInfo = (TextView) findViewById(R.id.car_info);
+        phone = (TextView) findViewById(R.id.phone);
+        carLoc = (TextView) findViewById(R.id.car_loc);
 
-        SharedPreferences user = getSharedPreferences("user", 0);
-        username = user.getString("username", "0");
-        password = user.getString("password", "0");
+
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(System.currentTimeMillis());
+        hour = c.get(Calendar.HOUR_OF_DAY);
+        minute = c.get(Calendar.MINUTE);
     }
 
     public void click_to_back(View v) {
@@ -53,19 +62,22 @@ public class WantWashingActivity extends Activity {
                 R.anim.push_right_out);
     }
 
-    public void click_to_waitwash(View v)
-    {
-        Date date=new Date();
-        String time = date.getTime() + "";
-        //Log.i("Time:", date.getTime() + "");
-        //DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //String time = format.format(date);
+    public void click_to_waitwash(View v) {
+
+
+        Calendar c = Calendar.getInstance();
+        String createtime = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + c.get(Calendar.DAY_OF_MONTH) + " " + c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + c.get(Calendar.SECOND);
+        String asktime = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + c.get(Calendar.DAY_OF_MONTH) + " " + hour + ":" + minute + ":00";
+
 
         RequestParams requestParams = new RequestParams();
-        Log.i("add order", "carid:" + carId + " siteid:" + siteId + " createtime:" + time + " phone:" + username + " password:" + password + " type:" + type);
+        Log.i("add order", "carid:" + carId + " siteid:" + siteId + " createtime:" + createtime + " phone:" + username + " password:" + password + " type:" + type);
         requestParams.put("carid", carId);
         requestParams.put("siteid", siteId);
-        requestParams.put("createtime", time);
+        requestParams.put("createtime", createtime);
+        if (wash_order.isChecked()) {//预约订单
+            requestParams.put("asktime", asktime);
+        }
         requestParams.put("phone", username);
         requestParams.put("password", password);
         requestParams.put("type", type);
@@ -75,7 +87,7 @@ public class WantWashingActivity extends Activity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.i("make order", response.toString());
                 try {
-                    if(response.getString("stage").equals("success")) {
+                    if (response.getString("stage").equals("success")) {
                         Intent intent = new Intent();
                         Bundle bundle = new Bundle();
                         bundle.putString("orderId", response.getString("orderid"));
@@ -124,6 +136,32 @@ public class WantWashingActivity extends Activity {
         wash_immediately.setChecked(false);
         wash_order.setChecked(false);
         ((CheckBox) v).setChecked(true);
+        if (v.getId() == wash_immediately.getId()) {
+            wash_immediately.setChecked(true);
+            wash_order.setChecked(false);
+            findViewById(R.id.wash_order_time).setVisibility(View.GONE);
+        } else {
+            wash_immediately.setChecked(false);
+            wash_order.setChecked(true);
+            findViewById(R.id.wash_order_time).setVisibility(View.VISIBLE);
+            //TODO
+
+            new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//                    c.setTimeInMillis(System.currentTimeMillis());
+//                    c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+//                    c.set(Calendar.MINUTE, minute);
+//                    c.set(Calendar.SECOND, 0);
+//                    c.set(Calendar.MILLISECOND, 0);
+                    hourOfDay = hourOfDay;
+                    minute = minute;
+                    ((TextView) findViewById(R.id.order_time)).setText("预约时间： " +
+                            (hourOfDay + 1) + ":" + minute);
+                }
+            }, hour, minute, true).show();
+
+        }
     }
 
     public void click_wash_inout(View v) {
@@ -131,6 +169,14 @@ public class WantWashingActivity extends Activity {
         wash_inout.setChecked(false);
         ((CheckBox) v).setChecked(true);
         type = ((CheckBox) v).getTag().toString();
+        if (type.equals("2")) {//外部
+            new AlertDialog.Builder(this).setTitle("提示").setMessage("请在车辆旁等待，并将车钥匙交给店小二").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            }).show();
+        }
     }
 
     @Override
@@ -154,6 +200,7 @@ public class WantWashingActivity extends Activity {
                     case Constant.START_PHONE_NUMBER_BACK:
                         Bundle bundle = data.getExtras();
                         phone.setText(bundle.getString("phone"));
+                        username = bundle.getString("phone");
                         break;
                     default:
                         break;

@@ -16,7 +16,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
-import com.xiyouji.app.HomeFragmentActivity.WantWashingActivity;
+import com.xiyouji.app.MainLogic.WantWashingActivity;
 import com.xiyouji.app.Login.LoginActivity;
 import com.xiyouji.app.MineFragmentActivity.CommonAddressActivity;
 import com.xiyouji.app.MineFragmentActivity.CommonCarActivity;

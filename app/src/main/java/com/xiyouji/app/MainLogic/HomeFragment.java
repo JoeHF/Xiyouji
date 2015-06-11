@@ -1,4 +1,4 @@
-package com.xiyouji.app.HomeFragmentActivity;
+package com.xiyouji.app.MainLogic;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
