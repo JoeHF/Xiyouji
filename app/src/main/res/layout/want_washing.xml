@@ -160,18 +160,18 @@
             <LinearLayout
                 style="@style/CommonBar_InLinearLayout_Style">
                 <ImageView
-                    style="@style/CommonBar_LeftImg_Style"
-                    />
+                    style="@style/CommonBar_LeftImg_Style"/>
                 <TextView
+                    android:text="预约时间"
+                    android:layout_weight="4.0"
+                    style="@style/CommonBar_CenterText_Style"
+                    />
+                <EditText
                     android:id="@+id/order_time"
                     style="@style/CommonBar_CenterText_Style"
-                    android:layout_marginLeft="34dp"
-                    android:text="预约时间： 3月26日 19:30"
+                    android:background="@null"
+                    android:layout_weight="14.0" />
 
-                    />
-                <ImageView
-                    style="@style/CommonBar_RightImg_Style"
-                    />
             </LinearLayout>
 
             <View
@@ -210,12 +210,13 @@
                     android:layout_weight="4.0"
                     />
 
-                <TextView
+                <EditText
+                    android:id="@+id/discount"
                     style="@style/CommonBar_CenterText_Style"
-                    android:text="@string/common_bar_discount_hint"
+                    android:hint="可选"
                     android:layout_weight="14.0"
                     android:textColor="@color/gray"
-                    />
+                    android:background="@null" />
 
                 </LinearLayout>
             </LinearLayout>

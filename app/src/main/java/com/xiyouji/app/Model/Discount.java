@@ -10,6 +10,7 @@ public class Discount {
     private String startDate;
     private String code;
     private int used;
+    private String ticketid;
 
     public void setId(int _id) {
         this.id = _id;
@@ -23,7 +24,7 @@ public class Discount {
     public String getPrice() {
         return this.price;
     }
-    public void setDuedate(String _dueDate) {
+    public void setDueDate(String _dueDate) {
         this.dueDate = _dueDate;
     }
     public String getDueDate() {
@@ -46,5 +47,11 @@ public class Discount {
     }
     public int getUsed() {
         return this.used;
+    }
+    public void setTicketid(String _ticketid) {
+        this.ticketid = _ticketid;
+    }
+    public String getTicketid() {
+        return this.ticketid;
     }
 }

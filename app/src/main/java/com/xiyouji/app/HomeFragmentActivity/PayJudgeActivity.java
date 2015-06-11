@@ -43,6 +43,8 @@ public class PayJudgeActivity extends Activity {
 
         title = (TextView)findViewById(R.id.title);
         right = (TextView)findViewById(R.id.right);
+        title.setText("支付与评价");
+        right.setText("投诉");
 
         RequestParams requestParams = new RequestParams();
         requestParams.put("orderid", orderId);
@@ -76,5 +78,9 @@ public class PayJudgeActivity extends Activity {
             pay_weixin.setChecked(false);
             pay_ali.setChecked(true);
         }
+    }
+
+    public void click_right(View v) {
+
     }
 }

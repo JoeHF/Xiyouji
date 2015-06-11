@@ -43,6 +43,7 @@ import java.util.List;
 public class MainActivity extends FragmentActivity implements OnGestureListener
 {
 
+    public Fragment orderFragment, homeFragment, mineFragment;
     /**
      * 构造广播监听类，监听 SDK key 验证以及网络异常广播
      */
@@ -438,6 +439,32 @@ public class MainActivity extends FragmentActivity implements OnGestureListener
         finish();
         overridePendingTransition(R.anim.push_right_in,
                 R.anim.push_right_out);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constant.START_WAIT_WASHING:
+                switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+                    case Constant.CANCEL_ORDER_BACK:
+                        ((OrderFragment)orderFragment).GetOrderData();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case Constant.START_WAIT_WAITER:
+                switch (resultCode) {
+                    case Constant.CANCEL_ORDER_BACK:
+                        ((OrderFragment)orderFragment).GetOrderData();
+                        break;
+                    default:
+                        break;
+                }
+            default:
+                break;
+        }
+
 
     }
 

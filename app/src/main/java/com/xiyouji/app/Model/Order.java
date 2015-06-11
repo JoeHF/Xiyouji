@@ -14,6 +14,7 @@ public class Order extends CarVersion {
     private String xiaoEr;
     private String stage;
     private String waiterId;
+    private String askTime;
 
     public void setId(int id) {
         this.id = id;
@@ -74,5 +75,11 @@ public class Order extends CarVersion {
     }
     public String getWaiterId() {
         return this.waiterId;
+    }
+    public void setAskTime(String _asktime) {
+        this.askTime = _asktime;
+    }
+    public String getAskTime() {
+        return this.askTime;
     }
 }

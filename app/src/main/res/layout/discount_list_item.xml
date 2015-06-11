@@ -26,6 +26,16 @@
             android:layout_height="wrap_content"
             android:text="@string/discount_list_hint"
             android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/ticketid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/hint"
+            android:text="1"
+            android:layout_marginLeft="5dp"
+            android:layout_alignBottom="@+id/hint"
+            android:textSize="18dp"/>
         
         <TextView
             android:id="@+id/due"
@@ -38,6 +48,7 @@
 
         <TextView
             android:id="@+id/due_date"
+            android:singleLine="true"
             android:layout_toRightOf="@id/due"
             android:layout_marginLeft="5dp"
             android:layout_alignBottom="@+id/due"

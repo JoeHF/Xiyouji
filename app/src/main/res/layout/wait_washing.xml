@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="4:59"
+                android:text="5:00"
                 android:textSize="30dp"
                 android:textColor="@color/white"/>
 
@@ -65,7 +65,7 @@
         <TextView
             style="@style/CommonBar_CenterText_Style"
             android:layout_weight="18.0"
-            android:text="浙A 00000000 奥迪A6L 黑色"/>
+            android:id="@+id/car_info"/>
         </LinearLayout>
 
         <View
@@ -85,7 +85,7 @@
             <TextView
                 style="@style/CommonBar_CenterText_Style"
                 android:layout_weight="18.0"
-                android:text="杭州市西湖区行政服务中心"/>
+                android:id="@+id/addr_info"/>
         </LinearLayout>
 
         <View
@@ -103,9 +103,9 @@
                 android:layout_margin="15dp"
                 android:src="@drawable/mode"/>
             <TextView
+                android:id="@+id/type_info"
                 style="@style/CommonBar_CenterText_Style"
-                android:layout_weight="18.0"
-                android:text="车外清洗  15元"/>
+                android:layout_weight="18.0" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

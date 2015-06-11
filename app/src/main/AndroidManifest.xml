@@ -125,6 +125,12 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name="com.xiyouji.app.HomeFragmentActivity.XiaoerDetailActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name="com.xiyouji.app.HomeFragmentActivity.OrderCompleteActivity"
             android:windowSoftInputMode="stateHidden"
             android:label="Xiyouji"

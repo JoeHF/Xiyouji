@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.HomeFragmentActivity.OrderCompleteActivity;
 import com.xiyouji.app.HomeFragmentActivity.PayJudgeActivity;
 import com.xiyouji.app.HomeFragmentActivity.WaitWaiterActivity;
 import com.xiyouji.app.HomeFragmentActivity.WaitWashingActivity;
+import com.xiyouji.app.MainActivity;
 import com.xiyouji.app.Model.CarInfo;
 import com.xiyouji.app.Model.Order;
 import com.xiyouji.app.R;
@@ -109,7 +111,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
                 bundle.putString("waiterId", order.getWaiterId());
                 intent.putExtras(bundle);
                 intent.setClass(mContext, WaitWashingActivity.class);
-                mContext.startActivity(intent);
+                ((MainActivity)mContext).startActivityForResult(intent, Constant.START_WAIT_WASHING);
             }
             else if (order.getStage().equals("服务中") || order.getStage().equals("已安排小二")) {
                 Intent intent = new Intent();
@@ -118,7 +120,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
                 bundle.putString("waiterId", order.getWaiterId());
                 intent.putExtras(bundle);
                 intent.setClass(mContext, WaitWaiterActivity.class);
-                mContext.startActivity(intent);
+                ((MainActivity)mContext).startActivityForResult(intent, Constant.START_WAIT_WAITER);
             }
             else if (order.getStage().equals("待支付")) {
                 Intent intent = new Intent();

@@ -75,10 +75,10 @@ public class DiscountActivity extends Activity {
                         DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         try {
                             String time = format.format(jsonObject.getLong("endtime") * 1000);
-                            discount.setDuedate(time);
+                            discount.setDueDate(time);
                         }
                         catch (Exception e) {
-                            discount.setDuedate("6月4日 23点");
+                            discount.setDueDate("6月4日 23点");
                             e.printStackTrace();
                         }
 

@@ -54,6 +54,7 @@ public class OrderFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
         if(rootView == null) {
+            ((MainActivity)getActivity()).orderFragment = this;
             rootView = inflater.inflate(R.layout.fragment_order, container, false);
             pager = (ViewPager) rootView.findViewById(R.id.view_pager);
             page1 = inflater.inflate(R.layout.order_ing, null);
@@ -159,6 +160,11 @@ public class OrderFragment extends Fragment
                         } catch (Exception e) {
                             order.setTime("6月4日 23点");
                             e.printStackTrace();
+                        }
+
+                        if (jsonObject.getLong("asktime") != 0) {
+                            String time = format.format(jsonObject.getLong("asktime") * 1000);
+                            order.setTime(time);
                         }
 
                         order.setStage(jsonObject.getString("stage"));

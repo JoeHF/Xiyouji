@@ -1,7 +1,9 @@
 package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,8 +55,6 @@ public class WaitWaiterActivity extends Activity {
     private MyLocationConfiguration.LocationMode mCurrentMode;
     BitmapDescriptor mCurrentMarker;
 
-    private double latitude, longitude;
-
     private TextView xiaoerScoreValue, xiaoerNumValue, xiaoerIdValue, xiaoerInfoValue;
 
     MapView mMapView;
@@ -66,12 +66,19 @@ public class WaitWaiterActivity extends Activity {
     private RequestParams requestParams;
     private Timer timer = new Timer();
     Waiter waiter = new Waiter();
+    private String userId, username, password;
+    private double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.arrange_xiaoer);
+
+        SharedPreferences user = getSharedPreferences("user", 0);
+        userId = user.getString("id", "0");
+        username = user.getString("username", "0");
+        password = user.getString("password", "0");
         xiaoerScoreValue = (TextView)findViewById(R.id.xiaoer_score);
         xiaoerNumValue = (TextView)findViewById(R.id.xiaoer_num);
         xiaoerIdValue = (TextView)findViewById(R.id.xiaoer_id);
@@ -144,8 +151,7 @@ public class WaitWaiterActivity extends Activity {
                             Log.i("get order detail", response.toString());
                             try {
                                 if (response.getString("stage").equals("服务中")) {
-                                    xiaoerInfoValue.setText("小二" + waiter.getCode() + "正在马不停蹄的赶来");
-                                    String waiterId = response.getString("waiterid");
+                                    xiaoerInfoValue.setText("小二" + waiter.getCode() + "正在洗车");
                                 }
                                 else if (response.getString("stage").equals("待支付")) {
                                     Intent intent = new Intent();
@@ -159,6 +165,9 @@ public class WaitWaiterActivity extends Activity {
                                             R.anim.push_left_out	);
                                     timer.cancel();
                                     finish();
+                                }
+                                else if (response.getString("stage").equals("已安排小二")) {
+                                    xiaoerInfoValue.setText("小二" + waiter.getCode() + "正在马不停蹄的赶来");
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -244,5 +253,38 @@ public class WaitWaiterActivity extends Activity {
         finish();
         overridePendingTransition(R.anim.push_right_in,
                 R.anim.push_right_out);
+    }
+
+    public void click_right(View v) {
+        RequestParams requestParams1 = new RequestParams();
+        requestParams1.put("phone", username);
+        requestParams1.put("password", password);
+        requestParams1.put("orderid", orderId);
+
+        Log.i("delete", username + " " + password + " " + orderId);
+        RestClient.post(Constant.DELETE_ORDER, requestParams1, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    Log.i("delete order", response.toString());
+                    if (!response.getString("state").equals("failure")) {
+                        timer.cancel();
+                        Intent intent = new Intent();
+                        setResult(Constant.CANCEL_ORDER_BACK, intent);
+                        finish();
+                        overridePendingTransition(R.anim.push_right_in,
+                                R.anim.push_right_out);
+                    }
+                    else {
+                        new AlertDialog.Builder(WaitWaiterActivity.this).setTitle("取消订单失败").setMessage("订单已在服务中").show();
+                    }
+                } catch (JSONException e) {
+                    new AlertDialog.Builder(WaitWaiterActivity.this).setTitle("提示信息").setMessage("取消订单失败").show();
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+
     }
 }

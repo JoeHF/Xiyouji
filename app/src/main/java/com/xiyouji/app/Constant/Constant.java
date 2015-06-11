@@ -14,6 +14,8 @@ public class Constant {
     public static final int START_CAR_LOC = 13;
     public static final int START_PHONE_NUMBER = 14;
     public static final int START_ORDER = 15;
+    public static final int START_WAIT_WASHING = 16;
+    public static final int START_WAIT_WAITER = 17;
 
 
     public static final int START_LBS_BACK = 100;
@@ -22,6 +24,7 @@ public class Constant {
     public static final int START_CAR_LOC_BACK = 103;
     public static final int START_PHONE_NUMBER_BACK = 104;
     public static final int START_ORDER_SUCCESS_BACK = 105;
+    public static final int CANCEL_ORDER_BACK = 106;
 
     //rest http request
     public static final String GET_WEATHER_BY_CITY = "my/getWeatherByCity";

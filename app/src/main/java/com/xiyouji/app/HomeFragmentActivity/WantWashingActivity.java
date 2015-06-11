@@ -1,35 +1,48 @@
 package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
 import com.xiyouji.app.R;
+import com.xiyouji.app.Utils.DateTimePickDialogUtil;
 import com.xiyouji.app.Utils.RestClient;
 
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by houfang on 15/4/28.
  */
 public class WantWashingActivity extends Activity {
+    private Timer timer = new Timer();
     private CheckBox wash_immediately, wash_order, wash_out, wash_inout;
     private TextView carInfo, phone, carLoc;
+    private EditText askTimeValue, discountValue;
 
-    private String carId = "", siteId = "", type = "";
+    private String carId = "", siteId = "", type = "", washTime = "";
     private String username, password;
+
+    private String initStartDateTime; // 初始化开始时间
+    private String askTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +54,22 @@ public class WantWashingActivity extends Activity {
         carInfo = (TextView)findViewById(R.id.car_info);
         phone = (TextView)findViewById(R.id.phone);
         carLoc = (TextView)findViewById(R.id.car_loc);
+        askTimeValue = (EditText)findViewById(R.id.order_time);
+        discountValue = (EditText)findViewById(R.id.discount);
+
+        Calendar cal= Calendar.getInstance();
+        Date date = cal.getTime();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        initStartDateTime = format.format(date);
+        askTimeValue.setText(initStartDateTime);
+        askTimeValue.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(
+                        WantWashingActivity.this, initStartDateTime);
+                dateTimePicKDialog.dateTimePicKDialog(askTimeValue);
+            }
+        });
 
         SharedPreferences user = getSharedPreferences("user", 0);
         username = user.getString("username", "0");
@@ -57,6 +86,14 @@ public class WantWashingActivity extends Activity {
     {
         Date date=new Date();
         String time = date.getTime() + "";
+        if (!washTime.equals("immediately")) {
+            Log.i("wash time", askTimeValue.getText().toString());
+            if (!(askTimeValue.getText() != null || askTimeValue.getText().length() != 0)) {
+                new AlertDialog.Builder(WantWashingActivity.this).setTitle("提示信息").setMessage("请填写预约时间").show();
+                return;
+            }
+        }
+
         //Log.i("Time:", date.getTime() + "");
         //DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //String time = format.format(date);
@@ -69,6 +106,21 @@ public class WantWashingActivity extends Activity {
         requestParams.put("phone", username);
         requestParams.put("password", password);
         requestParams.put("type", type);
+        if (discountValue.getText() != null && discountValue.getText().length() != 0) {
+            requestParams.put("ticketid", discountValue.getText().toString());
+        }
+
+        if (washTime.equals("order")) {
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+                String asktime = askTimeValue.getText().toString();
+                Date date2 = format.parse(asktime);
+                Log.i("wash time", date2.getTime() + "");
+                requestParams.put("asktime", date2.getTime() / 1000 + "");
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
 
         RestClient.post(Constant.ADD_ORDER, requestParams, new JsonHttpResponseHandler() {
             @Override
@@ -76,13 +128,17 @@ public class WantWashingActivity extends Activity {
                 Log.i("make order", response.toString());
                 try {
                     if(response.getString("stage").equals("success")) {
+                        if (!washTime.equals("immediately")) {
+                            new AlertDialog.Builder(WantWashingActivity.this).setTitle("提示信息").setMessage("预约成功").show();
+                            timer.schedule(task, 1000, 1000);
+                            return;
+                        }
+
                         Intent intent = new Intent();
                         Bundle bundle = new Bundle();
-                        bundle.putString("orderId", /*response.getString("orderid")*/"1");
+                        bundle.putString("orderId", response.getString("orderid"));
                         intent.putExtras(bundle);
                         intent.setClass(WantWashingActivity.this, WaitWashingActivity.class);
-                        //intent.setClass(this, xiaoerInfoActivity.class);  //test code
-                        //intent.setClass(this, PayJudgeActivity.class);  //test code
                         startActivityForResult(intent, Constant.START_ORDER);
                         overridePendingTransition(R.anim.push_left_in,
                                 R.anim.push_left_out);
@@ -128,6 +184,7 @@ public class WantWashingActivity extends Activity {
     public void click_wash_type(View v) {
         wash_immediately.setChecked(false);
         wash_order.setChecked(false);
+        washTime = ((CheckBox)v).getTag().toString();
         ((CheckBox) v).setChecked(true);
     }
 
@@ -137,6 +194,23 @@ public class WantWashingActivity extends Activity {
         ((CheckBox) v).setChecked(true);
         type = ((CheckBox) v).getTag().toString();
     }
+
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+
+            runOnUiThread(new Runnable() {      // UI thread
+                @Override
+                public void run() {
+                    timer.cancel();
+                    finish();
+                    overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                }
+            });
+        }
+    };
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

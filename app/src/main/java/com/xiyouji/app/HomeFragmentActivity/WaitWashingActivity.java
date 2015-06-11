@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
+import com.xiyouji.app.Model.Order;
 import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
 
@@ -18,6 +19,8 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,6 +34,7 @@ public class WaitWashingActivity extends Activity {
     private String orderId;
 
     private TextView timeValue;
+    private TextView carInfoValue, addrInfoValue, typeInfoValue;
     private RequestParams requestParams;
 
     @Override
@@ -44,12 +48,58 @@ public class WaitWashingActivity extends Activity {
         username = user.getString("username", "0");
         password = user.getString("password", "0");
         timeValue = (TextView)findViewById(R.id.time);
+        carInfoValue = (TextView)findViewById(R.id.car_info);
+        addrInfoValue = (TextView)findViewById(R.id.addr_info);
+        typeInfoValue = (TextView)findViewById(R.id.type_info);
 
         orderId = bundle.getString("orderId");
         requestParams = new RequestParams();
         requestParams.put("orderid", orderId);
         timer.schedule(task, 1000, 1000);
+        RestClient.post(Constant.GET_ORDER_DETAIL, requestParams, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("get order detail", response.toString());
+                try {
+                    Order order = new Order();
+                    order.setVersion(response.getString("version"));
+                    order.setBrand(response.getString("brand"));
+                    order.setSitename(response.getString("sitename"));
+                    order.setColor(response.getString("color"));
+                    order.setWaiterId(response.getString("waiterid"));
+                    order.setId(response.getInt("orderid"));
+                    int type = response.getInt("type");
+                    if (type == 1) {
+                        order.setType("车外清洗");
+                    } else {
+                        order.setType("车内外清洗");
+                    }
 
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    try {
+                        String time = format.format(response.getLong("createtime") * 1000);
+                        order.setTime(time);
+                    } catch (Exception e) {
+                        order.setTime("6月4日 23点");
+                        e.printStackTrace();
+                    }
+
+                    order.setStage(response.getString("stage"));
+                    order.setNumber(response.getString("number"));
+
+                    carInfoValue.setText(order.getNumber() + " "
+                            + order.getBrand() + order.getVersion() + " "
+                            + order.getColor());
+                    addrInfoValue.setText(order.getSitename());
+                    if (order.getType().equals("车外清洗"))
+                        typeInfoValue.setText(order.getType() + "99元");
+                    else if (order.getType().equals("车内外清洗"))
+                        typeInfoValue.setText(order.getType() + "999元");
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     TimerTask task = new TimerTask() {
@@ -66,7 +116,7 @@ public class WaitWashingActivity extends Activity {
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             Log.i("get order detail", response.toString());
                             try {
-                                if (!response.getString("stage").equals("待接单")) {
+                                if (response.getString("stage").equals("已安排小二") || response.getString("stage").equals("服务中")) {
                                     String waiterId = response.getString("waiterid");
                                     Intent intent = new Intent();
                                     Bundle bundle = new Bundle();
@@ -125,6 +175,8 @@ public class WaitWashingActivity extends Activity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 timer.cancel();
                 Log.i("delete order", response.toString());
+                Intent intent = new Intent();
+                setResult(Constant.CANCEL_ORDER_BACK, intent);
                 finish();
                 overridePendingTransition(R.anim.push_right_in,
                         R.anim.push_right_out);

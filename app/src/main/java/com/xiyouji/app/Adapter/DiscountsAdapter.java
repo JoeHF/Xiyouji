@@ -52,6 +52,7 @@ public class DiscountsAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.price = (TextView)convertView.findViewById(R.id.price);
             holder.dueDate = (TextView)convertView.findViewById(R.id.due_date);
+            holder.ticketid = (TextView)convertView.findViewById(R.id.ticketid);
             convertView.setTag(holder);
         }
         else {
@@ -60,11 +61,13 @@ public class DiscountsAdapter extends BaseAdapter {
 
         holder.price.setText("￥" + discountLists.get(position).getPrice());
         holder.dueDate.setText(discountLists.get(position).getDueDate());
+        holder.ticketid.setText(discountLists.get(position).getTicketid());
         return convertView;
     }
 
     private class ViewHolder {
         TextView price;
         TextView dueDate;
+        TextView ticketid;
     }
 }

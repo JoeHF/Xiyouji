@@ -35,14 +35,14 @@ public class LoginActivity extends Activity {
     }
 
     public void click_to_homepage(View v) {
-        //final String username_value = username.getText().toString();
-        //final String password_value = password.getText().toString();
+        final String username_value = username.getText().toString();
+        final String password_value = password.getText().toString();
 
         RequestParams requestParams = new RequestParams();
 
         //for test
-        final String username_value = "123";
-        final String password_value = "123";
+        //final String username_value = "123";
+        //final String password_value = "123";
         requestParams.put("phone", username_value);
         requestParams.put("password", password_value);
 
