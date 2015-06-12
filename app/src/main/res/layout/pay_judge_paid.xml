@@ -35,7 +35,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/head_photo"
             android:src="@drawable/muller"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             app:riv_corner_radius="30dip"
             app:riv_border_width="2dip"
             app:riv_border_color="#333333"
@@ -63,7 +63,7 @@
                 android:id="@+id/xiaoer_id"
                 android:textSize="18dp"
                 android:textColor="@color/black"
-                android:text="小二9527"/>
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -83,7 +83,6 @@
                     android:id="@+id/xiaoer_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5.0"
                     android:layout_marginRight="4dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"/>
@@ -112,7 +111,6 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/xiaoer_info"
             android:layout_alignBaseline="@+id/xiaoer_info"
-            android:text="86"
             android:textColor="@color/orange"/>
 
         <TextView
@@ -168,7 +166,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/price"
-                android:text="99"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/orange"
                 android:textSize="28dp"

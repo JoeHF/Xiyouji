@@ -2,12 +2,17 @@ package com.xiyouji.app.HomeFragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.xiyouji.app.Constant.Constant;
@@ -17,6 +22,7 @@ import com.xiyouji.app.R;
 import com.xiyouji.app.Utils.RestClient;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,6 +36,7 @@ public class OrderCompleteActivity extends Activity {
     //ui
     private TextView title, right, price; //Action Bar
     private CheckBox pay_weixin, pay_ali;
+    private ImageView headPhoto;
 
     private String waiterId;
     private String orderId;
@@ -52,6 +59,7 @@ public class OrderCompleteActivity extends Activity {
         xiaoerScoreValue = (TextView)findViewById(R.id.xiaoer_score);
         xiaoerNumValue = (TextView)findViewById(R.id.xiaoer_num);
         xiaoerIdValue = (TextView)findViewById(R.id.xiaoer_id);
+        headPhoto = (ImageView)findViewById(R.id.head_photo);
 
         RequestParams requestParams = new RequestParams();
         requestParams.put("waiterid", waiterId);
@@ -68,6 +76,8 @@ public class OrderCompleteActivity extends Activity {
                     xiaoerScoreValue.setText(waiter.getStar());
                     xiaoerNumValue.setText(waiter.getCount());
                     xiaoerIdValue.setText("小二" + waiter.getCode());
+
+                    GetHeadPhoto();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -78,7 +88,7 @@ public class OrderCompleteActivity extends Activity {
         requestParams.put("order", orderId);
         RestClient.post(Constant.GET_WAITER_INFO, requestParams, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.i("waiter info", response.toString());
+                Log.i("order info", response.toString());
                 try {
                     Order order = new Order();
                     order.setVersion(response.getString("version"));
@@ -117,6 +127,83 @@ public class OrderCompleteActivity extends Activity {
                 }
             }
         });
+    }
+
+    public void GetHeadPhoto() {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("waiterid", waiterId);
+
+        RestClient.post(Constant.GET_WAITER_ICON, requestParams, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("waiter icon", response.toString());
+                try {
+                    String imageid = response.getString("name");
+                    String url = "http://121.40.130.54/xiyouji/upload/" + imageid + ".jpg";
+                    Log.i("a", url);
+
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    client.get(url, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            if (statusCode == 200) {
+                                //创建工厂对象
+                                BitmapFactory bitmapFactory = new BitmapFactory();
+                                //工厂对象的decodeByteArray把字节转换成Bitmap对象
+                                Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
+                                //设置图片
+                                headPhoto.setImageBitmap(bitmap);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers,
+                                              byte[] responseBody, Throwable error) {
+                            error.printStackTrace();
+                        }
+                    });
+                }
+                catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        RestClient.post(Constant.GET_WAITER_ICON, requestParams, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONArray responses) {
+                try {
+                    Log.i("waiter icon", responses.toString());
+                    JSONObject response = responses.getJSONObject(0);
+                    String imageid = response.getString("name");
+                    String url = "http://121.40.130.54/xiyouji/upload/" + imageid + ".jpg";
+                    Log.i("a", url);
+
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    client.get(url, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            if (statusCode == 200) {
+                                //创建工厂对象
+                                BitmapFactory bitmapFactory = new BitmapFactory();
+                                //工厂对象的decodeByteArray把字节转换成Bitmap对象
+                                Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
+                                //设置图片
+                                headPhoto.setImageBitmap(bitmap);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers,
+                                              byte[] responseBody, Throwable error) {
+                            error.printStackTrace();
+                        }
+                    });
+                }
+                catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public void click_to_back(View v) {

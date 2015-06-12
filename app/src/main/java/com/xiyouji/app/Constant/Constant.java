@@ -52,4 +52,6 @@ public class Constant {
     public static final String ADD_COMPLAIN = "order/addComplainById";
     public static final String UPLOAD_PIC = "image/uploadpic";
     public static final String UPLOAD_COMPLAIN_IMAGE = "image/userUploadComplainImage";
+    public static final String GET_WAITER_IMAGE_AFTER = "image/getWaiterImageAfterWash";
+    public static final String GET_WAITER_ICON = "image/getWaiterIcon";
 }
