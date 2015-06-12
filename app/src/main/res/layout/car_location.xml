@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+
+<LinearLayout
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/lightgray">
 
     <include layout="@layout/location_head"/>
+
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:tag="0"
+        android:clickable="true"
+        android:onClick="click_to_choose_addr">
+        <EditText
+            android:id="@+id/city"
+            android:background="@null"
+            android:hint="城市"
+            android:layout_margin="0dp"
+            android:layout_weight="4.0"
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <EditText
+            android:id="@+id/search"
+            android:background="@null"
+            style="@style/CommonBar_CenterText_Style"
+            android:layout_weight="12.0"
+            android:hint="地址" />
+        <TextView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"
+            android:text="搜索"
+            android:textColor="@color/black"
+            android:clickable="true"
+            android:onClick="click_to_search"/>
+    </LinearLayout>
     
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
@@ -14,4 +48,107 @@
 
     </com.baidu.mapapi.map.MapView>
 
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:tag="0"
+        android:clickable="true"
+        android:onClick="click_to_choose_addr">
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <TextView
+            android:id="@+id/addr0"
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/common_bar_carInfo" />
+        <ImageView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:tag="1"
+        android:clickable="true"
+        android:onClick="click_to_choose_addr" >
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <TextView
+            android:id="@+id/addr1"
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/common_bar_carInfo" />
+        <ImageView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:tag="2"
+        android:clickable="true"
+        android:onClick="click_to_choose_addr" >
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <TextView
+            android:id="@+id/addr2"
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/common_bar_carInfo" />
+        <ImageView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:tag="3"
+        android:clickable="true"
+        android:onClick="click_to_choose_addr" >
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <TextView
+            android:id="@+id/addr3"
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/common_bar_carInfo" />
+        <ImageView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        />
+    <LinearLayout
+        style="@style/CommonBar_InLinearLayout_Style"
+        android:tag="4"
+        android:clickable="true"
+        android:onClick="click_to_choose_addr" >
+        <ImageView
+            style="@style/CommonBar_LeftImg_Style"
+            />
+        <TextView
+            android:id="@+id/addr4"
+            style="@style/CommonBar_CenterText_Style"
+            android:text="@string/common_bar_carInfo" />
+        <ImageView
+            style="@style/CommonBar_RightImg_Style"
+            android:src="@drawable/arrow_gray_right"/>
+    </LinearLayout>
 </LinearLayout>
+</ScrollView>
