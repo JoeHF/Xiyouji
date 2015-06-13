@@ -102,6 +102,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
+            android:name=".MineFragmentActivity.UploadIconActivity"
+            android:label="Xiyouji"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
             android:name=".MainLogic.NumberCheckActivity"
             android:label="Xiyouji"
             android:screenOrientation="portrait"></activity>

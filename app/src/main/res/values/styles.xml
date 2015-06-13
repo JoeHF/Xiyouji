@@ -144,7 +144,26 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:numColumns">auto_fit</item>
         <item name="android:stretchMode">columnWidth</item>
+    </style>
 
+    <style name="TwoText_Left">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_weight">4.0</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TwoText_Center">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_weight">12.0</item>
+    </style>
+    <style name="TwoText_Right">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_weight">4.0</item>
 
     </style>
 </resources>

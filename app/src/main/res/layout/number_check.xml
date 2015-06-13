@@ -65,16 +65,18 @@
             android:src="@drawable/mark" />
 
         <EditText
+            android:id="@+id/password"
             android:background="@null"
             android:textSize="16dp"
             style="@style/CommonBar_CenterText_Style"
             android:hint="@string/code_identify" />
 
         <TextView
+            android:id="@+id/code"
             style="@style/CommonBar_RightImg_Style"
             android:clickable="true"
             android:onClick="get_identify"
-            android:text="@string/get_identify" />
+            android:text="获取" />
 
     </LinearLayout>
 

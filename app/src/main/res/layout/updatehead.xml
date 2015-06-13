@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ActionBar_Style">
+
+    <ImageView
+        android:clickable="true"
+        android:onClick="click_to_back"
+        style="@style/ActionBar_LeftImg_Style"
+        android:src="@drawable/back"/>
+    <TextView
+        style="@style/ActionBar_CenterText_Style"
+        android:text="上传头像"
+        />
+
+
+</RelativeLayout>
+

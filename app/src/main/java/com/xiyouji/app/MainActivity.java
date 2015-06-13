@@ -1,10 +1,15 @@
 package com.xiyouji.app;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -21,7 +26,9 @@ import com.xiyouji.app.MainLogic.WantWashingActivity;
 import com.xiyouji.app.MineFragmentActivity.CommonAddressActivity;
 import com.xiyouji.app.MineFragmentActivity.CommonCarActivity;
 import com.xiyouji.app.MineFragmentActivity.DiscountActivity;
+import com.xiyouji.app.MineFragmentActivity.MineFragment;
 import com.xiyouji.app.MineFragmentActivity.RechargeActivity;
+import com.xiyouji.app.MineFragmentActivity.UploadIconActivity;
 import com.xiyouji.app.Model.CarBrand;
 import com.xiyouji.app.Model.CarVersion;
 import com.xiyouji.app.Utils.RestClient;
@@ -434,6 +441,15 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    public void  click_update(View v)
+    {
+        Intent i = new Intent(
+                Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        startActivityForResult(i, Constant.START_LOAD_IMAGE);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case Constant.START_WAIT_WASHING:
@@ -449,6 +465,38 @@ public class MainActivity extends FragmentActivity {
                 switch (resultCode) {
                     case Constant.CANCEL_ORDER_BACK:
                         ((OrderFragment)orderFragment).GetOrderData();
+                        break;
+                    default:
+                        break;
+                }
+            case Constant.START_LOAD_IMAGE:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        Uri selectedImage = data.getData();
+                        String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                        Cursor cursor = getContentResolver().query(selectedImage,
+                                filePathColumn, null, null, null);
+                        cursor.moveToFirst();
+
+                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                        String picturePath = cursor.getString(columnIndex);
+                        cursor.close();
+                        String src = picturePath;
+                        SharedPreferences mySharedPreferences = getSharedPreferences("user",
+                                Activity.MODE_PRIVATE);
+                        //实例化SharedPreferences.Editor对象（第二步）
+                        SharedPreferences.Editor editor = mySharedPreferences.edit();
+                        editor.putString("src",src);
+                        editor.commit();
+                        Intent intent = new Intent();
+                        intent.setClass(this, UploadIconActivity.class);
+                        startActivityForResult(intent, Constant.START_LOAD_IMAGE);
+                        overridePendingTransition(R.anim.abc_fade_in,
+                                R.anim.abc_fade_out	);
+                        break;
+                    case Constant.START_LOAD_IMAGE_BACK:
+                        ((MineFragment)mineFragment).GetUserIcon();
                         break;
                     default:
                         break;

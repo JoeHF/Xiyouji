@@ -17,6 +17,7 @@ public class Constant {
     public static final int START_WAIT_WASHING = 16;
     public static final int START_WAIT_WAITER = 17;
     public static final int START_ADVICE_PICTURE = 18;
+    public static final int START_LOAD_IMAGE = 19;
 
 
     public static final int START_LBS_BACK = 100;
@@ -27,6 +28,7 @@ public class Constant {
     public static final int START_ORDER_SUCCESS_BACK = 105;
     public static final int CANCEL_ORDER_BACK = 106;
     public static final int START_ADVICE_PICTURE_BACK = 107;
+    public static final int START_LOAD_IMAGE_BACK = 108;
 
     //rest http request
     public static final String GET_WEATHER_BY_CITY = "my/getWeatherByCity";
@@ -54,4 +56,7 @@ public class Constant {
     public static final String UPLOAD_COMPLAIN_IMAGE = "image/userUploadComplainImage";
     public static final String GET_WAITER_IMAGE_AFTER = "image/getWaiterImageAfterWash";
     public static final String GET_WAITER_ICON = "image/getWaiterIcon";
+    public static final String UPLOAD_USER_ICON ="image/userUploadIcon";
+    public static final String GET_USER_ICON = "image/getUserIcon";
+    public static final String SEND_MSG = "Sms/sendSms";
 }

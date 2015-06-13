@@ -10,9 +10,9 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:src="@drawable/default_head"
             android:id="@+id/head_photo"
-            android:src="@drawable/muller"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             app:riv_corner_radius="30dip"
             app:riv_border_width="2dip"
             app:riv_border_color="#333333"
@@ -21,7 +21,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="40dp"
             android:layout_width="80dp"
-            android:layout_height="80dp" />
+            android:layout_height="80dp"
+            android:clickable="true"
+            android:onClick="click_update"/>
 
         <TextView
             android:id="@+id/name"
