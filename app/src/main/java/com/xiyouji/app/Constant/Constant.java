@@ -59,4 +59,5 @@ public class Constant {
     public static final String UPLOAD_USER_ICON ="image/userUploadIcon";
     public static final String GET_USER_ICON = "image/getUserIcon";
     public static final String SEND_MSG = "Sms/sendSms";
+    public static final String PAY = "pay/pay";
 }

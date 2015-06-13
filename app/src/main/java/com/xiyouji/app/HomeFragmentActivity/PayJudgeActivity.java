@@ -50,6 +50,8 @@ public class PayJudgeActivity extends Activity {
     private String orderId;
     private Waiter waiter = new Waiter();
     String money = "";
+    private int payway; //0表示微信，1表示支付宝
+    private String packageName;
 
     private static final String CHANNEL_WECHAT = "wx";
     private static final String CHANNEL_ALIPAY = "alipay";
@@ -65,6 +67,7 @@ public class PayJudgeActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         waiterId = bundle.getString("waiterId");
         orderId = bundle.getString("orderId");
+        packageName = this.getPackageName();
 
         title = (TextView)findViewById(R.id.title);
         right = (TextView)findViewById(R.id.right);
@@ -207,10 +210,12 @@ public class PayJudgeActivity extends Activity {
         if(v.getTag().equals("weixin")) {
             pay_weixin.setChecked(true);
             pay_ali.setChecked(false);
+            payway = 0;
         }
         else {
             pay_weixin.setChecked(false);
             pay_ali.setChecked(true);
+            payway = 1;
         }
     }
 
@@ -224,18 +229,43 @@ public class PayJudgeActivity extends Activity {
             String cleanString = money.replaceAll(replaceable, "");
             int amount = Integer.valueOf(new BigDecimal(cleanString).toString());
 
+            RequestParams requestParams = new RequestParams();
+            if (payway == 0)
+                requestParams.put("channel", CHANNEL_WECHAT);
+            else
+                requestParams.put("channel", CHANNEL_ALIPAY);
+
+            requestParams.put("amount", amount);
+
+            RestClient.post(Constant.PAY, requestParams, new JsonHttpResponseHandler() {
+
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    Log.i("pay", response.toString());
+                    String result = ""; //test
+                    Intent intent = new Intent();
+                    //String packageName = this.getPackageName();
+                    ComponentName componentName = new ComponentName(packageName, packageName + ".wxapi.WXPayEntryActivity");
+                    intent.setComponent(componentName);
+                    intent.putExtra(PaymentActivity.EXTRA_CHARGE, response.toString());
+                    PayJudgeActivity.this.startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                }
+
+            });
+/*
             String result = ""; //test
             Intent intent = new Intent();
-            String packageName = this.getPackageName();
+            //String packageName = this.getPackageName();
             ComponentName componentName = new ComponentName(packageName, packageName + ".wxapi.WXPayEntryActivity");
             intent.setComponent(componentName);
             intent.putExtra(PaymentActivity.EXTRA_CHARGE, result);
-            this.startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+            this.startActivityForResult(intent, REQUEST_CODE_PAYMENT);*/
         }
         else {
             new AlertDialog.Builder(PayJudgeActivity.this).setTitle("提示信息").setMessage("请稍后正在加载数据").show();
         }
     }
+
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //支付页面返回处理
