@@ -2,12 +2,14 @@ package com.xiyouji.app.Login;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -25,19 +27,34 @@ import org.json.JSONObject;
  */
 public class LoginActivity extends Activity {
     private EditText username, password;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("正在登录");
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
+        SharedPreferences mySharedPreferences = getSharedPreferences("user",
+                Activity.MODE_PRIVATE);
+        String name = mySharedPreferences.getString("username","0");
+        String pass = mySharedPreferences.getString("password","0");
+        if(!name.equals("0")){
+            mProgressDialog.show();
+            login(name, pass);
+        }
     }
 
     public void click_to_homepage(View v) {
+        mProgressDialog.show();
         final String username_value = username.getText().toString();
         final String password_value = password.getText().toString();
+        login(username_value, password_value);
+    }
 
+    public void login(final String username_value, final String password_value) {
         RequestParams requestParams = new RequestParams();
 
         //for test
@@ -79,13 +96,30 @@ public class LoginActivity extends Activity {
                     Intent intent1 = new Intent();
                     intent1.setClass(LoginActivity.this, MainActivity.class);
                     startActivity(intent1);
+                    mProgressDialog.dismiss();
                     overridePendingTransition(R.anim.push_left_in,
                             R.anim.push_left_out);
                     finish();
                 } catch (JSONException e) {
-                    new AlertDialog.Builder(LoginActivity.this).setTitle("提示信息").setMessage("登陆失败").show();
+                    //new AlertDialog.Builder(LoginActivity.this).setTitle("提示信息").setMessage("登陆失败").show();
                     e.printStackTrace();
+                    mProgressDialog.dismiss();
+                    Toast.makeText(LoginActivity.this, "用户名密码不匹配", Toast.LENGTH_SHORT).show();
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.e("qqq","Login failure "+ responseString);
+                mProgressDialog.dismiss();
+                Toast.makeText(LoginActivity.this, "网络连接有问题", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject response) {
+                mProgressDialog.dismiss();
+                Toast.makeText(LoginActivity.this, "网络连接有问题", Toast.LENGTH_SHORT).show();
             }
         });
     }

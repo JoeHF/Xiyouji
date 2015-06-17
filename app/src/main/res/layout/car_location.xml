@@ -59,7 +59,7 @@
         <TextView
             android:id="@+id/addr0"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/common_bar_carInfo" />
+            android:text="Loading..." />
         <ImageView
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"
@@ -82,7 +82,7 @@
         <TextView
             android:id="@+id/addr1"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/common_bar_carInfo" />
+            android:text="Loading..." />
         <ImageView
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"/>
@@ -103,7 +103,7 @@
         <TextView
             android:id="@+id/addr2"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/common_bar_carInfo" />
+            android:text="Loading..." />
         <ImageView
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"/>
@@ -124,7 +124,7 @@
         <TextView
             android:id="@+id/addr3"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/common_bar_carInfo" />
+            android:text="Loading..." />
         <ImageView
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"/>
@@ -145,7 +145,7 @@
         <TextView
             android:id="@+id/addr4"
             style="@style/CommonBar_CenterText_Style"
-            android:text="@string/common_bar_carInfo" />
+            android:text="Loading..." />
         <ImageView
             style="@style/CommonBar_RightImg_Style"
             android:src="@drawable/arrow_gray_right"/>

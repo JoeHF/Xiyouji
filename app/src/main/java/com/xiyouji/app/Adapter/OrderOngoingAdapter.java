@@ -60,6 +60,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
         if(convertView == null) {
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.order_ing_list_item, null);
             holder = new ViewHolder();
+            holder.orderId = (TextView)convertView.findViewById(R.id.order_id);
             holder.status = (TextView)convertView.findViewById(R.id.status);
             holder.carType = (TextView)convertView.findViewById(R.id.carType);
             holder.location = (TextView)convertView.findViewById(R.id.location);
@@ -73,6 +74,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
+        holder.orderId.setText("No." + order_ongoings.get(position).getId());
         holder.listener.setPosition(position);
         holder.status.setText(order_ongoings.get(position).getStage());
         holder.carType.setText(order_ongoings.get(position).getNumber() + " "
@@ -85,6 +87,7 @@ public class OrderOngoingAdapter extends BaseAdapter {
     }
 
     private final class ViewHolder {
+        TextView orderId;
         TextView status;
         TextView carType;
         TextView location;

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -91,9 +92,30 @@ public class WantWashingActivity extends Activity {
         if (!washTime.equals("immediately")) {
             Log.i("wash time", askTimeValue.getText().toString());
             if (!(askTimeValue.getText() != null || askTimeValue.getText().length() != 0)) {
-                new AlertDialog.Builder(WantWashingActivity.this).setTitle("提示信息").setMessage("请填写预约时间").show();
+                //new AlertDialog.Builder(WantWashingActivity.this).setTitle("提示信息").setMessage("请填写预约时间").show();
+                Toast.makeText(WantWashingActivity.this, "请填写预约时间", Toast.LENGTH_SHORT).show();
                 return;
             }
+        }
+
+        if (phone.getText() == null || phone.getText().toString() == null || phone.getText().toString().length() != 11) {
+            Toast.makeText(WantWashingActivity.this, "请填写电话号码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (carId.length() == 0) {
+            Toast.makeText(WantWashingActivity.this, "请填写车辆信息", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (siteId.length() == 0) {
+            Toast.makeText(WantWashingActivity.this, "请填写车辆位置", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (type.length() == 0) {
+            Toast.makeText(WantWashingActivity.this, "请选择清洗类型", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         //Log.i("Time:", date.getTime() + "");

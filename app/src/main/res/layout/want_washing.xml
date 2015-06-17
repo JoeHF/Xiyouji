@@ -116,6 +116,7 @@
                         android:layout_gravity="center_vertical"
                         android:onClick="click_wash_type"
                         android:button="@null"
+                        android:checked="true"
                         android:tag="immediately"
                         android:background="@drawable/pay_check_checkbox"/>
                     <TextView
@@ -220,11 +221,12 @@
 
                 </LinearLayout>
             </LinearLayout>
-            <View
+        <!--    <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/lightgray"
                 />
+
 
         <LinearLayout
             style="@style/CommonBar_InLinearLayout_Style">
@@ -238,7 +240,7 @@
                 android:layout_weight="4.0"
                 />
 
-        </LinearLayout>
+        </LinearLayout>-->
     </LinearLayout>
 
     <LinearLayout
