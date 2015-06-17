@@ -85,7 +85,7 @@ public class PayJudgeActivity extends Activity {
 
         title.setText("支付与评价");
         right.setText("投诉");
-
+        Log.i("orderid", orderId);
         RequestParams requestParams = new RequestParams();
         requestParams.put("orderid", orderId);
         RestClient.post(Constant.GET_ORDER_DETAIL, requestParams, new JsonHttpResponseHandler() {
@@ -153,41 +153,103 @@ public class PayJudgeActivity extends Activity {
                         Log.i("a", url);
                         switch (i) {
                             case 0:
-                                image = img1;
+                                AsyncHttpClient client1 = new AsyncHttpClient();
+                                client1.get(url, new AsyncHttpResponseHandler() {
+                                    @Override
+                                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                        if (statusCode == 200) {
+                                            //创建工厂对象
+                                            BitmapFactory bitmapFactory = new BitmapFactory();
+                                            //工厂对象的decodeByteArray把字节转换成Bitmap对象
+                                            Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
+                                            //设置图片
+                                            Log.i("set image", "set image 1");
+                                            img1.setImageBitmap(bitmap);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(int statusCode, Header[] headers,
+                                                          byte[] responseBody, Throwable error) {
+                                        error.printStackTrace();
+                                    }
+                                });
                                 break;
                             case 1:
-                                image = img2;
+                                AsyncHttpClient client2 = new AsyncHttpClient();
+                                client2.get(url, new AsyncHttpResponseHandler() {
+                                    @Override
+                                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                        if (statusCode == 200) {
+                                            //创建工厂对象
+                                            BitmapFactory bitmapFactory = new BitmapFactory();
+                                            //工厂对象的decodeByteArray把字节转换成Bitmap对象
+                                            Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
+                                            //设置图片
+                                            Log.i("set image", "set image 2");
+                                            img2.setImageBitmap(bitmap);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(int statusCode, Header[] headers,
+                                                          byte[] responseBody, Throwable error) {
+                                        error.printStackTrace();
+                                    }
+                                });
                                 break;
                             case 2:
-                                image = img3;
+                                AsyncHttpClient client3 = new AsyncHttpClient();
+                                client3.get(url, new AsyncHttpResponseHandler() {
+                                    @Override
+                                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                        if (statusCode == 200) {
+                                            //创建工厂对象
+                                            BitmapFactory bitmapFactory = new BitmapFactory();
+                                            //工厂对象的decodeByteArray把字节转换成Bitmap对象
+                                            Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
+                                            //设置图片
+                                            Log.i("set image", "set image 3");
+                                            img3.setImageBitmap(bitmap);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(int statusCode, Header[] headers,
+                                                          byte[] responseBody, Throwable error) {
+                                        error.printStackTrace();
+                                    }
+                                });
                                 break;
                             case 3:
-                                image = img4;
+                                AsyncHttpClient client4 = new AsyncHttpClient();
+                                client4.get(url, new AsyncHttpResponseHandler() {
+                                    @Override
+                                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                        if (statusCode == 200) {
+                                            //创建工厂对象
+                                            BitmapFactory bitmapFactory = new BitmapFactory();
+                                            //工厂对象的decodeByteArray把字节转换成Bitmap对象
+                                            Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
+                                            //设置图片
+                                            Log.i("set image", "set image 4");
+                                            img4.setImageBitmap(bitmap);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(int statusCode, Header[] headers,
+                                                          byte[] responseBody, Throwable error) {
+                                        error.printStackTrace();
+                                    }
+                                });
                                 break;
                             default:
                                 break;
                         }
 
-                        AsyncHttpClient client = new AsyncHttpClient();
-                        client.get(url, new AsyncHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                if (statusCode == 200) {
-                                    //创建工厂对象
-                                    BitmapFactory bitmapFactory = new BitmapFactory();
-                                    //工厂对象的decodeByteArray把字节转换成Bitmap对象
-                                    Bitmap bitmap = bitmapFactory.decodeByteArray(responseBody, 0, responseBody.length);
-                                    //设置图片
-                                    image.setImageBitmap(bitmap);
-                                }
-                            }
 
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers,
-                                                  byte[] responseBody, Throwable error) {
-                                error.printStackTrace();
-                            }
-                        });
+
                     }
                 }
                 catch(JSONException e){
