@@ -6,7 +6,8 @@ package com.xiyouji.app.Utils;
 import com.loopj.android.http.*;
 
 public class RestClient {
-    private static final String BASE_URL = "http://121.40.130.54/xiyouji/index.php/";
+    //private static final String BASE_URL = "http://121.40.130.54/xiyouji/index.php/";
+    private static final String BASE_URL = "http://121.43.149.36/xiyouji/index.php/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
