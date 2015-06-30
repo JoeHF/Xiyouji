@@ -138,7 +138,7 @@ public class OrderCompleteActivity extends Activity {
                 Log.i("waiter icon", response.toString());
                 try {
                     String imageid = response.getString("name");
-                    String url = "http://121.40.130.54/xiyouji/upload/" + imageid + ".jpg";
+                    String url = Constant.IMAGE_UPLOAD_URL + imageid + ".jpg";
                     Log.i("a", url);
 
                     AsyncHttpClient client = new AsyncHttpClient();
@@ -174,7 +174,7 @@ public class OrderCompleteActivity extends Activity {
                     Log.i("waiter icon", responses.toString());
                     JSONObject response = responses.getJSONObject(0);
                     String imageid = response.getString("name");
-                    String url = "http://121.40.130.54/xiyouji/upload/" + imageid + ".jpg";
+                    String url = Constant.IMAGE_UPLOAD_URL + imageid + ".jpg";
                     Log.i("a", url);
 
                     AsyncHttpClient client = new AsyncHttpClient();

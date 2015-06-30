@@ -149,7 +149,7 @@ public class PayJudgeActivity extends Activity {
                     for (int i = 0; i < responses.length(); i++) {
                         JSONObject jsonObject = responses.getJSONObject(i);
                         String imageid = jsonObject.getString("name");
-                        String url = "http://121.40.130.54/xiyouji/upload/" + imageid + ".jpg";
+                        String url = Constant.IMAGE_UPLOAD_URL + imageid + ".jpg";
                         Log.i("a", url);
                         switch (i) {
                             case 0:

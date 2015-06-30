@@ -4,6 +4,9 @@ package com.xiyouji.app.Constant;
  * Created by houfang on 15/5/17.
  */
 public class Constant {
+    //public static final String IMAGE_UPLOAD_URL = "http://121.40.130.54/xiyouji/upload/";
+    public static final String IMAGE_UPLOAD_URL = "http://121.43.149.36/xiyouji/upload/";
+
     public static final String DATABASE_NAME = "xiyouji.db";
     public static final int DB_VERSION = 1;
 

@@ -90,7 +90,7 @@ public class MineFragment extends Fragment
                     if(responses.length() == 0)
                         return;
                     String imageid = responses.getJSONObject(responses.length() - 1).getString("name");
-                    String url = "http://121.40.130.54/xiyouji/upload/" + imageid + ".jpg";
+                    String url = Constant.IMAGE_UPLOAD_URL + imageid + ".jpg";
                     Log.i("a", url);
                     AsyncHttpClient client = new AsyncHttpClient();
                     client.get(url, new AsyncHttpResponseHandler() {
