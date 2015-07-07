@@ -67,7 +67,7 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.Login.LoginActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,92 +76,92 @@
         </activity>
         <activity
             android:name="com.xiyouji.app.Login.RegisterActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MainLogic.WantWashingActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainLogic.WaitWashingActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainLogic.CarLbsActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".MainLogic.CarInfoActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".MainLogic.CarlocActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".MineFragmentActivity.UploadIconActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".MainLogic.NumberCheckActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".HomeFragmentActivity.PayJudgeActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".HomeFragmentActivity.AdviceActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <!-- mine fragment activity -->
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.RechargeActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.RechargeRecordActivity"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.DiscountActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MainLogic.WaitWaiterActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MainLogic.TakePictureActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.HomeFragmentActivity.XiaoerDetailActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.xiyouji.app.HomeFragmentActivity.OrderCompleteActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.CommonAddressActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xiyouji.app.MineFragmentActivity.CommonCarActivity"
             android:windowSoftInputMode="stateHidden"
-            android:label="Xiyouji"
+            android:label="洗游记"
             android:screenOrientation="portrait"></activity>
 
         <!-- Ping++ SDK 注册 -->
